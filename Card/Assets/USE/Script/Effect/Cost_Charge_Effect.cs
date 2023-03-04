@@ -15,7 +15,7 @@ public class Cost_Charge_Effect : Base_Effect
         {
             _Manager.My_Cost = _Manager.My_MAXCost;
         }
-        
+        Debug.Log("코스트회복");
         _Manager._Result = Card_Result.Success;
 
     }

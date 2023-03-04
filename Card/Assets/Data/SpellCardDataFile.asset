@@ -2104,7 +2104,7 @@ MonoBehaviour:
     BG_Image: {fileID: 21300000, guid: a6dbb6a3a38712f4db9d43b0a9ff07c2, type: 3}
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: dd1038bfb78995849a67015554c1ad8c, type: 3}
     Value_Enemy_Effect_Num: 0
     Value_Char_Effect_Num: 0
     HEAL: 0
@@ -2144,7 +2144,7 @@ MonoBehaviour:
     BG_Image: {fileID: 21300000, guid: bedb1d6e21f44c74fa2f6eded75ce7b9, type: 3}
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: dd1038bfb78995849a67015554c1ad8c, type: 3}
     Value_Enemy_Effect_Num: 0
     Value_Char_Effect_Num: 0
     HEAL: 0
@@ -2184,7 +2184,7 @@ MonoBehaviour:
     BG_Image: {fileID: 21300000, guid: 07cf23cb34d275c4493bef2cc5a83ec9, type: 3}
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 8931a8036e5035641893197a3faaa503, type: 3}
     Value_Enemy_Effect_Num: 0
     Value_Char_Effect_Num: 0
     HEAL: 0
@@ -2224,7 +2224,7 @@ MonoBehaviour:
     BG_Image: {fileID: 21300000, guid: 811137f72b652ec4e8f1345cf5422dcf, type: 3}
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 5005d984139fdcb4ca0971c5d605b85c, type: 3}
     Value_Enemy_Effect_Num: 0
     Value_Char_Effect_Num: 0
     HEAL: 0

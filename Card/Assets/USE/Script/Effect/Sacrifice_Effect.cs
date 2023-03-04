@@ -23,6 +23,7 @@ public class Sacrifice_Effect : Base_Effect
         }
         else
         {
+            Debug.Log("단일데미지");
             _Manager.Target_Solo.Spell_Damaged(Damage_Value,_Manager.SelectedCard.Value_Char_Effect_Num);
         }
 
@@ -30,6 +31,7 @@ public class Sacrifice_Effect : Base_Effect
     }
     public override void RequireMent(Manager _Manager)
     {
+        Debug.Log("/");
         switch (Ran)
         {
             case true:
@@ -39,11 +41,13 @@ public class Sacrifice_Effect : Base_Effect
             default:
                 if (!_Manager.Target_Solo.Live)
                 {
+                    Debug.Log(_Manager.Target_Solo.Live+"상태");
                     _Manager._Result = Card_Result.Char_Die;
                     Require = false;
+                    return;
                 }
-                return;
 
+                break;
 
         }
 

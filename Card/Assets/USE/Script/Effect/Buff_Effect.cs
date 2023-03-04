@@ -16,7 +16,7 @@ public class Buff_Effect : Base_Effect
     public override void Effect_Solo_Function(Manager _Manager)
     {
         
-        Active = false;
+        
         switch (Multi)
         {
             case true:
@@ -35,27 +35,34 @@ public class Buff_Effect : Base_Effect
                 
 
         }
-        if (Active)
-        {
+        
             _Manager._Result = Card_Result.Success;
-        }
+        
     }
 
     public void Function(Manager _Manager, GameCard GC)
     {
-            
+        SpellEffect E = new SpellEffect();
+        E.ClearValue();
+        foreach (Effect_Value v in _Effect_Value)
+        {
+            E.Effect_Type_Value.Add(v);
+        }
+        if (_Manager.SelectedCard != null)
+        {
             GC.Active_Effect(_Manager.SelectedCard.Value_Char_Effect_Num);
-            SpellEffect E = new SpellEffect();
-            E.ClearValue();
             E.Init(_Manager.SelectedCard.CardNumber);
-            foreach (Effect_Value v in _Effect_Value)
-            {
-                E.Effect_Type_Value.Add(v);
-            }
-
             GC.Spell_Effects.Add(E);
+        }
+        else
+        {
+            E.Init(_Manager.Char_Manager.Skill_NUM);
+            GC.Skill_Effects.Add(E);
+        }
+        
+            
 
-            Active = true;
+            
             
         
         

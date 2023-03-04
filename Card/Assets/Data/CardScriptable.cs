@@ -19,7 +19,7 @@ public class SpellCardData
 
     
     public int CardType;//0적에게 / 1나에게 // 2전체
-    public int SpellType;//0 0이면데미지 1이면공다운 2이면방다운 3CC?
+    //public int SpellType;//0 0이면데미지 1이면공다운 2이면방다운 3CC?
                          //1 0이면회복 1이면공업 2이면방업 3이면최대체력회복 
 
     
@@ -32,9 +32,10 @@ public class SpellCardData
 
 
 
-    public int HEAL;
-    public int Value_Enemy_Damage;
+    //public int HEAL;
+    //public int Value_Enemy_Damage;
     public int Value_Enemy_Damage_Effect;
+    /*
     public int Value_A;
     public int Value_D;
     public int Value_H;
@@ -62,6 +63,7 @@ public class SpellCardData
     public int Value_Create_Deck4;
     public int Turn;//지속턴
     public bool Special = false;
+    */
 }
 [System.Serializable]
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpellCardDataObject", order = 1)]
@@ -75,7 +77,7 @@ public class CardScriptable : ScriptableObject
     public SpellCardData Find_Spell_Card(int INDEX)
     {
 
-        if (INDEX == 0)
+        if (cards.Count == 0)
         {
             return null;
         }

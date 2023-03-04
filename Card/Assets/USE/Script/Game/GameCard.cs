@@ -274,19 +274,7 @@ public class GameCard : MonoBehaviour
 
 
     }
-    void Init_Skill()
-    {
-
-        for(int i=0;i<Skill_ID.Count;i++)
-        {
-            if (Skill_ID[i] != 0 & SkillDataBase.Skill[Skill_ID[i]].CardType == 1)
-            {
-                SkillApply(SkillDataBase.Skill[Skill_ID[i]], Skill_ID[i]);
-            }
-        }
-
-    }
-
+    
     void Setting_Skill_Text()
     {
         for(int i=0;i< CardDataBase.Monster[ID].Skill_ID.Count;i++)
@@ -421,139 +409,14 @@ public class GameCard : MonoBehaviour
         
 
     }
-    public void UsingSpell(SpellCard spell)
-    {
-        if (Current_MAXHP <= (Current_HP + spell.HEAL))//최대치를넘는경우 넘지않는한에대해서 회복
-        {
-            int c = Current_HP + spell.HEAL - Current_MAXHP;
-            int t = spell.HEAL - c;
-            Current_HP += t;
-
-        }
-        else
-        {
-            Current_HP += spell.HEAL;
-        }
-
-        
-        
-        Update_Bar();//체력바갱신함수 회복이나 최대체력오를때 사용
-
-
-        SpellApply(spell);
-
-
-
-
-
-    }
-
+    
     public void Active_Effect(int INDEX)
     {
         Debug.Log(Buff_Effect[INDEX].name);
         Buff_Effect[INDEX].gameObject.SetActive(true);
         StartCoroutine(TurnOff_GameObject(Buff_Effect[INDEX].gameObject, 3.0f));
     }
-
-    public void SkillApply(CharSkillData spell, int Skill_num, int TYPE = 0)
-    {
-
-        
-
-        if (spell.Turn == 0)
-        {
-            SpellEffect e=new SpellEffect();
-            
-            e.Apply_Skill_Effect(spell);
-        }
-        else
-        {
-            
-            //SpellEffect e = Instantiate(Temp, EffectPosi);
-            //e.Init(TYPE, Skill_num);
-
-            //Effect_Use(e, spell.SpellType, spell.Turn, spell.Value,spell.Value_1);
-            //e.Apply_Skill_Effect(spell);
-            //Debug.Log(e.name);
-        }
-        //ResetAttackCount();//공격횟수재계산
-    }
-    void SpellApply(SpellCard spell, int TYPE = 1)
-    {
-
-
-
-        if (spell.Turn == 0)
-        {
-            SpellEffect e = new SpellEffect();
-            e.Apply_Spell_Effect(spell);
-        }
-        else
-        {
-            //SpellEffect e = Instantiate(Temp, EffectPosi);
-            //e.Init(TYPE, spell.CardNumber);
-
-            //Effect_Use(e, spell.SpellType, spell.Turn, spell.Value,spell.Value_1);
-            //e.Apply_Spell_Effect(spell);
-        }
-
-        //Effect_Use(e,spell.SpellType,spell.Turn,spell.Value,spell.Value_1);
-        
-    }
-    void Effect_Use(SpellEffect e, int Type, int Turn, int Value, int Value_1 = 0)
-    {
-        switch (Type)
-        {
-            case 1://공업
-                //Use_Text(Text_Array.ATK_T, Value);
-                break;
-            case 2://방업
-                //Use_Text(Text_Array.DEF_T,Value);
-                break;
-            case 3://최대체력업
-
-                //e.HP_Effect(Value, Turn);
-
-
-                //Use_Text(Text_Array.HEAL_T, Value);
-
-                break;
-            case 4://지속회복
-
-                //e.RegenHP(Value, Turn);
-
-                //Use_Text(Text_Array.HEAL_T, spell.Value);
-                break;
-            case 5:
-                //공격횟수업?
-
-                //e.AddCount(Value, Turn);
-                //Use_Text(Text_Array.ATK_Count_T, Value);
-                //ResetAttackCount();//공격횟수재계산
-                break;
-            case 6:
-                //e.Setting_Multiple_Effect(Turn, Value, Value_1);
-                //Use_Text(Text_Array.ATK_T, Text_Array.DEF_T, Value, Value_1);
-                break;
-            case 7:
-                //e.CP_Effect(Value, Turn);
-                //Use_Text(Text_Array.CP_T, Value);
-
-                break;
-            case 8:
-                //e.CD_Effect(Value, Turn);
-                //Use_Text(Text_Array.CP_T, Value);
-                break;
-            case 9:
-                //e.Drew_Effect(Value, Turn);
-                break;
-            case 10:
-                //e.MagicRegi(Value, Turn);
-                break;
-
-        }
-    }
-
+    
 
     void Attack()//어택애니메이션작동시 작동
     {
@@ -890,3 +753,147 @@ public class GameCard : MonoBehaviour
 
 
 }
+
+/*
+    void Init_Skill()
+    {
+
+        for(int i=0;i<Skill_ID.Count;i++)
+        {
+            if (Skill_ID[i] != 0 & SkillDataBase.Skill[Skill_ID[i]].CardType == 1)
+            {
+                SkillApply(SkillDataBase.Skill[Skill_ID[i]], Skill_ID[i]);
+            }
+        }
+
+    }
+    */
+/*
+    public void UsingSpell(SpellCard spell)
+    {
+        if (Current_MAXHP <= (Current_HP + spell.HEAL))//최대치를넘는경우 넘지않는한에대해서 회복
+        {
+            int c = Current_HP + spell.HEAL - Current_MAXHP;
+            int t = spell.HEAL - c;
+            Current_HP += t;
+
+        }
+        else
+        {
+            Current_HP += spell.HEAL;
+        }
+
+        
+        
+        Update_Bar();//체력바갱신함수 회복이나 최대체력오를때 사용
+
+
+        SpellApply(spell);
+
+
+
+
+
+    }
+    */
+/*
+public void SkillApply(CharSkillData spell, int Skill_num, int TYPE = 0)
+{
+
+
+
+    if (spell.Turn == 0)
+    {
+        SpellEffect e=new SpellEffect();
+
+        e.Apply_Skill_Effect(spell);
+    }
+    else
+    {
+
+        //SpellEffect e = Instantiate(Temp, EffectPosi);
+        //e.Init(TYPE, Skill_num);
+
+        //Effect_Use(e, spell.SpellType, spell.Turn, spell.Value,spell.Value_1);
+        //e.Apply_Skill_Effect(spell);
+        //Debug.Log(e.name);
+    }
+    //ResetAttackCount();//공격횟수재계산
+}
+void SpellApply(SpellCard spell, int TYPE = 1)
+{
+
+
+
+    if (spell.Turn == 0)
+    {
+        SpellEffect e = new SpellEffect();
+        e.Apply_Spell_Effect(spell);
+    }
+    else
+    {
+        //SpellEffect e = Instantiate(Temp, EffectPosi);
+        //e.Init(TYPE, spell.CardNumber);
+
+        //Effect_Use(e, spell.SpellType, spell.Turn, spell.Value,spell.Value_1);
+        //e.Apply_Spell_Effect(spell);
+    }
+
+    //Effect_Use(e,spell.SpellType,spell.Turn,spell.Value,spell.Value_1);
+
+}
+
+void Effect_Use(SpellEffect e, int Type, int Turn, int Value, int Value_1 = 0)
+{
+    switch (Type)
+    {
+        case 1://공업
+            //Use_Text(Text_Array.ATK_T, Value);
+            break;
+        case 2://방업
+            //Use_Text(Text_Array.DEF_T,Value);
+            break;
+        case 3://최대체력업
+
+            //e.HP_Effect(Value, Turn);
+
+
+            //Use_Text(Text_Array.HEAL_T, Value);
+
+            break;
+        case 4://지속회복
+
+            //e.RegenHP(Value, Turn);
+
+            //Use_Text(Text_Array.HEAL_T, spell.Value);
+            break;
+        case 5:
+            //공격횟수업?
+
+            //e.AddCount(Value, Turn);
+            //Use_Text(Text_Array.ATK_Count_T, Value);
+            //ResetAttackCount();//공격횟수재계산
+            break;
+        case 6:
+            //e.Setting_Multiple_Effect(Turn, Value, Value_1);
+            //Use_Text(Text_Array.ATK_T, Text_Array.DEF_T, Value, Value_1);
+            break;
+        case 7:
+            //e.CP_Effect(Value, Turn);
+            //Use_Text(Text_Array.CP_T, Value);
+
+            break;
+        case 8:
+            //e.CD_Effect(Value, Turn);
+            //Use_Text(Text_Array.CP_T, Value);
+            break;
+        case 9:
+            //e.Drew_Effect(Value, Turn);
+            break;
+        case 10:
+            //e.MagicRegi(Value, Turn);
+            break;
+
+    }
+}
+*/

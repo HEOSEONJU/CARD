@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 public class CharManager : MonoBehaviour
 {
-    Manager DataManager;
+    Manager _Manager;
     public GameObject MonsterCard;
     public GameCard SelectedCard;
     public GameObject Infomation;
@@ -19,32 +19,32 @@ public class CharManager : MonoBehaviour
 
     //bool CanAttack;
 
-    private void Awake()
-    {
-        DataManager = GetComponent<Manager>();
-
-        //CanAttack = true;
-
-        CombatChar = new List<GameCard>();
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
-        {
-            int temp = DataManager.MYDeck.Data.UseMonsterCards[i];
-            CombatChar.Add(MonsterCard.transform.GetChild(i).GetComponent<GameCard>());
-        }
-    }
+    public int Skill_NUM;
     private void OnEnable()
     {
         Infomation.SetActive(false);
         //MonsterCardReset();
     }
+    public void CharAwke()
+    {
+        _Manager = GetComponent<Manager>();
 
+        //CanAttack = true;
+
+        CombatChar = new List<GameCard>();
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        {
+            int temp = _Manager.MYDeck.Data.UseMonsterCards[i];
+            CombatChar.Add(MonsterCard.transform.GetChild(i).GetComponent<GameCard>());
+        }
+    }
 
     public void CharInit()
     {
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
         {
             
-            MonsterCard.transform.GetChild(i).GetComponent<GameCard>().InputID(DataManager.MYDeck.Data.UseMonsterCards[i], DataManager.MYDeck.Data);
+            MonsterCard.transform.GetChild(i).GetComponent<GameCard>().InputID(_Manager.MYDeck.Data.UseMonsterCards[i], _Manager.MYDeck.Data);
             
         }
     }
@@ -52,27 +52,60 @@ public class CharManager : MonoBehaviour
     public IEnumerator MonsterCardReset(float DelayTime=3.0f)
     {
         yield return new WaitForSeconds(DelayTime);
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
+        
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
         {
 
-            int temp = DataManager.MYDeck.Data.UseMonsterCards[i];
-            GameCard MC = MonsterCard.transform.GetChild(i).GetComponent<GameCard>();
-            for(int j=0;j<MC.Skill_ID.Count;j++)
+
+
+            _Manager.Target_Solo = MonsterCard.transform.GetChild(i).GetComponent<GameCard>();
+            
+            for (int j=0;j< _Manager.Target_Solo.Skill_ID.Count;j++)
             {
-                
-                if (MC.SkillDataBase.Skill[MC.Skill_ID[j]].id==0)//0번은 없는스킬
+                if (_Manager.Target_Solo.Skill_ID[j] == 0)
                 {
                     continue;
                 }
+                CharSkillData T = CardData.instance.CharSkillFile.Find_Skill(_Manager.Target_Solo.Skill_ID[j]);
+                //Debug.Log("찾고자하는스킬아이디" + _Manager.Target_Solo.Skill_ID[j]); 
+                Skill_NUM = T.id;
                 
+
+                Effect[] e = T.Effects.GetComponents<Effect>();
+
+                foreach (Effect effect in e)
+                {
+                    effect.RequireMent(_Manager);
+                    if (effect.Require == false)
+                    {
+                        continue;
+                    }
+                    effect.Effect_Enemy_Function(_Manager);
+                    effect.Effect_Solo_Function(_Manager);
+                    effect.Effect_Function(_Manager);
+                    effect.Damage_Enemy_Function(_Manager.Enemy_Manager);
+                }
+
+                switch(T.CardType)
+                { 
+                    case 3:
+                        yield return new WaitForSeconds(0.7f);
+                        break;
+                    
+
+                }
+                _Manager.LoadingTimer += 0.5f;
+                yield return new WaitForSeconds(0.2f);
+                /*
                 //Debug.Log((i+1) + "번쨰캐릭터 " + (j+1) + "번째스킬" +MC.Skill_ID[j]+"<아이디 /"+ MC.SkillDataBase.Skill[MC.Skill_ID[j]].CardType+"대상번호");
                 if (MC.SkillDataBase.Skill[MC.Skill_ID[j]].CardType == 0)
                 {
-
+                    
+                    }
                     
                     bool c = false;//이미적용되있는지 판단하는변수
 
-                    foreach(SpellEffect SE in DataManager.Enemy_Manager.Skill_Effects_List)
+                    foreach(SpellEffect SE in _Manager.Enemy_Manager.Skill_Effects_List)
                     {
                         if (SE.ID == MC.SkillDataBase.Skill[MC.Skill_ID[j]].id)
                         {
@@ -84,9 +117,9 @@ public class CharManager : MonoBehaviour
 
                     if (c == false)
                     {
-                        DataManager.Enemy_Manager.UsingSkill(MC.SkillDataBase.Skill[MC.Skill_ID[j]]);//적에게
+                        _Manager.Enemy_Manager.UsingSkill(MC.SkillDataBase.Skill[MC.Skill_ID[j]]);//적에게
                     }
-                }
+                
                 else if (MC.SkillDataBase.Skill[MC.Skill_ID[j]].CardType == 1)
                 {
                     GameCard temp_multi = MonsterCard.transform.GetChild(i).GetComponent<GameCard>();
@@ -110,7 +143,7 @@ public class CharManager : MonoBehaviour
                 }
                 else if (MC.SkillDataBase.Skill[MC.Skill_ID[j]].CardType == 2)
                 {
-                    for(int k=0;k<DataManager.MYDeck.Data.UseMonsterCards.Count;k++)
+                    for(int k=0;k<_Manager.MYDeck.Data.UseMonsterCards.Count;k++)
                     {
                         GameCard temp_multi = MonsterCard.transform.GetChild(k).GetComponent<GameCard>();
                         
@@ -140,26 +173,28 @@ public class CharManager : MonoBehaviour
                     
                     SpellCard e = new SpellCard();
                     e.Skill_Apply(MC.SkillDataBase.Skill[MC.Skill_ID[j]]);
-                    DataManager.Use_MY_Effect(e,true);
+                    _Manager.Use_MY_Effect(e,true);
                     if(e.Value_Create_Deck>0)
                     {
-                        DataManager.LoadingTimer += 0.2f * e.Value_Create_Deck;
+                        _Manager.LoadingTimer += 0.2f * e.Value_Create_Deck;
                         yield return new WaitForSeconds(0.2f*e.Value_Create_Deck);
                     }
                 }
 
             }
-            DataManager.LoadingTimer += 0.5f ;
+            _Manager.LoadingTimer += 0.5f ;
             yield return new WaitForSeconds(0.2f);
-        }
+            */
+            }
 
-        DataManager.LoadingTimer = 0;
-        DataManager.Enemy_Manager.Image_buff();
+            _Manager.LoadingTimer = 0;
+        _Manager.Enemy_Manager.Image_buff();
+    }
     }
 
     public void TurnEnd()
     {
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
         {
 
 
@@ -172,7 +207,7 @@ public class CharManager : MonoBehaviour
     public int MAX_Drew_Count()
     {
         int Count = 1;
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
         {
 
 
@@ -186,7 +221,7 @@ public class CharManager : MonoBehaviour
 
     public void Renge_HP_Effect()
     {
-        for (int i = 0; i < DataManager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
         {
 
 
@@ -272,7 +307,7 @@ public class CharManager : MonoBehaviour
 
     public void CardMouseOver(GameCard Card)//카드확대
     {
-        if (SelectedCard == null & !DataManager.STOP)
+        if (SelectedCard == null & !_Manager.STOP)
         {
             SelectedCard = Card;
             InformationCard(true, Card);

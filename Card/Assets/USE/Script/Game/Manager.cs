@@ -50,7 +50,7 @@ public class Manager : MonoBehaviour
     int StartDrew = 5;
     public bool onMyCardArea;
     public TextMeshProUGUI AttackOrder;
-    
+
     CardState state;
 
 
@@ -88,13 +88,13 @@ public class Manager : MonoBehaviour
     [Header("스펠카드 사용시 참조")]
     public Card_Result _Result;
     public GameCard Target_Solo;
-    
+
     public SpellCard SelectedCard;
     enum CardState { Not, Over, Drag }
     private void Awake()
     {
         Char_Manager = GetComponent<CharManager>();
-
+        Char_Manager.CharAwke();
         OriginPos = POPUP_END.transform.position;
 
     }
@@ -455,7 +455,7 @@ public class Manager : MonoBehaviour
             {
                 Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = MYDeck.CardDataBase.Special_cards[Temp_ID].Image;
                 Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().material = null;
-                
+
                 Large.transform.GetChild(1).GetChild(4).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].cost + "";
                 Large.transform.GetChild(1).GetChild(5).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].CardName + "";
                 Large.transform.GetChild(1).GetChild(6).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].exp + "";
@@ -464,7 +464,7 @@ public class Manager : MonoBehaviour
             {
                 Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = MYDeck.CardDataBase.cards[Temp_ID].Image;
                 Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().material = materials[MYDeck.CardDataBase.cards[Temp_ID].Rank - 1];
-                
+
                 Large.transform.GetChild(1).GetChild(4).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].cost + "";
                 Large.transform.GetChild(1).GetChild(5).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].CardName + "";
                 Large.transform.GetChild(1).GetChild(6).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].exp + "";
@@ -538,14 +538,14 @@ public class Manager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     IEnumerator Card_Effect()
     {
-        bool Result = false;
+
         bool Check;
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MousePos.z = -10f;
         DelayUseSpell = 0.3f;
         RaycastHit2D[] hits = Physics2D.RaycastAll(MousePos, Vector3.forward);
         int layer;
-
+        _Result = Card_Result.Reset;
         switch (SelectedCard.CardType)//카드타입체크하고 반응할 레이어고르기
         {
             case 0:
@@ -585,16 +585,29 @@ public class Manager : MonoBehaviour
         if (Check == false)
         {
             _Result = Card_Result.Wrong_Target;
-            
+            Reustl_Failed();
+            yield break;
         }
-        LoadingTimer += 0.5f;
+        else
+        {
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
+                {
+                    Debug.Log("확인된레이캐스트" + hits[i].collider.name);
+                    Target_Solo = Temp_MY;
+                    break;
+                }
+            }
+            LoadingTimer += 0.5f;
+        }
+
 
 
         if (My_Cost < SelectedCard.Cost)
         {
-            _Result= Card_Result.Cost_lack;
-            POPUP_1.View_Text("코스트가 부족합니다.");
-            state = CardState.Drag;
+            _Result = Card_Result.Cost_lack;
+            Reustl_Failed();
             yield break;
         }
 
@@ -602,409 +615,104 @@ public class Manager : MonoBehaviour
         foreach (Effect effect in e)
         {
             effect.RequireMent(this);
-            if(effect.Require==false)
+            if (effect.Require == false)
             {
-                Check = false;
-                break;
+                Reustl_Failed();//카드발동조건을 한개라도 못맞추는순간 종료
+                yield break;
             }
         }
-        ///////////////////////////////////////////////////////////////////////////////////내캐릭터에게적용
-        if (Check && SelectedCard.CardType == 1)//내 캐릭터에게 작용하는 스펠
+        if (Check)
         {
-            for (int i = 0; i < hits.Length; i++)
+            switch (SelectedCard.CardType)
             {
-                Debug.Log("확인된레이캐스트" + hits[i].collider.name);
-                if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
-                {
-                    Target_Solo = Temp_MY;
+                case 1:   //내캐릭터에게적용
 
-                    
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Solo_Function(this);
                     }
 
                     break;
-                }
-            }
-        }
-
-        ///////////////////////////////////////////////////////////////////////////////////적에게게적용
-        else if (Check && SelectedCard.CardType == 0)//적에게
-        {
-
-            
-                for (int i = 0; i < hits.Length; i++)
-                {
-                    if (hits[i].transform.TryGetComponent<EnemyManager>(out var Temp_Enemy))
+                case 0://적에게
+                    for (int i = 0; i < hits.Length; i++)
                     {
-
-                        bool check = false;//이미적용되있는지 판단하는변수
-
-                        foreach (SpellEffect SE in Temp_Enemy.Spell_Effects_List)
+                        if (hits[i].transform.TryGetComponent<EnemyManager>(out var Temp_Enemy))
                         {
-                            if (SE.ID == SelectedCard.CardNumber)
-                            {
-                                check = true;
-                                _Result = Card_Result.Duplication;
-                                break;
-                                
 
-                            }
-                        }
-                        
-                        if (check)
-                        {
                             foreach (Effect effect in e)
                             {
+                                effect.Effect_Enemy_Function(this);
                                 effect.Damage_Enemy_Function(Temp_Enemy);
                             }
-                            
-                        }
-                        else if (!check)
-                        {
-                                foreach (Effect effect in e)
-                                {
-                                    effect.Effect_Enemy_Function(this);
-                                    effect.Damage_Enemy_Function(Temp_Enemy);
-                                }
-                        }
-
-                        Hand.UseCard(SelectedCard);
-                        EnLargeObject.SetActive(false);
-                        CardAlignment();
-                        _Result = Card_Result.Success;
-                        break;
-
-                    }
-                }
-
-        }
-        ///////////////////////////////////////////////////////////////////////////////////광역으로 캐릭터에게적용
-        else if (Check && SelectedCard.CardType == 2)//광역
-        {
-
-            int Check_Live_USE = 0;//효과를이미적용받을수
-            int LiveCount = 0;//살아있는 캐릭터수
-            for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
-            {
-                if (Char_Manager.CombatChar[i].Live)
-                {
-                    LiveCount++;
-                    foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
-                    {
-                        if (SE.ID == SelectedCard.CardNumber)
-                        {
-                            
-                            Check_Live_USE++;
+                            break;
                         }
                     }
-
-                }
-
-            }
-            
-           
-            if (Check_Live_USE== LiveCount)//이미 모두받은상태
-            {
-                _Result = Card_Result.Duplication;
-            }
-            else//이미적용받은캐릭터보다 생존캐릭터가많다면 =적용받지않는캐릭터가있다는뜻
-            {
-
-                
-
+                    break;
+                case 2://광역 자신캐릭터
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Solo_Function(this);
-                        
+
                     }
-
-                
-            }
-            
-
-                
-            
-
-
-
-        }
-        ///////////////////////////////////////////////////////////////////////////////////플레이어에게적용
-        else if (Check && SelectedCard.CardType == 3)//플레이어에게
-        {
-
-            
-
-            foreach (Effect effect in e)
-            {
-                effect.Effect_Function(this);
-
-            }
-
-            //Debug.Log("3번타입탐지");
-            //Result = Use_MY_Effect(SelectedCard);
-        }
-
-        ///////////////////////////////////////////////////////////////////////////////////단일캐릭터확정피해   광역효과
-        else if (Check && SelectedCard.CardType == 4)
-        {
-
-
-            int Check_Live_USE = 0;//효과를이미적용받을수
-
-            for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
-            {
-                if (Char_Manager.CombatChar[i].Live)
-                {
-
-                    foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
-                    {
-                        if (SE.ID == SelectedCard.CardNumber)
-                        {
-                            //Debug.Log("이미적용받음");
-                            Check_Live_USE++;
-
-                        }
-                    }
-
-                }
-
-            }
-            //Debug.Log("적용받지않은인원:" + Check_Live_USE);
-            int LiveCount = 0;
-            for (int i = 0; i < Char_Manager.CombatChar.Count; i++)//생존해있느캐릭터수체크
-            {
-                if (Char_Manager.CombatChar[i].Live)
-                {
-                    LiveCount++;
-                }
-            }
-
-            bool CostChecker = false;
-            if (My_Cost >= SelectedCard.Cost)
-            {
-                CostChecker = true;
-            }
-
-
-            bool LiveCheker = false;
-
-
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (CostChecker == false | (Check_Live_USE == LiveCount))
-                {
                     break;
-                }
-                //Debug.Log("확인된레이캐스트" + hits[i].collider.name);
-                if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
-                {
-                    Temp_MY.Spell_Damaged(SelectedCard.Value_Char_Damage, SelectedCard.Value_Char_Effect_Num);
-                    LiveCheker = true;
-
-
-                }
-            }
-
-
-
-
-
-            if (Check_Live_USE < LiveCount & LiveCheker & CostChecker)//이미적용받은캐릭터보다 생존캐릭터가많다면 =적용받지않는캐릭터가있다는뜻
-            {
-
-                for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
-                {
-                    if (Char_Manager.CombatChar[i].Live)
+                case 3: //플레이어에게 적용
+                    foreach (Effect effect in e)
                     {
-                        bool check = false;
-                        foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
-                        {
-                            if (SE.ID == SelectedCard.CardNumber)
-                            {
-                                //Debug.Log("이미적용받음");
-                                check = true;
-
-                            }
-                        }
-
-
-                        if (!check)
-
-                        {
-
-                            Char_Manager.CombatChar[i].UsingSpell(SelectedCard);
-                            //Char_Manager.CombatChar[i].ResetAttackCount();
-                        }
-                    }
-
-                }
-                if (SelectedCard.Value_Enemy_Damage > 0)
-                {
-                    //Enemy_Manager.Magic_Attack(SelectedCard.Value_Enemy_Damage, SelectedCard.Value_Enemy_Damage_Effect);
-                }
-
-
-                My_Cost -= SelectedCard.Cost;
-
-                Hand.UseCard(SelectedCard);
-                EnLargeObject.SetActive(false);
-                CardAlignment();
-                Result = true;
-
-            }
-            else
-            {
-                if (CostChecker == true)
-                {
-                    if (SelectedCard.Value_Enemy_Damage > 0)
-                    {
-                        //Enemy_Manager.Magic_Attack(SelectedCard.Value_Enemy_Damage, SelectedCard.Value_Enemy_Damage_Effect);
-                        Hand.UseCard(SelectedCard);
-                        EnLargeObject.SetActive(false);
-                        CardAlignment();
-                        Result = true;
-                        Debug.Log("데미지만 적용");
+                        effect.Effect_Function(this);
 
                     }
-                    else
-                    {
-                        POPUP_1.View_Text("이미 모두 적용된 효과입니다");
-                    }
-                }
-                else
-                {
-                    POPUP_1.View_Text("코스트가 모자랍니다.");
-                }
-
-
-                //Debug.Log("이미모두가적용된효과");
-            }
-
-
-
-        }
-        ///////////////////////////////////////////////////////////////////////////////////단일캐릭터확정피해   광역효과
-        else if (Check && SelectedCard.CardType == 5)
-        {
-
-            bool CostChecker = false;
-            if (My_Cost >= SelectedCard.Cost)
-            {
-                CostChecker = true;
-            }
-
-
-
-
-
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (CostChecker == false)
-                {
                     break;
-                }
-                //Debug.Log("확인된레이캐스트" + hits[i].collider.name);
-                if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
-                {
+                case 4: //플레이어에게 적용 단일 캐릭터희생적용
 
 
-                    if (SelectedCard.Cost > My_Cost)//코스트모자람
+                    foreach (Effect effect in e)
                     {
-                        POPUP_1.View_Text("코스트가 부족합니다.");
-                        break;
+
+                        effect.Effect_Solo_Function(this);
+
                     }
-                    else if (My_MAXCost == 10 & SelectedCard.Value_MAXCost > 0)
-                    {
-                        if (MYDeck.DeckCards.Count < 1)
-                        {
-                            POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-                            break;
-                        }
-                    }
-                    else if ((My_Cost == My_MAXCost) & SelectedCard.Value_Cost > 0)//코스트회복못하는상황
-                    {
-                        if (!(My_Cost - SelectedCard.Cost <= My_MAXCost))
-                        {
-                            POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
-                            break;
-                        }
-                    }
-                    else if ((SelectedCard.Value_Create_Deck > 0) & (MYDeck.MaxCount <= MYDeck.DeckCards.Count))//덱에 1장도만들수없는매수라면
-                    {
-                        POPUP_1.View_Text("덱이 이미 최대입니다");
-                        break;
-                    }
-                    else if ((MYDeck.DeckCards.Count < 1) & (SelectedCard.Value_Drew > 0))
-                    {
-                        POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-                        break;
-                    }
-                    else if (Hand.CurrentHand < SelectedCard.Value_Hand_Less)
-                    {
-                        if (SelectedCard.Value_Hand_Less < 10)
-                        {
-                            POPUP_1.View_Text("버릴수 있는 패가모자랍니다");
-
-                            break;
-                        }
-                        //10이상이면 패전부버리는효과
-                    }
-                    else if (SelectedCard.Value_Hand_Less > 10 & MYDeck.DeckCards.Count < 1)
-                    {
-                        POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-                        break;
-                    }
-
-
-
-
-
-
-
-
-
-
-                    Temp_MY.Spell_Damaged(SelectedCard.Value_Char_Damage, SelectedCard.Value_Char_Effect_Num);
-                    SelectedCard.Value_Char_Damage = 0;
-                    Result = Use_MY_Effect(SelectedCard);
                     break;
+                case 5:
 
-                }
+
+                    foreach (Effect effect in e)
+                    {
+                        effect.Effect_Function(this);
+
+
+                    }
+                    break;
             }
-
-
 
         }
 
-
-        switch(_Result)
+        switch (_Result)
         {
             case Card_Result.Success:
+                Debug.Log("성공");
                 EnLargeObject.SetActive(false);
                 CostUse(SelectedCard.Cost);
                 Hand.UseCard(SelectedCard);
                 Enlarge(false);
                 CardAlignment();
                 yield return new WaitForSeconds(DelayUseSpell);//스펠카드를쓰고나면 카드효과를진행하는0.3초동안 드래그방지를해 코드꼬임을 방지
-                
+
                 break;
             case Card_Result.Duplication:
                 POPUP_1.View_Text("이미 적용된 효과입니다");
-                
+
                 break;
             case Card_Result.Wrong_Target:
                 POPUP_1.View_Text("잘못된 적용대상입니다");
-                
+
                 break;
             case Card_Result.Char_Die:
                 POPUP_1.View_Text("이미 사망한 적용대상입니다");
-                
+
                 break;
             case Card_Result.Cost_lack:
                 POPUP_1.View_Text("코스트가 부족합니다.");
-                
+
                 break;
             case Card_Result.CantCharge_Cost:
                 POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
@@ -1015,7 +723,7 @@ public class Manager : MonoBehaviour
             case Card_Result.RequireMent:
                 POPUP_1.View_Text("발동 조건이 만족 하지 않습니다.");
                 break;
-                
+
 
 
 
@@ -1032,265 +740,46 @@ public class Manager : MonoBehaviour
 
 
     }
-
-    public bool Use_MY_Effect(SpellCard Selected, bool Skill = false)//스킬쓸땐객체가없으므로 true로
+    public void Reustl_Failed()
     {
+        switch (_Result)
+        {
 
-        if (Selected.Cost > My_Cost)//코스트모자람
-        {
-            POPUP_1.View_Text("코스트가 부족합니다.");
-            return false;
-        }
-        else if (My_MAXCost == 10 & Selected.Value_MAXCost > 0)
-        {
-            if (MYDeck.DeckCards.Count < 1)
-            {
-                POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-                return false;
-            }
-        }
-        else if ((My_Cost == My_MAXCost) & Selected.Value_Cost > 0)//코스트회복못하는상황
-        {
-            if (!(My_Cost - SelectedCard.Cost <= My_MAXCost))
-            {
+            case Card_Result.Duplication:
+                POPUP_1.View_Text("이미 적용된 효과입니다");
+
+                break;
+            case Card_Result.Wrong_Target:
+                POPUP_1.View_Text("잘못된 적용대상입니다");
+
+                break;
+            case Card_Result.Char_Die:
+                POPUP_1.View_Text("이미 사망한 적용대상입니다");
+
+                break;
+            case Card_Result.Cost_lack:
+                POPUP_1.View_Text("코스트가 부족합니다.");
+
+                break;
+            case Card_Result.CantCharge_Cost:
                 POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
-                return false;
-            }
-        }
-        else if ((Selected.Value_Create_Deck > 0) & (MYDeck.MaxCount <= MYDeck.DeckCards.Count))//덱에 1장도만들수없는매수라면
-        {
-            POPUP_1.View_Text("덱이 이미 최대입니다");
-            return false;
-        }
-        else if ((MYDeck.DeckCards.Count < 1) & (Selected.Value_Drew > 0))
-        {
-            POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-            return false;
-        }
-        else if (Hand.CurrentHand < Selected.Value_Hand_Less)
-        {
-            if (Selected.Value_Hand_Less < 10)
-            {
-                POPUP_1.View_Text("버릴수 있는 패가모자랍니다");
-
-                return false;
-            }
-            //10이상이면 패전부버리는효과
-        }
-        else if (Selected.Value_Hand_Less > 10 & MYDeck.DeckCards.Count < 1)
-        {
-            POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
-            return false;
-        }
-
-        //판단^
-        //사용가능한상태라면 코스트를소모하고 적용
-        //Debug.Log("사용");
-        CostUse(Selected.Cost);
-        //아니라면
-        //내가피해를봄
-        //패버림
-
-        //드로우
-        //맥스코스트회복
-        //코스트회복
-
-        //덱만드는순으로
-
-        
+                break;
+            case Card_Result.CantDrew:
+                POPUP_1.View_Text("덱에 이미 카드가 없습니다");
+                break;
+            case Card_Result.RequireMent:
+                POPUP_1.View_Text("발동 조건이 만족 하지 않습니다.");
+                break;
 
 
-
-        if (Selected.Value_Char_Damage > 0)
-        {
-            //Debug.Log("데미지받기작동");
-            Damaged(Selected.Value_Char_Damage, Selected.Value_Char_Effect_Num);
 
 
         }
-        if (Selected.Value_Hand_Less > 10)
-        {
-            HandLess_All(Selected);
-        }
-
-        else if (Selected.Value_Hand_Less > 0)
-        {
-            //Debug.Log("패버림작동");
-            HandLess(Selected.Value_Hand_Less);
-        }
-        if (Selected.Value_Drew > 0)
-        {
-            //Debug.Log("드로우작동");
-            ExtraDrew(Selected.Value_Drew);
-        }
-        if (Selected.Value_MAXCost > 0)
-        {
-            //Debug.Log("최대코스트증가작동");
-            Add_MAX_Cost(Selected.Value_MAXCost);
-        }
-        if (Selected.Value_Cost > 0)
-        {
-            //Debug.Log("코스트회복작동");
-            Add_Cost(Selected.Value_Cost);
-        }
-
-        if (Selected.Value_Enemy_Damage > 0)
-        {
-            //데미지주기
-            //Enemy_Manager.Magic_Attack(Selected.Value_Enemy_Damage, Selected.Value_Enemy_Damage_Effect);
-
-        }
-
-
-        if (Selected.Value_Create_Deck > 0)
-        {
-            //Debug.Log("덱생성");
-            CreateDeck(Selected.Value_Create_Deck, Selected.Value_Create_Deck1, Selected.Value_Create_Deck2, Selected.Value_Create_Deck3, Selected.Value_Create_Deck4);
-            
-        }
-
-    
-            
-            
-        
-        else
-        {
-            DelayUseSpell = 0.5f;
-        }
-
-        if (Skill == false)
-        {
-            Hand.UseCard(Selected);
-        }
+        state = CardState.Drag;
 
 
 
-
-
-
-
-
-
-
-        CardAlignment();
-        return true;
-    }
-
-
-
-
-    bool CreateDeck(int SV, int SV1, int SV2, int SV3, int SV4)
-    {
-        List<int> Init_List = new List<int>();
-        List<int> Special_Init_List = new List<int>();
-        CardScriptable DataBox = GameObject.Find("CardData").GetComponent<CardData>().CardDataFile; //스펠카드데이터를가져옴
-        int v = SV;//총만들카드갯수
-        int v_1 = SV1;//만들어야하는1성카드갯수
-        int v_2 = SV2;//만들어야하는2성카드갯수
-        int v_3 = SV3;//만들어야하는3성카드갯수
-        int v_4 = SV4;//만들어야하는4성카드아이디
-        int Case_num;//랜덤으로 제작될 카드의랭크
-
-        //Debug.Log(SV + "총만들카드");
-        //Debug.Log(MYDeck.MaxCount + "덱최대갯수");
-        Debug.Log("스펠4" + v_4);
-        while (v >= 1)//만들카수가 1이상일경우
-        {
-            //Debug.Log("제작할남은카드갯수"+v);
-
-            Case_num = Random.Range(0, 4);
-            //Debug.Log("제작될랭크:"+Case_num);
-            switch (Case_num)
-            {
-                case 0:
-                    if (v_1 >= 1)//만들1성갯수가 1이상이면 만들총갯수와 1성갯수를 1씩줄이고 1성카드제작
-                    {
-                        v_1--;
-                        v--;
-                        InitCard_NUM(DataBox, 1, Init_List);
-                    }
-                    break;
-                case 1:
-                    if (v_2 >= 1)//만들2성갯수가 1이상이면 만들총갯수와 2성갯수를 1씩줄이고 1성카드제작
-                    {
-                        v_2--;
-                        v--;
-                        InitCard_NUM(DataBox, 2, Init_List);
-                    }
-                    break;
-                case 2:
-                    if (v_3 >= 1)//만들3성갯수가 1이상이면 만들총갯수와 3성갯수를 1씩줄이고 1성카드제작
-                    {
-                        v_3--;
-                        v--;
-                        InitCard_NUM(DataBox, 3, Init_List);
-                    }
-                    break;
-                case 3:
-                    if (v >= 1 & v_4>=1)//만들4성갯수가 1이상이면 만들총갯수와 4성갯수를 1씩줄이고 1성카드제작
-                    {
-                        Debug.Log("4카드");
-                        InitCard_NUM(DataBox, 4, Special_Init_List, v_4);
-                        v--;
-
-                    }
-                    break;
-            }
-
-
-        }
-        MYDeck.Play_Particle();
-        int c = 0;
-        for (int j = 0; j < Init_List.Count; j++)
-        {
-            if (MYDeck.DeckCards.Count < MYDeck.MaxCount)
-            {
-
-                if (j == Init_List.Count - 1)
-                {
-                    MYDeck.Stop_Particle(j);
-                }
-                c++;
-                StartCoroutine(MYDeck.Stop_Particle(j));
-                MYDeck.Extra_InitCard(Init_List[j], j);
-                DelayUseSpell += 0.1f;
-            }
-            else
-            {
-                StartCoroutine(MYDeck.Stop_Particle(j));
-                c++;
-                MYDeck.ShuffleDeck();
-                return true;
-            }
-        }
-        for (int j = 0; j < Special_Init_List.Count; j++)
-        {
-            if (MYDeck.DeckCards.Count < MYDeck.MaxCount)
-            {
-
-                if (j == Special_Init_List.Count - 1)
-                {
-                    MYDeck.Stop_Particle(j);
-                }
-
-                StartCoroutine(MYDeck.Stop_Particle(j));
-                MYDeck.Special_InitCard(Special_Init_List[j], c++);
-                DelayUseSpell += 0.1f;
-            }
-            else
-            {
-                StartCoroutine(MYDeck.Stop_Particle(j));
-
-                MYDeck.ShuffleDeck();
-                return true;
-            }
-        }
-
-
-        MYDeck.ShuffleDeck();
-        return true;
-
-
+        ViewCost();
     }
 
 
@@ -1318,7 +807,7 @@ public class Manager : MonoBehaviour
         }
         else
         {
-            Debug.Log("스폐셜카드생성");
+            //Debug.Log("스폐셜카드생성");
             Init_List.Add(Special_num);
         }
     }
@@ -1328,142 +817,12 @@ public class Manager : MonoBehaviour
 
 
 
-
-    void Damaged(int Value_Damaged, int Effect)
-    {
-        int Ran = Random.Range(0, Char_Manager.CombatChar.Count);
-
-        while (true)
-        {
-            if (Char_Manager.CombatChar[Ran].Live == true)
-            {
-                break;
-            }
-            else
-                Ran = Random.Range(0, 4);
-        }
-        Char_Manager.CombatChar[Ran].Spell_Damaged(Value_Damaged, Effect);
-
-
-
-
-
-    }
-
-
-    void ExtraDrew(int Value_Drew)
-    {
-        ExtraDrew2(Value_Drew);
-    }
-    void ExtraDrew2(int Value_Drew)
-    {
-        for (int i = 0; i < Value_Drew; i++)
-        {
-            if (MYDeck.Drew())
-            {
-                CardAlignment();
-            }
-            else
-            {
-                break;
-            }
-
-        }
-
-        CardAlignment();
-
-    }
-    void HandLess(int Less)
-    {
-        if (Less >= Hand.CurrentHand)
-        {
-            Less = Hand.CurrentHand;
-        }
-
-        for (int i = 0; i < Less; i++)
-        {
-            int Ran = Random.Range(0, Hand.CurrentHand);
-            Hand.ThrowCard(Hand.Cards[Ran]);
-
-        }
-        CardAlignment();
-
-    }
-    void HandLess_All(SpellCard spell)
-    {
-        if (spell.Value_Hand_Less >= Hand.CurrentHand)
-        {
-            spell.Value_Hand_Less = Hand.CurrentHand;
-        }
-
-
-        for (int i = 0; i < spell.Value_Hand_Less; i++)
-        {
-            int Ran = Random.Range(0, Hand.CurrentHand);
-            Hand.ThrowCard(Hand.Cards[Ran]);
-            spell.Value_Drew++;
-
-        }
-
-
-
-        CardAlignment();
-
-    }
-
-    void Add_Cost(int COST)
-    {
-
-
-        My_Cost += COST;
-        if (My_Cost >= My_MAXCost)
-        {
-            My_Cost = My_MAXCost;
-        }
-        ViewCost();
-
-
-
-
-
-    }
-    void Add_MAX_Cost(int MAXCost)
-    {
-        if (My_MAXCost == 10 & MYDeck.DeckCards.Count >= 1)//코스트최대 덱에카드가1장이상
-        {
-
-            int Drew_Value = MAXCost;
-            ExtraDrew2(Drew_Value);
-
-
-
-
-
-
-        }
-        else
-        {
-
-
-            My_MAXCost += MAXCost;
-            if (My_MAXCost > 10)
-            {
-                My_MAXCost = 10;
-            }
-            ViewCost();
-
-
-
-        }
-        CardAlignment();
-
-    }
     public void CostUse(int UsingCost)
     {
-        
-            My_Cost -= UsingCost;
-            ViewCost();
-         
+
+        My_Cost -= UsingCost;
+        ViewCost();
+
 
     }
 
@@ -1694,6 +1053,726 @@ public enum Card_Result
     CantCharge_Cost,
     CantDrew,
     RequireMent,
-    
+    Reset
 
 }
+
+
+/*
+    public bool Use_MY_Effect(SpellCard Selected, bool Skill = false)//스킬쓸땐객체가없으므로 true로
+    {
+
+        if (Selected.Cost > My_Cost)//코스트모자람
+        {
+            POPUP_1.View_Text("코스트가 부족합니다.");
+            return false;
+        }
+        else if (My_MAXCost == 10 & Selected.Value_MAXCost > 0)
+        {
+            if (MYDeck.DeckCards.Count < 1)
+            {
+                POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+                return false;
+            }
+        }
+        else if ((My_Cost == My_MAXCost) & Selected.Value_Cost > 0)//코스트회복못하는상황
+        {
+            if (!(My_Cost - SelectedCard.Cost <= My_MAXCost))
+            {
+                POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
+                return false;
+            }
+        }
+        else if ((Selected.Value_Create_Deck > 0) & (MYDeck.MaxCount <= MYDeck.DeckCards.Count))//덱에 1장도만들수없는매수라면
+        {
+            POPUP_1.View_Text("덱이 이미 최대입니다");
+            return false;
+        }
+        else if ((MYDeck.DeckCards.Count < 1) & (Selected.Value_Drew > 0))
+        {
+            POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+            return false;
+        }
+        else if (Hand.CurrentHand < Selected.Value_Hand_Less)
+        {
+            if (Selected.Value_Hand_Less < 10)
+            {
+                POPUP_1.View_Text("버릴수 있는 패가모자랍니다");
+
+                return false;
+            }
+            //10이상이면 패전부버리는효과
+        }
+        else if (Selected.Value_Hand_Less > 10 & MYDeck.DeckCards.Count < 1)
+        {
+            POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+            return false;
+        }
+
+        //판단^
+        //사용가능한상태라면 코스트를소모하고 적용
+        //Debug.Log("사용");
+        CostUse(Selected.Cost);
+        //아니라면
+        //내가피해를봄
+        //패버림
+
+        //드로우
+        //맥스코스트회복
+        //코스트회복
+
+        //덱만드는순으로
+
+        
+
+
+
+        if (Selected.Value_Char_Damage > 0)
+        {
+            //Debug.Log("데미지받기작동");
+            Damaged(Selected.Value_Char_Damage, Selected.Value_Char_Effect_Num);
+
+
+        }
+        if (Selected.Value_Hand_Less > 10)
+        {
+            HandLess_All(Selected);
+        }
+
+        else if (Selected.Value_Hand_Less > 0)
+        {
+            //Debug.Log("패버림작동");
+            HandLess(Selected.Value_Hand_Less);
+        }
+        if (Selected.Value_Drew > 0)
+        {
+            //Debug.Log("드로우작동");
+            ExtraDrew(Selected.Value_Drew);
+        }
+        if (Selected.Value_MAXCost > 0)
+        {
+            //Debug.Log("최대코스트증가작동");
+            Add_MAX_Cost(Selected.Value_MAXCost);
+        }
+        if (Selected.Value_Cost > 0)
+        {
+            //Debug.Log("코스트회복작동");
+            Add_Cost(Selected.Value_Cost);
+        }
+
+        if (Selected.Value_Enemy_Damage > 0)
+        {
+            //데미지주기
+            //Enemy_Manager.Magic_Attack(Selected.Value_Enemy_Damage, Selected.Value_Enemy_Damage_Effect);
+
+        }
+
+
+        if (Selected.Value_Create_Deck > 0)
+        {
+            //Debug.Log("덱생성");
+            //CreateDeck(Selected.Value_Create_Deck, Selected.Value_Create_Deck1, Selected.Value_Create_Deck2, Selected.Value_Create_Deck3, Selected.Value_Create_Deck4);
+            
+        }
+
+    
+            
+            
+        
+        else
+        {
+            DelayUseSpell = 0.5f;
+        }
+
+        if (Skill == false)
+        {
+            Hand.UseCard(Selected);
+        }
+
+
+
+
+
+
+
+
+
+
+        CardAlignment();
+        return true;
+    }
+
+    
+
+
+    bool CreateDeck(int SV, int SV1, int SV2, int SV3, int SV4)
+    {
+        List<int> Init_List = new List<int>();
+        List<int> Special_Init_List = new List<int>();
+        CardScriptable DataBox = GameObject.Find("CardData").GetComponent<CardData>().CardDataFile; //스펠카드데이터를가져옴
+        int v = SV;//총만들카드갯수
+        int v_1 = SV1;//만들어야하는1성카드갯수
+        int v_2 = SV2;//만들어야하는2성카드갯수
+        int v_3 = SV3;//만들어야하는3성카드갯수
+        int v_4 = SV4;//만들어야하는4성카드아이디
+        int Case_num;//랜덤으로 제작될 카드의랭크
+
+        //Debug.Log(SV + "총만들카드");
+        //Debug.Log(MYDeck.MaxCount + "덱최대갯수");
+        //Debug.Log("스펠4" + v_4);
+        while (v >= 1)//만들카수가 1이상일경우
+        {
+            //Debug.Log("제작할남은카드갯수"+v);
+
+            Case_num = Random.Range(0, 4);
+            //Debug.Log("제작될랭크:"+Case_num);
+            switch (Case_num)
+            {
+                case 0:
+                    if (v_1 >= 1)//만들1성갯수가 1이상이면 만들총갯수와 1성갯수를 1씩줄이고 1성카드제작
+                    {
+                        v_1--;
+                        v--;
+                        InitCard_NUM(DataBox, 1, Init_List);
+                    }
+                    break;
+                case 1:
+                    if (v_2 >= 1)//만들2성갯수가 1이상이면 만들총갯수와 2성갯수를 1씩줄이고 1성카드제작
+                    {
+                        v_2--;
+                        v--;
+                        InitCard_NUM(DataBox, 2, Init_List);
+                    }
+                    break;
+                case 2:
+                    if (v_3 >= 1)//만들3성갯수가 1이상이면 만들총갯수와 3성갯수를 1씩줄이고 1성카드제작
+                    {
+                        v_3--;
+                        v--;
+                        InitCard_NUM(DataBox, 3, Init_List);
+                    }
+                    break;
+                case 3:
+                    if (v >= 1 & v_4>=1)//만들4성갯수가 1이상이면 만들총갯수와 4성갯수를 1씩줄이고 1성카드제작
+                    {
+                        
+                        InitCard_NUM(DataBox, 4, Special_Init_List, v_4);
+                        v--;
+
+                    }
+                    break;
+            }
+
+
+        }
+        MYDeck.Play_Particle();
+        int c = 0;
+        for (int j = 0; j < Init_List.Count; j++)
+        {
+            if (MYDeck.DeckCards.Count < MYDeck.MaxCount)
+            {
+
+                if (j == Init_List.Count - 1)
+                {
+                   MYDeck.Function_Stop_Particle(j);
+                   ///MYDeck.Stop_Particle(j);
+
+                }
+                c++;
+
+                MYDeck.Function_Stop_Particle(j);
+                MYDeck.Extra_InitCard(Init_List[j], j);
+                DelayUseSpell += 0.1f;
+            }
+            else
+            {
+                MYDeck.Function_Stop_Particle(j);
+                c++;
+                MYDeck.ShuffleDeck();
+                return true;
+            }
+        }
+        for (int j = 0; j < Special_Init_List.Count; j++)
+        {
+            if (MYDeck.DeckCards.Count < MYDeck.MaxCount)
+            {
+
+                if (j == Special_Init_List.Count - 1)
+                {
+                    //MYDeck.Stop_Particle(j);
+                    MYDeck.Function_Stop_Particle(j);
+                }
+
+                MYDeck.Function_Stop_Particle(j);
+                MYDeck.Special_InitCard(Special_Init_List[j], c++);
+                DelayUseSpell += 0.1f;
+            }
+            else
+            {
+                MYDeck.Function_Stop_Particle(j);
+
+                MYDeck.ShuffleDeck();
+                return true;
+            }
+        }
+
+
+        MYDeck.ShuffleDeck();
+        return true;
+
+
+    }
+    */
+
+/*
+///////////////////////////////////////////////////////////////////////////////////내캐릭터에게적용
+if (Check && SelectedCard.CardType == 1)//내 캐릭터에게 작용하는 스펠
+{
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////적에게게적용
+else if (Check && SelectedCard.CardType == 0)//적에게
+{
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].transform.TryGetComponent<EnemyManager>(out var Temp_Enemy))
+            {
+
+                foreach (Effect effect in e)
+                {
+                    effect.Effect_Enemy_Function(this);
+                    effect.Damage_Enemy_Function(Temp_Enemy);
+                }
+                break;
+            }
+        }
+
+}
+///////////////////////////////////////////////////////////////////////////////////광역으로 캐릭터에게적용
+else if (Check && SelectedCard.CardType == 2)//광역
+{
+
+    int Check_Live_USE = 0;//효과를이미적용받을수
+    int LiveCount = 0;//살아있는 캐릭터수
+    for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
+    {
+        if (Char_Manager.CombatChar[i].Live)
+        {
+            LiveCount++;
+            foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
+            {
+                if (SE.ID == SelectedCard.CardNumber)
+                {
+
+                    Check_Live_USE++;
+                }
+            }
+
+        }
+
+    }
+
+
+    if (Check_Live_USE== LiveCount)//이미 모두받은상태
+    {
+        _Result = Card_Result.Duplication;
+    }
+    else//이미적용받은캐릭터보다 생존캐릭터가많다면 =적용받지않는캐릭터가있다는뜻
+    {
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+}
+///////////////////////////////////////////////////////////////////////////////////플레이어에게적용
+else if (Check && SelectedCard.CardType == 3)//플레이어에게
+{
+
+
+
+    foreach (Effect effect in e)
+    {
+        effect.Effect_Function(this);
+
+    }
+
+    //Debug.Log("3번타입탐지");
+    //Result = Use_MY_Effect(SelectedCard);
+}
+
+///////////////////////////////////////////////////////////////////////////////////단일캐릭터확정피해   광역효과
+else if (Check && SelectedCard.CardType == 4)
+{
+
+
+    int Check_Live_USE = 0;//효과를이미적용받을수
+
+    for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
+    {
+        if (Char_Manager.CombatChar[i].Live)
+        {
+
+            foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
+            {
+                if (SE.ID == SelectedCard.CardNumber)
+                {
+                    //Debug.Log("이미적용받음");
+                    Check_Live_USE++;
+
+                }
+            }
+
+        }
+
+    }
+    //Debug.Log("적용받지않은인원:" + Check_Live_USE);
+    int LiveCount = 0;
+    for (int i = 0; i < Char_Manager.CombatChar.Count; i++)//생존해있느캐릭터수체크
+    {
+        if (Char_Manager.CombatChar[i].Live)
+        {
+            LiveCount++;
+        }
+    }
+
+    bool CostChecker = false;
+    if (My_Cost >= SelectedCard.Cost)
+    {
+        CostChecker = true;
+    }
+
+
+    bool LiveCheker = false;
+
+
+    for (int i = 0; i < hits.Length; i++)
+    {
+        if (CostChecker == false | (Check_Live_USE == LiveCount))
+        {
+            break;
+        }
+        //Debug.Log("확인된레이캐스트" + hits[i].collider.name);
+        if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
+        {
+            Target_Solo = Temp_MY;
+            Temp_MY.Spell_Damaged(SelectedCard.Value_Char_Damage, SelectedCard.Value_Char_Effect_Num);
+            LiveCheker = true;
+
+
+        }
+    }
+
+
+
+
+
+    if (Check_Live_USE < LiveCount & LiveCheker & CostChecker)//이미적용받은캐릭터보다 생존캐릭터가많다면 =적용받지않는캐릭터가있다는뜻
+    {
+
+        for (int i = 0; i < Char_Manager.CombatChar.Count; i++)
+        {
+            if (Char_Manager.CombatChar[i].Live)
+            {
+                bool check = false;
+                foreach (SpellEffect SE in Char_Manager.CombatChar[i].Spell_Effects)
+                {
+                    if (SE.ID == SelectedCard.CardNumber)
+                    {
+                        //Debug.Log("이미적용받음");
+                        check = true;
+
+                    }
+                }
+
+
+                if (!check)
+
+                {
+
+                    Char_Manager.CombatChar[i].UsingSpell(SelectedCard);
+                    //Char_Manager.CombatChar[i].ResetAttackCount();
+                }
+            }
+
+        }
+        if (SelectedCard.Value_Enemy_Damage > 0)
+        {
+            //Enemy_Manager.Magic_Attack(SelectedCard.Value_Enemy_Damage, SelectedCard.Value_Enemy_Damage_Effect);
+        }
+
+
+        My_Cost -= SelectedCard.Cost;
+
+        Hand.UseCard(SelectedCard);
+        EnLargeObject.SetActive(false);
+        CardAlignment();
+        Result = true;
+
+    }
+    else
+    {
+        if (CostChecker == true)
+        {
+            if (SelectedCard.Value_Enemy_Damage > 0)
+            {
+                //Enemy_Manager.Magic_Attack(SelectedCard.Value_Enemy_Damage, SelectedCard.Value_Enemy_Damage_Effect);
+                Hand.UseCard(SelectedCard);
+                EnLargeObject.SetActive(false);
+                CardAlignment();
+                Result = true;
+                Debug.Log("데미지만 적용");
+
+            }
+            else
+            {
+                POPUP_1.View_Text("이미 모두 적용된 효과입니다");
+            }
+        }
+        else
+        {
+            POPUP_1.View_Text("코스트가 모자랍니다.");
+        }
+
+
+        //Debug.Log("이미모두가적용된효과");
+    }
+
+
+
+}
+///////////////////////////////////////////////////////////////////////////////////단일캐릭터확정피해   광역효과
+else if (Check && SelectedCard.CardType == 5)
+{
+
+    bool CostChecker = false;
+    if (My_Cost >= SelectedCard.Cost)
+    {
+        CostChecker = true;
+    }
+
+
+
+
+
+    for (int i = 0; i < hits.Length; i++)
+    {
+        if (CostChecker == false)
+        {
+            break;
+        }
+        //Debug.Log("확인된레이캐스트" + hits[i].collider.name);
+        if (hits[i].transform.TryGetComponent<GameCard>(out var Temp_MY))
+        {
+
+
+            if (SelectedCard.Cost > My_Cost)//코스트모자람
+            {
+                POPUP_1.View_Text("코스트가 부족합니다.");
+                break;
+            }
+            else if (My_MAXCost == 10 & SelectedCard.Value_MAXCost > 0)
+            {
+                if (MYDeck.DeckCards.Count < 1)
+                {
+                    POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+                    break;
+                }
+            }
+            else if ((My_Cost == My_MAXCost) & SelectedCard.Value_Cost > 0)//코스트회복못하는상황
+            {
+                if (!(My_Cost - SelectedCard.Cost <= My_MAXCost))
+                {
+                    POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
+                    break;
+                }
+            }
+            else if ((SelectedCard.Value_Create_Deck > 0) & (MYDeck.MaxCount <= MYDeck.DeckCards.Count))//덱에 1장도만들수없는매수라면
+            {
+                POPUP_1.View_Text("덱이 이미 최대입니다");
+                break;
+            }
+            else if ((MYDeck.DeckCards.Count < 1) & (SelectedCard.Value_Drew > 0))
+            {
+                POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+                break;
+            }
+            else if (Hand.CurrentHand < SelectedCard.Value_Hand_Less)
+            {
+                if (SelectedCard.Value_Hand_Less < 10)
+                {
+                    POPUP_1.View_Text("버릴수 있는 패가모자랍니다");
+
+                    break;
+                }
+                //10이상이면 패전부버리는효과
+            }
+            else if (SelectedCard.Value_Hand_Less > 10 & MYDeck.DeckCards.Count < 1)
+            {
+                POPUP_1.View_Text("뽑을 수 있는 카드가 없습니다");
+                break;
+            }
+
+
+
+
+
+
+
+
+
+
+            Temp_MY.Spell_Damaged(SelectedCard.Value_Char_Damage, SelectedCard.Value_Char_Effect_Num);
+            SelectedCard.Value_Char_Damage = 0;
+            Result = Use_MY_Effect(SelectedCard);
+            break;
+
+        }
+    }
+
+
+
+}
+*/
+
+/*
+void Damaged(int Value_Damaged, int Effect)
+{
+    int Ran = Random.Range(0, Char_Manager.CombatChar.Count);
+
+    while (true)
+    {
+        if (Char_Manager.CombatChar[Ran].Live == true)
+        {
+            break;
+        }
+        else
+            Ran = Random.Range(0, 4);
+    }
+    Char_Manager.CombatChar[Ran].Spell_Damaged(Value_Damaged, Effect);
+
+
+
+
+
+}
+
+
+void ExtraDrew(int Value_Drew)
+{
+  //  ExtraDrew2(Value_Drew);
+}
+void ExtraDrew2(int Value_Drew)
+{
+    for (int i = 0; i < Value_Drew; i++)
+    {
+        if (MYDeck.Drew())
+        {
+            CardAlignment();
+        }
+        else
+        {
+            break;
+        }
+
+    }
+
+    CardAlignment();
+
+}
+void HandLess(int Less)
+{
+    if (Less >= Hand.CurrentHand)
+    {
+        Less = Hand.CurrentHand;
+    }
+
+    for (int i = 0; i < Less; i++)
+    {
+        int Ran = Random.Range(0, Hand.CurrentHand);
+        Hand.ThrowCard(Hand.Cards[Ran]);
+
+    }
+    CardAlignment();
+
+}
+void HandLess_All(SpellCard spell)
+{
+    if (spell.Value_Hand_Less >= Hand.CurrentHand)
+    {
+        spell.Value_Hand_Less = Hand.CurrentHand;
+    }
+
+
+    for (int i = 0; i < spell.Value_Hand_Less; i++)
+    {
+        int Ran = Random.Range(0, Hand.CurrentHand);
+        Hand.ThrowCard(Hand.Cards[Ran]);
+        spell.Value_Drew++;
+
+    }
+
+
+
+    CardAlignment();
+
+}
+
+void Add_Cost(int COST)
+{
+
+
+    My_Cost += COST;
+    if (My_Cost >= My_MAXCost)
+    {
+        My_Cost = My_MAXCost;
+    }
+    ViewCost();
+
+
+
+
+
+}
+void Add_MAX_Cost(int MAXCost)
+{
+    if (My_MAXCost == 10 & MYDeck.DeckCards.Count >= 1)//코스트최대 덱에카드가1장이상
+    {
+
+        int Drew_Value = MAXCost;
+        //ExtraDrew2(Drew_Value);
+
+
+
+
+
+
+    }
+    else
+    {
+
+
+        My_MAXCost += MAXCost;
+        if (My_MAXCost > 10)
+        {
+            My_MAXCost = 10;
+        }
+        ViewCost();
+
+
+
+    }
+    CardAlignment();
+
+}
+*/

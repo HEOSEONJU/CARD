@@ -14,12 +14,26 @@ public class Debuff_Effect : Base_Effect
         //GC.Active_Effect(_Manager.SelectedCard.Value_Char_Effect_Num);
         SpellEffect E = new SpellEffect();
         E.ClearValue();
-        E.Init(_Manager.SelectedCard.CardNumber);
         foreach (Effect_Value v in _Effect_Value)
         {
             E.Effect_Type_Value.Add(v);
         }
-        _Manager.Enemy_Manager.Spell_Effects_List.Add(E);
+        if (_Manager.SelectedCard != null)
+        {
+            //_Manager.Enemy_Manager. .Active_Effect(_Manager.SelectedCard.Value_Char_Effect_Num);//디버프맞았을때 이펙트출력문추가하기
+            E.Init(_Manager.SelectedCard.CardNumber);
+            _Manager.Enemy_Manager.Spell_Effects_List.Add(E);
+            
+        }
+        else
+        {
+            E.Init(_Manager.Char_Manager.Skill_NUM);
+            _Manager.Enemy_Manager.Skill_Effects_List.Add(E);
+        }
+
+        
+        
+        
         _Manager._Result = Card_Result.Success;
     }
     public override void RequireMent(Manager _Manager)

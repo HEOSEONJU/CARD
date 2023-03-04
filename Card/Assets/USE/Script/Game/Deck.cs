@@ -106,7 +106,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public IEnumerator Stop_Particle(float time)
+     IEnumerator Stop_Particle(float time)
     {
         yield return new WaitForSeconds(time*0.1f+1.2f);
         for (int i = 0; i < Init_Effect.Count; i++)
@@ -114,6 +114,23 @@ public class Deck : MonoBehaviour
             Init_Effect[i].Stop();
         }
     }
+    public void Function_Stop_Particle(float time)
+    {
+        StartCoroutine(Stop_Particle(time));
+    }
+
+    public void Stop_Particle_Invoke(float Time)
+    {
+        Invoke("StopParticle", Time + 1.3f);
+    }
+    public void StopParticle()
+    {
+        for (int i = 0; i < Init_Effect.Count; i++)
+        {
+            Init_Effect[i].Stop();
+        }
+    }
+
 
     public void Special_InitCard(int ID,int num)
     {
@@ -216,6 +233,7 @@ public class Deck : MonoBehaviour
         card.manager = manager;
         card.Cost = CardDataBase.cards[TempID].cost;
         card.CardType = CardDataBase.cards[TempID].CardType;
+        /*
         card.SpellType = CardDataBase.cards[TempID].SpellType;
         card.Value_A = CardDataBase.cards[TempID].Value_A;
         card.Value_D = CardDataBase.cards[TempID].Value_D;
@@ -240,12 +258,15 @@ public class Deck : MonoBehaviour
         card.Value_Create_Deck3 = CardDataBase.cards[TempID].Value_Create_Deck3;
         card.Value_Create_Deck4 = CardDataBase.cards[TempID].Value_Create_Deck4;
         card.HEAL = CardDataBase.cards[TempID].HEAL;
-        card.Value_Enemy_Damage_Effect = CardDataBase.cards[TempID].Value_Enemy_Damage_Effect;
         card.Value_Enemy_Damage = CardDataBase.cards[TempID].Value_Enemy_Damage;
-        card.Value_Char_Effect_Num = CardDataBase.cards[TempID].Value_Char_Effect_Num;
-        card.Value_Enemy_Effect_Num = CardDataBase.cards[TempID].Value_Enemy_Effect_Num;
         card.Turn = CardDataBase.cards[TempID].Turn;
         card.Special = CardDataBase.cards[TempID].Special;
+        */
+        card.Value_Enemy_Damage_Effect = CardDataBase.cards[TempID].Value_Enemy_Damage_Effect;
+        card.Value_Char_Effect_Num = CardDataBase.cards[TempID].Value_Char_Effect_Num;
+        card.Value_Enemy_Effect_Num = CardDataBase.cards[TempID].Value_Enemy_Effect_Num;
+        
+        
 
     }
     void Init_SpcialCard(SpellCard card, int TempID)
@@ -254,7 +275,10 @@ public class Deck : MonoBehaviour
         card.manager = manager;
         card.Cost = CardDataBase.Special_cards[TempID].cost;
         card.CardType = CardDataBase.Special_cards[TempID].CardType;
-        card.SpellType = CardDataBase.Special_cards[TempID].SpellType;
+        card.Value_Enemy_Damage_Effect = CardDataBase.Special_cards[TempID].Value_Enemy_Damage_Effect;
+        card.Value_Char_Effect_Num = CardDataBase.Special_cards[TempID].Value_Char_Effect_Num;
+        card.Value_Enemy_Effect_Num = CardDataBase.Special_cards[TempID].Value_Enemy_Effect_Num;
+        /*card.SpellType = CardDataBase.Special_cards[TempID].SpellType;
         card.Value_A = CardDataBase.Special_cards[TempID].Value_A;
         card.Value_D = CardDataBase.Special_cards[TempID].Value_D;
         card.Value_H = CardDataBase.Special_cards[TempID].Value_H;
@@ -278,12 +302,14 @@ public class Deck : MonoBehaviour
         card.Value_Create_Deck3 = CardDataBase.Special_cards[TempID].Value_Create_Deck3;
         card.Value_Create_Deck4 = CardDataBase.Special_cards[TempID].Value_Create_Deck4;
         card.HEAL = CardDataBase.Special_cards[TempID].HEAL;
-        card.Value_Enemy_Damage_Effect = CardDataBase.Special_cards[TempID].Value_Enemy_Damage_Effect;
+
+        
+        
         card.Value_Enemy_Damage = CardDataBase.Special_cards[TempID].Value_Enemy_Damage;
-        card.Value_Char_Effect_Num = CardDataBase.Special_cards[TempID].Value_Char_Effect_Num;
-        card.Value_Enemy_Effect_Num = CardDataBase.Special_cards[TempID].Value_Enemy_Effect_Num;
+        
         card.Turn = CardDataBase.Special_cards[TempID].Turn;
         card.Special = CardDataBase.Special_cards[TempID].Special;
+        */
 
     }
     IEnumerator Extra_Move(SpellCard card, int num)

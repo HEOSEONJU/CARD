@@ -17,6 +17,7 @@ public class CharSkillData
     public int SpellType;//0 0이면데미지 1이면공다운 2이면방다운 3CC?
                          //1 0이면회복 1이면공업 2이면방업 3이면최대체력회복 
 
+    public GameObject Effects;
     public int HEAL;
     public int Value_Enemy_Damage;
 
@@ -53,5 +54,37 @@ public class CharSkillData
 public class Char_Skill_ScriptTable : ScriptableObject
 {
     public List<CharSkillData> Skill = new List<CharSkillData>();
+
+    public CharSkillData Find_Skill(int INDEX)
+    {
+
+        if (Skill.Count== 0)
+        {
+            return null;
+        }
+        int Low = 0;
+        int High = Skill.Count - 1;
+        int Mid;
+        while (Low <= High)
+        {
+            Mid = (Low + High) / 2;
+            if (Skill[Mid].id == INDEX)
+            {
+                return Skill[Mid];
+            }
+            else if (Skill[Mid].id > INDEX)
+            {
+                High = Mid - 1;
+            }
+            else
+            {
+                Low = Mid + 1;
+            }
+
+        }
+        return null;
+
+
+    }
 
 }

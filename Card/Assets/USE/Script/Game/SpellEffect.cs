@@ -49,7 +49,26 @@ private void OnEnable()
         ID= _ID;
 
     }
+    
 
+    public bool UsingTurn()
+    {
+        TURN -= 1;
+
+        if(TURN<=0)
+        {
+            
+            return true;
+            
+        }
+        return false;
+    }
+    public void DestroyEffect()
+    {
+        //Destroy(gameObject);
+    }
+}
+/*
     public void Apply_Skill_Effect(CharSkillData temp)
     {
         ClearValue();
@@ -71,10 +90,11 @@ private void OnEnable()
 
         Value_Enemy_Effect_Num=temp.Value_Enemy_Effect_Num;
         Value_Char_Effect_Num=temp.Value_Char_Effect_Num;
-        */
+        
 
 
     }
+    
     public void Apply_Spell_Effect(SpellCard temp)
     {
         ClearValue();
@@ -95,7 +115,7 @@ private void OnEnable()
         Effect_PercentHP=temp.Value_PH;
         Value_Enemy_Effect_Num = temp.Value_Enemy_Effect_Num;
         Value_Char_Effect_Num = temp.Value_Char_Effect_Num;
-        */
+        
     }
 
 
@@ -116,28 +136,10 @@ private void OnEnable()
         CP = Cp;
         CD = Cd;
         DrewCount= Drewcount;
-        */
+        
 
     }
 
 
 
-
-
-    public bool UsingTurn()
-    {
-        TURN -= 1;
-
-        if(TURN<=0)
-        {
-            
-            return true;
-            
-        }
-        return false;
-    }
-    public void DestroyEffect()
-    {
-        //Destroy(gameObject);
-    }
-}
+*/

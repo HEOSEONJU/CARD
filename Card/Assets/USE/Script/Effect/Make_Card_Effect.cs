@@ -62,7 +62,7 @@ public class Make_Card_Effect : Base_Effect
                 case 3:
                     if (Make_Count >= 1 & Rank_S >= 1)//만들4성갯수가 1이상이면 만들총갯수와 4성갯수를 1씩줄이고 1성카드제작
                     {
-                        Debug.Log("4카드");
+                        
                         _Manager.InitCard_NUM(DataBox, 4, Special_Init_List, Rank_S);
                         Make_Count--;
 
@@ -81,16 +81,16 @@ public class Make_Card_Effect : Base_Effect
 
                 if (j == Init_List.Count - 1)
                 {
-                    _Manager.MYDeck.Stop_Particle(j);
+                    //_Manager.MYDeck.Stop_Particle(j);
                 }
                 c++;
-                StartCoroutine(_Manager.MYDeck.Stop_Particle(j));
+                _Manager.MYDeck.Function_Stop_Particle(j);
                 _Manager.MYDeck.Extra_InitCard(Init_List[j], j);
                 _Manager.DelayUseSpell += 0.1f;
             }
             else
             {
-                StartCoroutine(_Manager.MYDeck.Stop_Particle(j));
+                _Manager.MYDeck.Function_Stop_Particle(j);
                 c++;
                 _Manager.MYDeck.ShuffleDeck();
                 return;
@@ -102,17 +102,18 @@ public class Make_Card_Effect : Base_Effect
             {
 
                 if (j == Special_Init_List.Count - 1)
-                {
-                    _Manager.MYDeck.Stop_Particle(j);
-                }
+                    
+                    //_Manager.MYDeck.Stop_Particle(j);
+                    
+                
 
-                StartCoroutine(_Manager.MYDeck.Stop_Particle(j));
+                _Manager.MYDeck.Function_Stop_Particle(j);
                 _Manager.MYDeck.Special_InitCard(Special_Init_List[j], c++);
                 _Manager.DelayUseSpell += 0.1f;
             }
             else
             {
-                StartCoroutine(_Manager.MYDeck.Stop_Particle(j));
+                _Manager.MYDeck.Function_Stop_Particle(j);
 
                 _Manager.MYDeck.ShuffleDeck();
                 return;

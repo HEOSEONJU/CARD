@@ -1,0 +1,918 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78e5e74812a0fc48b3fbd269235b2cc, type: 3}
+  m_Name: CharDataFile
+  m_EditorClassIdentifier: 
+  Monster:
+  - id: 0
+    CardName: 
+    Level: 0
+    ATK: 0
+    DEF: 0
+    HP: 0
+    Rank: 0
+    Image: {fileID: 0}
+    BGImage: {fileID: 0}
+    RankImage: {fileID: 0}
+    Small_Image: {fileID: 0}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 
+    UpAtk: 0
+    UpDef: 0
+    UpHp: 0
+    Skill_ID: 
+    material: {fileID: 0}
+    Title_material: {fileID: 0}
+  - id: 1
+    CardName: "3\uC131"
+    Level: 1
+    ATK: 250
+    DEF: 250
+    HP: 2000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 4f384dcfe5a725d4099ca712a0767d74, type: 3}
+    BGImage: {fileID: 21300000, guid: eec8e8cb998f54449be3903b9424cfe3, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: 37f7ea48e090d2641aad2bb12eb65e59, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 07000000
+    UpAtk: 40
+    UpDef: 20
+    UpHp: 200
+    Skill_ID: 0c0000001100000014000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 2
+    CardName: "\uC9D1\uC0AC"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: 19101a7e7c26d1c41b167f2c4f048d38, type: 3}
+    BGImage: {fileID: 21300000, guid: 1e8b2998269240646a3852bccfc2b8aa, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: 4eac184f94df59a41bc50b2836d35ed8, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0500000006000000
+    UpAtk: 40
+    UpDef: 20
+    UpHp: 150
+    Skill_ID: 030000000e00000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 3
+    CardName: "\uAC1C"
+    Level: 1
+    ATK: 250
+    DEF: 250
+    HP: 2000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 042c7b23c04146e48b06023f4daf99b7, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: 534c34b9ca4450c4285532062118e3b8, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0700000008000000
+    UpAtk: 20
+    UpDef: 20
+    UpHp: 200
+    Skill_ID: 0b0000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 4
+    CardName: "\uC801\uC0C9"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 0abdcb3a3ccc654438f5375716a28f93, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: e2d0d624a32fcbb48a33fad0a4c65bb5, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0000000001000000
+    UpAtk: 30
+    UpDef: 10
+    UpHp: 200
+    Skill_ID: 060000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 5
+    CardName: "\uCCAD\uC0C9"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: b5737d20e2c37604c9b523faf5827a16, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: 8aa279cfd69e24e4cb40f4b72afc55b3, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0000000001000000
+    UpAtk: 10
+    UpDef: 30
+    UpHp: 200
+    Skill_ID: 060000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 6
+    CardName: "\uD669\uC0C9"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 5b4d9a3e5413534478c34915e032467b, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: c5163a1a5f12b0e4394c765550a40f8c, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0000000001000000
+    UpAtk: 20
+    UpDef: 20
+    UpHp: 200
+    Skill_ID: 060000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 7
+    CardName: "\uC800\uACA9\uC218"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: bf8563bcbd1ed094a94d1f91f77524e6, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: 5b89f5a3a20dfda4686f46a7d88e19c0, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0f000000
+    UpAtk: 30
+    UpDef: 20
+    UpHp: 150
+    Skill_ID: 040000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 8
+    CardName: "\uAD8C\uD22C\uAC00"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 046a1b7a93524f84698742e5a06f036d, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: d6696b5f8f395264997af985578ae061, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0500000006000000
+    UpAtk: 30
+    UpDef: 20
+    UpHp: 150
+    Skill_ID: 050000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 9
+    CardName: "\uB9C8\uBC95\uC0AC\uCE90\uB9AD\uD130"
+    Level: 1
+    ATK: 250
+    DEF: 250
+    HP: 2000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 890258e1e96f1284c8adc48b7c290fec, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: fbf2a92b40763884dbd58477decb4b65, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 40
+    UpDef: 30
+    UpHp: 150
+    Skill_ID: 110000001300000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 10
+    CardName: "(\uC9C4)\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 4952a2d5293f85b4a848e9df3d4981ea, type: 3}
+    BGImage: {fileID: 21300000, guid: d60367a7ab16df8499f5d994b40e8b6f, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: de0c8af691cd48f4d89ded9f7f41e945, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 50
+    UpDef: 50
+    UpHp: 0
+    Skill_ID: 060000000a0000001b000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 11
+    CardName: "\uC591\uC544\uCE58"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: c2f9150dafe64c04fa11b6f56d5c88c8, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: f48e42a75c2467b4ab12ab09f5b6e700, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 02000000
+    UpAtk: 20
+    UpDef: 20
+    UpHp: 200
+    Skill_ID: 090000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 12
+    CardName: "\uAE30\uC0AC"
+    Level: 1
+    ATK: 250
+    DEF: 150
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: 19efb61783df2244c9540fc250fc64bb, type: 3}
+    BGImage: {fileID: 21300000, guid: 1e8b2998269240646a3852bccfc2b8aa, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: f95cb73f4414cf54bafc311914d09201, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 02000000
+    UpAtk: 30
+    UpDef: 20
+    UpHp: 200
+    Skill_ID: 030000001800000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 13
+    CardName: "\uAD70\uC778\uC18C\uB140"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: ad6339c129937354ead721cd17091d39, type: 3}
+    BGImage: {fileID: 21300000, guid: 11c7e431b467e684d93e98758d2b4b81, type: 3}
+    RankImage: {fileID: 21300000, guid: a330341716ee64ffd8f92101938b00e8, type: 3}
+    Small_Image: {fileID: 21300000, guid: e480802e819aa6f438f37cfc083a00dc, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 02000000
+    UpAtk: 25
+    UpDef: 25
+    UpHp: 200
+    Skill_ID: 030000000c00000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: c0369ea132d0c604fb55d9b8bce359be, type: 2}
+  - id: 14
+    CardName: "\uAD70\uC778"
+    Level: 1
+    ATK: 200
+    DEF: 200
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 1955ee453bf125c43a2d69ce1cc254f4, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    Small_Image: {fileID: 21300000, guid: b5a87c79f3c09434db51f10a573beb51, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 02000000
+    UpAtk: 30
+    UpDef: 10
+    UpHp: 200
+    Skill_ID: 040000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 15
+    CardName: "\uD638\uBC15\uBA38\uB9AC"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: d4ed00cca1ffdee42b358271f1a37724, type: 3}
+    BGImage: {fileID: 21300000, guid: d60367a7ab16df8499f5d994b40e8b6f, type: 3}
+    RankImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    Small_Image: {fileID: 21300000, guid: 9767c8a1ea3c7f64887d1c0e9b56059d, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 40
+    UpHp: 200
+    Skill_ID: 0d0000000f00000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 16
+    CardName: "\uAD8C\uBC95\uAC00"
+    Level: 1
+    ATK: 150
+    DEF: 250
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: 9d189bb47856c0d46a4d1b52647b33a3, type: 3}
+    BGImage: {fileID: 21300000, guid: 1e8b2998269240646a3852bccfc2b8aa, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 373161e4383ceaa41931a83e7888429a, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 00000000
+    UpAtk: 15
+    UpDef: 35
+    UpHp: 200
+    Skill_ID: 040000000c00000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 17
+    CardName: "\uC131\uC9C1\uC790"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 920dc1feb5fd95c45823a1ca769b321a, type: 3}
+    BGImage: {fileID: 21300000, guid: eec8e8cb998f54449be3903b9424cfe3, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 1e17388c11b261045957d29195958ab3, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 0
+    UpDef: 50
+    UpHp: 250
+    Skill_ID: 060000001d00000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 18
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: d52fe4f6c45d5d54186e959e37d2839b, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 165299e4acab29a42afa0d12ae529fa5, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 19
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 9d493d4c7c359e94f91bba56e8330f2c, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: ee23a49881aff7d499afc670899efe88, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 020000000200000002000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 20
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 14acbe71fe7ef3645b58e39d215c7137, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 3fbd9a68f921c0d47a1717286c14e128, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 21
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 6f98d137f87b33a469da07b07da84da8, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 01dfa643ccb298e4bbec016d842c8084, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 22
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: b15316e12270f0b4c8f336fbc24ecc5d, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: fd9d4f3393f242d4cb0bb116e2174edd, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 23
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 4ba44f0ab7beb8643b595c0f324af33e, type: 3}
+    BGImage: {fileID: 21300000, guid: 9aa9e306d59bf0942ac104c73a93ac1e, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 53810b7a13d88944c9971843f4d64d26, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: acfc996358394be4ba43069451d79490, type: 2}
+  - id: 24
+    CardName: "\uC911\uAE09\uB9C8\uBC95\uC0AC"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: df84f3cc4f804614b8d4730e8267b1f6, type: 3}
+    BGImage: {fileID: 21300000, guid: d60367a7ab16df8499f5d994b40e8b6f, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 5e7cf279ff5b5df4bbe807e01b96e9b3, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 30
+    UpHp: 250
+    Skill_ID: 170000000000000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 25
+    CardName: "\uB300\uB9C8\uBC95\uC0AC"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: ebc98e4f4351b1945b8895ac45c63446, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 91b4df4a93708fe4fa8c3982a47b0f52, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 0
+    UpDef: 40
+    UpHp: 300
+    Skill_ID: 070000001100000017000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 26
+    CardName: "\uCEAC\uB8E8\uB9C8\uB140"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: e10bb279f1fc6a04eb388f6c3c17608a, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 4a1443afa35083d4e8673596f5fac7c6, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 0
+    UpDef: 40
+    UpHp: 300
+    Skill_ID: 060000001100000017000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 27
+    CardName: "\uB9C8\uC220\uC0AC"
+    Level: 1
+    ATK: 100
+    DEF: 300
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 36e2f3d2afd3406449ee8f10d7189e5e, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: bf8d88638b3af444cbbdce5147827137, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 0
+    UpDef: 40
+    UpHp: 300
+    Skill_ID: 08000000110000001e000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 28
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 10a6cfa9438d41346aafd71e0be6070f, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 3b0be5ebfc824244788c35f3d0c07df8, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 29
+    CardName: "\uC0AC\uBCF5\uAC80"
+    Level: 1
+    ATK: 250
+    DEF: 250
+    HP: 2000
+    Rank: 3
+    Image: {fileID: 21300000, guid: cddceca92144ffa4984273706af5a2c8, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 0cb426a44201e0e4c8a6f3534fa06ea8, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 1
+    AttackEffectNum: 0700000008000000
+    UpAtk: 80
+    UpDef: 10
+    UpHp: 50
+    Skill_ID: 060000001500000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 30
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 385cc4299502eb04c8980d5f2d3f3c39, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: ad1b9070b79d111429d1894238e05f09, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 31
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: 15a76db10be22ca468692d596c95ec85, type: 3}
+    BGImage: {fileID: 21300000, guid: 1e8b2998269240646a3852bccfc2b8aa, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 852fdb6477054124db6a0dc8d6355133, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: ff887219101980041bd517e36d5d9df2, type: 2}
+  - id: 32
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 404c8759409d69d4e8c6affc25b47626, type: 3}
+    BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 23aed64faa95a914ead0547896317fe7, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 33
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: d1512bf98e833f747a32cac7f8423986, type: 3}
+    BGImage: {fileID: 21300000, guid: 11c7e431b467e684d93e98758d2b4b81, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 25c024371c0fb6c42bf272edaa4e427e, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: c0369ea132d0c604fb55d9b8bce359be, type: 2}
+  - id: 34
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 8624b8795513ab3429afb9fe94e49fd6, type: 3}
+    BGImage: {fileID: 21300000, guid: b667995848a54a14c9750c4270c5e50c, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: ce42af52b1abd244aa329199dabcbe36, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: 03df48e6e300e03478a68d340ce90336, type: 2}
+  - id: 35
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 9d5bbb44eec82344d96f6b24717a20ae, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 8791333ddbbc90745a8832561dd6dca9, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 36
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 6b49ace349ff7d7439a7642dba78da57, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 34c8f2568d09b984b92f95f1f2d51548, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 37
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 3
+    Image: {fileID: 21300000, guid: 98291992da108b04db2ddec3dd86ba5c, type: 3}
+    BGImage: {fileID: 21300000, guid: 9aa9e306d59bf0942ac104c73a93ac1e, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 57b39ebcc21c1b245b5ead42e0787833, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: e5e7542331677754abbb5c9930ecfb52, type: 2}
+    Title_material: {fileID: 2100000, guid: c0369ea132d0c604fb55d9b8bce359be, type: 2}
+  - id: 38
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 967efce169e813c4cb133df83aad06a3, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 12e539ce627bda24a81e9bcba2eda600, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 39
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: c39a2e9e0532db3499e3cc0f556b8b67, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 048b3ef22f04587409666737d164ff7b, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 40
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: c9e5dda23cd88c9449b33aa6d987fcf0, type: 3}
+    BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 1d9858635de93634b84eb83cb702183a, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 41
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 1
+    Image: {fileID: 21300000, guid: 702ac104cf9794244b7c24cc1f7205ce, type: 3}
+    BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 7f96c190c44af1e4a8bb4dd6745c0fc2, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 4f938d2a5ba2a92488313b07480143a6, type: 2}
+    Title_material: {fileID: 0}
+  - id: 42
+    CardName: "\uAC00\uBA74\uB77C\uC774\uB354"
+    Level: 1
+    ATK: 1000
+    DEF: 1000
+    HP: 1000
+    Rank: 2
+    Image: {fileID: 21300000, guid: cf27207765d88b74db3ebe25d29d1896, type: 3}
+    BGImage: {fileID: 21300000, guid: 11c7e431b467e684d93e98758d2b4b81, type: 3}
+    RankImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+    Small_Image: {fileID: 21300000, guid: 062df04f588f05642b1d8be725dfb041, type: 3}
+    CritiaclPercent: 10
+    CritiaclDamage: 50
+    AttackType: 0
+    AttackEffectNum: 02000000
+    UpAtk: 10
+    UpDef: 10
+    UpHp: 10
+    Skill_ID: 000000000000000000000000
+    material: {fileID: 2100000, guid: 2ab688acc27e53149b936e845e85b3c2, type: 2}
+    Title_material: {fileID: 2100000, guid: c0369ea132d0c604fb55d9b8bce359be, type: 2}

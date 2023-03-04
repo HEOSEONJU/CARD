@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ca400f61bece34ab818d89b08eea40, type: 3}
+  m_Name: EnemyDataFile
+  m_EditorClassIdentifier: 
+  Enemy:
+  - Enemy_id: 0
+    Name: 
+    Base_ATK: 0
+    Base_DEF: 0
+    Base_HP: 0
+    Magic_Regi: 0
+    TYPE: 0
+    SkillNumber: 
+    SkillDamage: 
+    SkillPercentage: 
+    AttackCount: 0
+    Boss_Image: {fileID: 0}
+    Boss_material: {fileID: 0}
+    Boss_BGImage: {fileID: 0}
+  - Enemy_id: 1
+    Name: "\uBD88\uD0C0\uB294\uB9D0"
+    Base_ATK: 400
+    Base_DEF: 50
+    Base_HP: 10000
+    Magic_Regi: 0
+    TYPE: 0
+    SkillNumber: 0000000001000000
+    SkillDamage: d0070000f4010000
+    SkillPercentage: 1400000014000000
+    AttackCount: 3
+    Boss_Image: {fileID: 21300000, guid: 3420e32168a881c44b1edbe2b35d8acc, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}
+  - Enemy_id: 2
+    Name: "\uACE8\uB818"
+    Base_ATK: 400
+    Base_DEF: 300
+    Base_HP: 20000
+    Magic_Regi: 20
+    TYPE: 1
+    SkillNumber: 00000000
+    SkillDamage: a00f0000
+    SkillPercentage: 14000000
+    AttackCount: 3
+    Boss_Image: {fileID: 21300000, guid: fa285643bf9088a48890acd6d6c49d28, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+  - Enemy_id: 3
+    Name: "\uAD34\uC870"
+    Base_ATK: 700
+    Base_DEF: 300
+    Base_HP: 15000
+    Magic_Regi: 0
+    TYPE: 3
+    SkillNumber: 01000000
+    SkillDamage: e8030000
+    SkillPercentage: 14000000
+    AttackCount: 3
+    Boss_Image: {fileID: 21300000, guid: 85de5ee015efd5349ac9513f0961ab11, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+  - Enemy_id: 4
+    Name: "\uAC00\uC624\uB9AC"
+    Base_ATK: 700
+    Base_DEF: 800
+    Base_HP: 30000
+    Magic_Regi: 30
+    TYPE: 4
+    SkillNumber: 0000000001000000
+    SkillDamage: a00f0000e8030000
+    SkillPercentage: 140000000a000000
+    AttackCount: 5
+    Boss_Image: {fileID: 21300000, guid: 8c8d51c586d16df4b841047369d58d05, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: 24b22bfc33f4203419de9181b2ad5c9f, type: 3}
+  - Enemy_id: 5
+    Name: "\uACE0\uB798"
+    Base_ATK: 800
+    Base_DEF: 1000
+    Base_HP: 60000
+    Magic_Regi: 30
+    TYPE: 7
+    SkillNumber: 0000000001000000
+    SkillDamage: 88130000e8030000
+    SkillPercentage: 1400000014000000
+    AttackCount: 2
+    Boss_Image: {fileID: 21300000, guid: 57ab3f1cb5943f74e81115365240a42d, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: bcf131f4c262f844baf64d94f898e43b, type: 3}
+  - Enemy_id: 6
+    Name: "\uB4DC\uB798\uACE4"
+    Base_ATK: 1000
+    Base_DEF: 800
+    Base_HP: 50000
+    Magic_Regi: 50
+    TYPE: 6
+    SkillNumber: 0000000001000000
+    SkillDamage: 401f0000d0070000
+    SkillPercentage: 1400000014000000
+    AttackCount: 3
+    Boss_Image: {fileID: 21300000, guid: 913dc43578c7f0e4799ff404a28383ed, type: 3}
+    Boss_material: {fileID: 2100000, guid: 2fb518180c81d1f40996736acd8212bc, type: 2}
+    Boss_BGImage: {fileID: 21300000, guid: 76c2a907df94c8847b46ea94173b57eb, type: 3}

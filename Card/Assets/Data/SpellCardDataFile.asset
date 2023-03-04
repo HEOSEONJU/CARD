@@ -1,0 +1,2257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acba3160afb88bb4f93f69c90de13b1a, type: 3}
+  m_Name: SpellCardDataFile
+  m_EditorClassIdentifier: 
+  cards:
+  - id: 0
+    CardName: 
+    exp: 
+    cost: 0
+    Rank: 0
+    Image: {fileID: 0}
+    BG_Image: {fileID: 0}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 1
+    CardName: "\uACF5\uACA9\uC5C5"
+    exp: "\uACF5\uACA9\uB825500\uC0C1\uC2B9(\uB2E8\uC77C)(1\uD134)"
+    cost: 1
+    Rank: 1
+    Image: {fileID: 21300000, guid: 4d12f143b1c5cd14d8187ef7b6d1eaf9, type: 3}
+    BG_Image: {fileID: 21300000, guid: 15b0567ffd9b4eb4fb5495d1da7c3036, type: 3}
+    CardType: 1
+    SpellType: 1
+    Effects: {fileID: 4433851795683247856, guid: 8d1506f92845ead4cac7ba46e827b661, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 4
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 500
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 2
+    CardName: "\uD68C\uBCF5"
+    exp: "2000\uD68C\uBCF5(\uB2E8\uC77C)"
+    cost: 2
+    Rank: 1
+    Image: {fileID: 21300000, guid: e3fba87828313ae4a99643e4959c9a97, type: 3}
+    BG_Image: {fileID: 21300000, guid: 5ebbe09a172b49141abab370667e7a5a, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 8bde7d2c3c258364893cacc62fab37dd, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 2000
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 3
+    CardName: "\uC554\uD751\uAD6C\uCCB4(\uC18C)"
+    exp: "1000\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 0
+    Rank: 1
+    Image: {fileID: 21300000, guid: f5bb9e3bfde2ed34faa63d9dae167c46, type: 3}
+    BG_Image: {fileID: 21300000, guid: 3733d04793c1d9f44a126e3ab2019c30, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: da70538074156d5479b173948b2f8748, type: 3}
+    Value_Enemy_Effect_Num: 6
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1000
+    Value_Enemy_Damage_Effect: 6
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 4
+    CardName: "\uC74C\uC728"
+    exp: "\uCD5C\uB300\uCCB4\uB8251000\uC99D\uAC00(\uAD11\uC5ED)(2\uD134)"
+    cost: 1
+    Rank: 3
+    Image: {fileID: 21300000, guid: 5284bb894018fec4c88744f60899754a, type: 3}
+    BG_Image: {fileID: 21300000, guid: 04d3e23ea6412d64598015fe68bc1e50, type: 3}
+    CardType: 2
+    SpellType: 3
+    Effects: {fileID: 4433851795683247856, guid: 4816eca95088c10468ab4c6b328f6c12, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 9
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 1000
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 2
+    Special: 0
+  - id: 5
+    CardName: "\uBD84\uB178"
+    exp: "\uACF5\uACA9\uD69F\uC2183\uBC88(\uB2E8\uC77C)(1\uD134)"
+    cost: 1
+    Rank: 2
+    Image: {fileID: 21300000, guid: fa9413068edaaf042a77ec4e80e3497d, type: 3}
+    BG_Image: {fileID: 21300000, guid: 216cbee84f9812847b246401ad9ec0d3, type: 3}
+    CardType: 1
+    SpellType: 5
+    Effects: {fileID: 4433851795683247856, guid: a119dd8cb6c83ab4191e4a499d4e1bbb, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 4
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 3
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 6
+    CardName: "\uBCF4\uCDA9"
+    exp: "\uCE74\uB4DC\uB97C3\uC7A5\uBF51\uC2B5\uB2C8\uB2E4."
+    cost: 1
+    Rank: 3
+    Image: {fileID: 21300000, guid: 22ffe173a40e0534c94db5c7ad92b39a, type: 3}
+    BG_Image: {fileID: 21300000, guid: 448590a477fd3f84d96494c508436feb, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: a8e5895bfeb780449b0eb11cff0afda7, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 3
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 7
+    CardName: "\uB9C8\uB098\uD68C\uBCF5"
+    exp: "\uCF54\uC2A4\uD2B82\uD68C\uBCF5"
+    cost: 0
+    Rank: 2
+    Image: {fileID: 21300000, guid: b1253b91d34bf96469848600c49c526a, type: 3}
+    BG_Image: {fileID: 21300000, guid: 674a3d365c1fab1439aab1510b80cbec, type: 3}
+    CardType: 3
+    SpellType: 1
+    Effects: {fileID: 4433851795683247856, guid: 3b67e9f3c34cfbc4bbfa70a4b0ed497e, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 2
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 8
+    CardName: "\uB9C8\uB098\uC7AC\uC0DD"
+    exp: "\uCD5C\uB300\uCF54\uC2A4\uD2B82\uC99D\uAC00"
+    cost: 1
+    Rank: 1
+    Image: {fileID: 21300000, guid: 3df477cd8e3155047ab94be21a779a5a, type: 3}
+    BG_Image: {fileID: 21300000, guid: d6147f5691ba2bb48872bc48f620b9e3, type: 3}
+    CardType: 3
+    SpellType: 2
+    Effects: {fileID: 4433851795683247856, guid: fb039dfcbf2a5444ea53298c755ca16f, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 2
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 9
+    CardName: "\uACE0\uAE30"
+    exp: "\uCCB4\uB825500\uB9AC\uC820(\uB2E8\uC77C)(3\uD134)"
+    cost: 1
+    Rank: 1
+    Image: {fileID: 21300000, guid: 1a8f616299383364c9d4a5e528202718, type: 3}
+    BG_Image: {fileID: 21300000, guid: e8fcc2c8b0e3fbc448689f88bc9c684c, type: 3}
+    CardType: 1
+    SpellType: 4
+    Effects: {fileID: 4433851795683247856, guid: f88ffbc886a00cd4391dd649b83641ed, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 500
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 10
+    CardName: "\uD639\uB3C5\uD55C \uB300\uAC00"
+    exp: "\uB370\uBBF8\uC9C01000(\uC544\uAD70\uBB34\uC791\uC704) 6\uC7A5\uB4DC\uB85C\uC6B0"
+    cost: 3
+    Rank: 3
+    Image: {fileID: 21300000, guid: a0b5c060b314a8f4b8ccf13efc4ed284, type: 3}
+    BG_Image: {fileID: 21300000, guid: 39d6b35bf4dfc8a41911e1b958f4792b, type: 3}
+    CardType: 3
+    SpellType: 3
+    Effects: {fileID: 4433851795683247856, guid: ef003ac582902074b9b8400c42663d0d, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 1000
+    Value_Drew: 6
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 11
+    CardName: "\uAC15\uD654"
+    exp: "\uACF5\uACA9\uB825\uBC29\uC5B4\uB8251000\uC0C1\uC2B9(\uB2E8\uC77C)(3\uD134)"
+    cost: 3
+    Rank: 1
+    Image: {fileID: 21300000, guid: ade274eff6751a348a9f07a0569133e3, type: 3}
+    BG_Image: {fileID: 21300000, guid: 59cec477b1fc5c54bb861c447bd955e4, type: 3}
+    CardType: 1
+    SpellType: 6
+    Effects: {fileID: 4433851795683247856, guid: fc3d7ce2dc73a6f4ba07f5813181caf3, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 3
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 1000
+    Value_D: 1000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 12
+    CardName: "\uB300\uD3ED\uAC15\uD654"
+    exp: "\uACF51000\uC99D\uAC00\uBC29500\uAC10\uC18C(\uB2E8\uC77C)(1\uD134)"
+    cost: 1
+    Rank: 1
+    Image: {fileID: 21300000, guid: acbd71afd67ffe041babb5881004aa75, type: 3}
+    BG_Image: {fileID: 21300000, guid: b016e709ed3184943872f39ca02608ba, type: 3}
+    CardType: 1
+    SpellType: 6
+    Effects: {fileID: 4433851795683247856, guid: 3a8c21b4158ff694392aeea56662ce5b, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 3
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 1000
+    Value_D: -500
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 13
+    CardName: "\uC5F0\uC18D\uACF5\uACA9"
+    exp: "\uACF5\uACA9\uD69F\uC2182\uBC88(\uB2E8\uC77C)(1\uD134)"
+    cost: 2
+    Rank: 1
+    Image: {fileID: 21300000, guid: 6ef1b8b56f7b69949910e793cc805b41, type: 3}
+    BG_Image: {fileID: 21300000, guid: 7541aa08aae8c784eac6c5145bf2d47d, type: 3}
+    CardType: 1
+    SpellType: 5
+    Effects: {fileID: 4433851795683247856, guid: 70bf5f563e3f4564bb43039551fc4810, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 4
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 2
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 14
+    CardName: "\uBC29\uC5B4\uAD6C\uBD80\uC218\uAE30"
+    exp: "\uBC29\uC5B4\uB825500\uAC10\uC18C(\uC801)(3\uD134)"
+    cost: 0
+    Rank: 1
+    Image: {fileID: 21300000, guid: ad068439f6a70f947a56683ebcc2ba49, type: 3}
+    BG_Image: {fileID: 21300000, guid: da3a3fe082053a344bbc1a1302307497, type: 3}
+    CardType: 0
+    SpellType: 2
+    Effects: {fileID: 4433851795683247856, guid: 37f75b60be2478347b92f805eb0da5b8, type: 3}
+    Value_Enemy_Effect_Num: 5
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: -500
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 15
+    CardName: "\uBC29\uD328\uBD80\uC218\uAE30"
+    exp: "\uBC29\uC5B4\uB8251000\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 0
+    Rank: 3
+    Image: {fileID: 21300000, guid: 40597198f11371949889fd18ed8d7741, type: 3}
+    BG_Image: {fileID: 21300000, guid: 660bae6102a049d478fedf7d44711e9d, type: 3}
+    CardType: 0
+    SpellType: 2
+    Effects: {fileID: 4433851795683247856, guid: 436d39ad7aae3cb4fa5f3be4ef7199f3, type: 3}
+    Value_Enemy_Effect_Num: 5
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: -1000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 16
+    CardName: "\uC57D\uC18C\uD55C\uB300\uAC00"
+    exp: "\uB4DC\uB85C\uC6B02\uC7A5(\uBB34\uC791\uC704\uD328\uBC84\uB9BC1\uC7A5)"
+    cost: 0
+    Rank: 1
+    Image: {fileID: 21300000, guid: c60d31a127ca3e147abf325ffb5c53c3, type: 3}
+    BG_Image: {fileID: 21300000, guid: b8f702607b9e7464a9cac83ba10e5c47, type: 3}
+    CardType: 3
+    SpellType: 4
+    Effects: {fileID: 4433851795683247856, guid: f68568f3f7d523942bce9fb72817b467, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 2
+    Value_Hand_Less: 1
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 17
+    CardName: "\uC228\uACA8\uC9C4\uCE74\uB4DC"
+    exp: "\uB371\uC5D0 \uBB34\uC791\uC704\uCE74\uB4DC10\uC7A5\uC744\uB123\uC2B5\uB2C8\uB2E4"
+    cost: 3
+    Rank: 2
+    Image: {fileID: 21300000, guid: d5181ca623f8fb044966100c7a405ec3, type: 3}
+    BG_Image: {fileID: 21300000, guid: 50eee26b30095d449a0391e278394e5a, type: 3}
+    CardType: 3
+    SpellType: 5
+    Effects: {fileID: 4433851795683247856, guid: 7a96382c7dcd7744bbcf9496f32f50f8, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 10
+    Value_Create_Deck1: 5
+    Value_Create_Deck2: 5
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 18
+    CardName: "\uB9C8\uBC95\uBCF4\uD638\uB9C9"
+    exp: "\uB9C8\uBC95\uC800\uD56D\uB82550%(\uAD11\uC5ED)(1\uD134)"
+    cost: 3
+    Rank: 2
+    Image: {fileID: 21300000, guid: 1639591a2e12edf45bae0930f129f7f3, type: 3}
+    BG_Image: {fileID: 21300000, guid: 08f3d305d244dfb46b26312b925a542d, type: 3}
+    CardType: 2
+    SpellType: 10
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 7
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 50
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 19
+    CardName: "\uB178\uD654"
+    exp: "\uACF5\uACA9\uD69F\uC2181\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 0
+    Rank: 2
+    Image: {fileID: 21300000, guid: 9cd5c256d1c730945bb95c8b07b91253, type: 3}
+    BG_Image: {fileID: 21300000, guid: 76a4bf581869411498295b19e1cd46c9, type: 3}
+    CardType: 0
+    SpellType: 5
+    Effects: {fileID: 4433851795683247856, guid: b3664c8da2ee0424f85f62a268ab579d, type: 3}
+    Value_Enemy_Effect_Num: 4
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: -1
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 20
+    CardName: "\uC554\uD751\uAD6C\uCCB4(\uC911)"
+    exp: "3000\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 4
+    Rank: 1
+    Image: {fileID: 21300000, guid: f5bb9e3bfde2ed34faa63d9dae167c46, type: 3}
+    BG_Image: {fileID: 21300000, guid: 3733d04793c1d9f44a126e3ab2019c30, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 2d40fbac3a799184b9ac24d238b7d029, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 3000
+    Value_Enemy_Damage_Effect: 6
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 21
+    CardName: "\uD654\uC5FC\uAD6C"
+    exp: "1500\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 1
+    Rank: 2
+    Image: {fileID: 21300000, guid: ed82e1103d373974eb15cb9961ec3e25, type: 3}
+    BG_Image: {fileID: 21300000, guid: 38c3ada3f093d7d46bcdafbd2cd77879, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 0314c83375ff42a4db6237504116dbff, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1500
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 22
+    CardName: "\uBC88\uAC1C"
+    exp: "2000\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 1
+    Rank: 3
+    Image: {fileID: 21300000, guid: a337e6791186a6d48855055de64f7026, type: 3}
+    BG_Image: {fileID: 21300000, guid: 0f8c18a872564b54495eed5a274c65d0, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: ad01c1ec2d32f6a4094a315be1635d36, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 2000
+    Value_Enemy_Damage_Effect: 4
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 23
+    CardName: "\uD070\uBC88\uAC1C"
+    exp: "10000\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 5
+    Rank: 3
+    Image: {fileID: 21300000, guid: d34ede931c069be428225d60731c4cd5, type: 3}
+    BG_Image: {fileID: 21300000, guid: c1537c3a9b9bfea47adc1a3f38c16aa8, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: c1db7bb2d3627ed40aefa102c49f3606, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 10000
+    Value_Enemy_Damage_Effect: 14
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 24
+    CardName: "\uC5BC\uC74C\uD654\uC0B4"
+    exp: "1500\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 1
+    Rank: 2
+    Image: {fileID: 21300000, guid: 5a6905c6030e4c6498d6a2ba54020fad, type: 3}
+    BG_Image: {fileID: 21300000, guid: e5e7249028adb404eaea0a0b1e674469, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 484020dd05c28384ca4ece68ce650ba9, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1500
+    Value_Enemy_Damage_Effect: 2
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 25
+    CardName: "\uD3ED\uC8FC"
+    exp: "\uACF5\uACA9\uB82530%/\uBC29\uC5B4\uB825-50%(\uB2E8\uC77C)(1\uD134)"
+    cost: 3
+    Rank: 2
+    Image: {fileID: 21300000, guid: a2a076ec742e5624b88f8f530a272953, type: 3}
+    BG_Image: {fileID: 21300000, guid: 6a1e0d2d7dc596e40beeb25d5d5d18ee, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 212fe48fd37463c4ea7628fa12445587, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 30
+    Value_PD: -50
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 26
+    CardName: "\uAD73\uAC74\uD55C\uBC29\uD328"
+    exp: "\uBC29\uC5B4\uB8252000(\uAD11\uC5ED)(3\uD134)"
+    cost: 7
+    Rank: 2
+    Image: {fileID: 21300000, guid: 86ebd6a0087e1bf449c837f51edf68b1, type: 3}
+    BG_Image: {fileID: 21300000, guid: 9d2200a6f76dbc444a0d80d8cecbde6d, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 833774d0d4c0c7e41a959de46977def6, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 1
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 2000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 27
+    CardName: "\uCC9C\uC0C1\uC758 \uC0AC\uC2AC"
+    exp: "\uACF5\uACA9\uD69F\uC2185\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 8
+    Rank: 2
+    Image: {fileID: 21300000, guid: d5fba6684ac91ed45a2e51c61935e22e, type: 3}
+    BG_Image: {fileID: 21300000, guid: 5fb1090912cd7ed4b8b55f6839899f5f, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: d47af1de1652bf4438c75847ed74c96e, type: 3}
+    Value_Enemy_Effect_Num: 4
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: -5
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 28
+    CardName: "\uD669\uAE08\uC655\uAD00"
+    exp: "\uACF5\uACA9\uB825\uBC29\uC5B4\uB8251000\uC0C1\uC2B9(\uB2E8\uC77C)(5\uD134)"
+    cost: 4
+    Rank: 1
+    Image: {fileID: 21300000, guid: 050306cbaae1fca4392d791082266309, type: 3}
+    BG_Image: {fileID: 21300000, guid: 2fa3126ab1b83444f98a6247d3fa7420, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 07110585f733b9344bcb03c3a5c46b3f, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 1000
+    Value_D: 1000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 5
+    Special: 0
+  - id: 29
+    CardName: "\uCC9C\uC0C1\uC758\uBCF4\uD638"
+    exp: "\uBC29\uC5B4\uB82510000\uC99D\uAC00/\uB9C8\uC800100%(\uAD11\uC5ED)(1\uD134)"
+    cost: 9
+    Rank: 1
+    Image: {fileID: 21300000, guid: 7d5809243dae3b74db5312df3fd3c906, type: 3}
+    BG_Image: {fileID: 21300000, guid: 130e5cb9a3b697540aa574941c9d00b9, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 55e5991b814356645a9fc5f7aaf32043, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 10000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 100
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 30
+    CardName: "\uD574\uACE8\uD3ED\uD0C4"
+    exp: "\uB370\uBBF8\uC9C01000/\uBC29\uC5B4\uB8251000\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 2
+    Rank: 2
+    Image: {fileID: 21300000, guid: 3649732ab5a842d438bc130252065379, type: 3}
+    BG_Image: {fileID: 21300000, guid: cb0db1cb396bec346be5f77b0d4e89e2, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: d409154e797c0414bb74ae6a7f48dbf2, type: 3}
+    Value_Enemy_Effect_Num: 6
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1000
+    Value_Enemy_Damage_Effect: 6
+    Value_A: 0
+    Value_D: -1000
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 31
+    CardName: "\uD76C\uC0DD"
+    exp: "\uACF5\uACA9\uB825100%(\uC544\uAD70\uBB34\uC791\uC7045000\uB370\uBBF8\uC9C0)(\uAD11\uC5ED)(3\uD134)"
+    cost: 6
+    Rank: 2
+    Image: {fileID: 21300000, guid: 604c1df0136c41649a2f7b6bd7352370, type: 3}
+    BG_Image: {fileID: 21300000, guid: 9310f062733d33d4abab0fcd3d267f99, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 429bc887b6d828b4ba99de7d98720af4, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 100
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 5000
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 32
+    CardName: "\uD53C\uC758\uB300\uAC00"
+    exp: "\uB370\uBBF8\uC9C015000(\uB2E8\uC77C)(\uC544\uAD70\uBB34\uC791\uC7043000\uB370\uBBF8\uC9C0)"
+    cost: 4
+    Rank: 3
+    Image: {fileID: 21300000, guid: 44fdd6e8fcf197b4dadcce7e9739c4cd, type: 3}
+    BG_Image: {fileID: 21300000, guid: 38d4fbdc4155a4248874c26b82108639, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: af1a7299530080947b8a557c0f13adff, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 15000
+    Value_Enemy_Damage_Effect: 6
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 3000
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 33
+    CardName: "\uBB34\uC791\uC704\uD761\uC218"
+    exp: "\uCF54\uC2A4\uD2B83\uD68C\uBCF5(\uC544\uAD70\uBB34\uC791\uC7042000\uB370\uBBF8\uC9C0)"
+    cost: 0
+    Rank: 2
+    Image: {fileID: 21300000, guid: 0c42cbf833b0a4246a074b02fe581b6e, type: 3}
+    BG_Image: {fileID: 21300000, guid: d8238ba7efd8b6e488dc9a5c2a387218, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: f6e2cdbfe0543074f95688723bf0098c, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 3
+    Value_MAXCost: 0
+    Value_Char_Damage: 2000
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 34
+    CardName: "\uC7AC\uC0DD\uC758\uC624\uC624\uB77C(\uC911)"
+    exp: "\uCCB4\uB825\uC7AC\uC0DD2000(\uAD11\uC5ED(5\uD134)"
+    cost: 5
+    Rank: 2
+    Image: {fileID: 21300000, guid: b1594b53ccce4c941affd3652bb0d9eb, type: 3}
+    BG_Image: {fileID: 21300000, guid: d6f781a02de81f84f8272b9e63244dfc, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: c78c3ed372c8d80468f4d33a36944ad0, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 2000
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 5
+    Special: 0
+  - id: 35
+    CardName: "\uC7AC\uC0DD\uC758\uC624\uC624\uB77C(\uADF9)"
+    exp: "\uCCB4\uB825\uC7AC\uC0DD4000(\uAD11\uC5ED(5\uD134)"
+    cost: 8
+    Rank: 3
+    Image: {fileID: 21300000, guid: b1594b53ccce4c941affd3652bb0d9eb, type: 3}
+    BG_Image: {fileID: 21300000, guid: d6f781a02de81f84f8272b9e63244dfc, type: 3}
+    CardType: 2
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 0237cebef5263c242a858facd71462f2, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 4000
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 5
+    Special: 0
+  - id: 36
+    CardName: "\uC7AC\uC0DD\uC758\uC228\uACB0"
+    exp: "\uCCB4\uB825\uC7AC\uC0DD3000(\uB2E8\uC77C)(5\uD134)"
+    cost: 3
+    Rank: 1
+    Image: {fileID: 21300000, guid: d2897d513e06b4f49be0da339a8ca22f, type: 3}
+    BG_Image: {fileID: 21300000, guid: 1311993207acee846b1570864d56c862, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 50dc935e5dd772744a65e76143a64a0a, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 3000
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 5
+    Special: 0
+  - id: 37
+    CardName: "\uBA40\uB9AC\uAC74"
+    exp: "\uBAA8\uB4E0\uD328\uB97C\uBC84\uB9AC\uACE0 \uBC84\uB9B0\uB9CC\uD07C\uB4DC\uB85C\uC6B0\uD55C\uB2E4"
+    cost: 3
+    Rank: 1
+    Image: {fileID: 21300000, guid: 4f482c1758b3a5940b42ccc522c684cd, type: 3}
+    BG_Image: {fileID: 21300000, guid: 74e58aba47e666e46994c2700d7a8e29, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 8bf4c68f203dae949b5ab00146f95be5, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 11
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 38
+    CardName: "\uCD95\uBCF5"
+    exp: "\uCE58\uBA85\uD0C0\uD655\uB96020%(\uAD11\uC5ED)(3\uD134)"
+    cost: 3
+    Rank: 1
+    Image: {fileID: 21300000, guid: 2ac1415695801f640a024635dda25cc5, type: 3}
+    BG_Image: {fileID: 21300000, guid: 2ac1415695801f640a024635dda25cc5, type: 3}
+    CardType: 2
+    SpellType: 4
+    Effects: {fileID: 4433851795683247856, guid: 70cf32577cea3f0449e58e9cf196c72b, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 20
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 3
+    Special: 0
+  - id: 39
+    CardName: "\uAC15\uD654\uD761\uC218"
+    exp: "\uCF54\uC2A4\uD2B84\uD68C\uBCF5(\uC544\uAD70\uB2E8\uC77C2000\uB370\uBBF8\uC9C0)"
+    cost: 0
+    Rank: 1
+    Image: {fileID: 21300000, guid: ec634d79f72235b458c3dda88e9749d3, type: 3}
+    BG_Image: {fileID: 21300000, guid: a85a61a419e2cea4abb75c8c6bdf447c, type: 3}
+    CardType: 5
+    SpellType: 4
+    Effects: {fileID: 4433851795683247856, guid: 0d5e5b3ab98fe144b8bd0ab0b84ff9e9, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 4
+    Value_MAXCost: 0
+    Value_Char_Damage: 2000
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 40
+    CardName: "\uACE0\uAE09\uB9C8\uBC95\uC5F0\uC131"
+    exp: "\uC6A9\uC758\uB9C8\uBC95 1\uC7A5\uC744 \uB371\uC5D0\uB123\uACE0 \uCF54\uC2A4\uD2B82\uB97C\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+    cost: 5
+    Rank: 2
+    Image: {fileID: 21300000, guid: 3d37dcc66de5bc148b9e40e6300cfa88, type: 3}
+    BG_Image: {fileID: 21300000, guid: 55a684c1bcc71334a99bd940cca08435, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: e957842a6f3fae14ab37284d65b8e4ce, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 2
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 1
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 1
+    Turn: 0
+    Special: 0
+  - id: 41
+    CardName: "\uAE30\uCD08\uB9C8\uBC95\uC5F0\uC131"
+    exp: "\uAE30\uCD08\uB9C8\uBC95 1\uC7A5\uC744 \uB371\uC5D0\uB123\uACE0 \uCF54\uC2A4\uD2B81\uB97C\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+    cost: 3
+    Rank: 1
+    Image: {fileID: 21300000, guid: 3d37dcc66de5bc148b9e40e6300cfa88, type: 3}
+    BG_Image: {fileID: 21300000, guid: 55a684c1bcc71334a99bd940cca08435, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: b21f88f66c567c944a522c45024d5bf4, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 1
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 1
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 2
+    Turn: 0
+    Special: 0
+  - id: 42
+    CardName: "\uB3CC\uD48D(\uC18C)"
+    exp: "1500\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 1
+    Rank: 1
+    Image: {fileID: 21300000, guid: 036e5b7f48eebd744bb2490e6ad4350b, type: 3}
+    BG_Image: {fileID: 21300000, guid: 23f10fdf94230b94695ed716bde0161f, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 682e3152f5409c4489961ac352b63628, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1500
+    Value_Enemy_Damage_Effect: 3
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 43
+    CardName: "\uB9C8\uB825\uCD94\uCD9C"
+    exp: "10\uCF54\uC2A4\uD2B8\uD68C\uBCF5(\uC544\uAD70\uB2E8\uC77C10000\uB370\uBBF8\uC9C0)"
+    cost: 0
+    Rank: 3
+    Image: {fileID: 21300000, guid: 5563c535826037a42971835873ad4324, type: 3}
+    BG_Image: {fileID: 21300000, guid: a701eaa02915c794796463d6eb6a829a, type: 3}
+    CardType: 5
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: accfc04e088bd8143be9b6b232cbccd0, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 6
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 10
+    Value_MAXCost: 0
+    Value_Char_Damage: 10000
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 44
+    CardName: "\uD30C\uC774\uC5B4\uBCFC(\uB300)"
+    exp: "10000\uB370\uBBF8\uC9C0(\uC801)"
+    cost: 5
+    Rank: 2
+    Image: {fileID: 21300000, guid: 1b9dcda21824f7f4787d93c1b9c13871, type: 3}
+    BG_Image: {fileID: 21300000, guid: 9be82abcd2ac4e0419816031ca7ec436, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 7bc7ea8583d73bd47acd45a1206a6183, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 10000
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 10
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 45
+    CardName: "\uD68C\uBCF5(\uC911)"
+    exp: "5000\uD68C\uBCF5(\uB2E8\uC77C)"
+    cost: 4
+    Rank: 2
+    Image: {fileID: 21300000, guid: 091dd29f8027fef48819afb66bb02ec7, type: 3}
+    BG_Image: {fileID: 21300000, guid: f677cf80e2ff8a94d9f491ded19534f2, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: afa257cd7c73d594aa7c2f8b64e7943a, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 8
+    HEAL: 5000
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 46
+    CardName: "\uC57D\uC810\uC801\uC911"
+    exp: "\uCE58\uBA85\uD0C0\uD655\uB960100%(\uB2E8\uC77C)(2\uD134)"
+    cost: 5
+    Rank: 3
+    Image: {fileID: 21300000, guid: ee2785ca0ad527d4f9939483900c463d, type: 3}
+    BG_Image: {fileID: 21300000, guid: 6a2aae9b9f8987841a95ac3980fb6634, type: 3}
+    CardType: 1
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 1a11ab1baf8578147b149ef0df0c669a, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 100
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 2
+    Special: 0
+  - id: 47
+    CardName: "\uAC15\uD0C0"
+    exp: "\uCE58\uBA85\uD0C0\uD53C\uD574150%(\uB2E8\uC77C)(5\uD134)"
+    cost: 5
+    Rank: 2
+    Image: {fileID: 21300000, guid: 5ae4c850080287a4f8b82b98ea98ee82, type: 3}
+    BG_Image: {fileID: 21300000, guid: b7b0245fb62a1eb4f84110b0388484e0, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 5
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 150
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 5
+    Special: 0
+  - id: 48
+    CardName: "\uC544\uC774\uC2A4\uBE14\uB85D"
+    exp: "2000\uD53C\uD574/\uACF5\uACA9\uD69F\uC2181\uD68C\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 2
+    Rank: 2
+    Image: {fileID: 21300000, guid: 4c1adc6c87a0a494889a8bb2e2aa1c35, type: 3}
+    BG_Image: {fileID: 21300000, guid: 06f663f616d357b4f9dd3ed7fd343f8e, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 0324519ef71da2841ac6fd575f340b68, type: 3}
+    Value_Enemy_Effect_Num: 2
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 2000
+    Value_Enemy_Damage_Effect: 2
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: -1
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 49
+    CardName: "\uC544\uC774\uC2A4\uC6E8\uC774\uBE0C"
+    exp: "4000\uD53C\uD574/\uACF5\uACA9\uD69F\uC2183\uD68C\uAC10\uC18C(\uC801)(1\uD134)"
+    cost: 5
+    Rank: 3
+    Image: {fileID: 21300000, guid: 53075bc94ee489645ba825c8ec154b2c, type: 3}
+    BG_Image: {fileID: 21300000, guid: 4fb0ddab0b459b1498fddc7d4b507d38, type: 3}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: f2421aa10925bf941a7a7ac24f16a909, type: 3}
+    Value_Enemy_Effect_Num: 2
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 4000
+    Value_Enemy_Damage_Effect: 2
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: -3
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 1
+    Special: 0
+  - id: 50
+    CardName: "\uB9C8\uB825\uC8FC\uBA38\uB2C8"
+    exp: "\uB9C8\uBC95\uBC30\uD130\uB9AC4\uC7A5\uC744 \uB371\uC5D0 \uB123\uC2B5\uB2C8\uB2E4."
+    cost: 5
+    Rank: 3
+    Image: {fileID: 21300000, guid: b09a5239ebf7ad94cbb26af7263bf3ee, type: 3}
+    BG_Image: {fileID: 21300000, guid: ee73d1b57412d01479f84e5ea2b9a754, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 4433851795683247856, guid: 686a28595d998bd44948069183d9e95e, type: 3}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 4
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 3
+    Turn: 0
+    Special: 0
+  Ban_List: 110000002800000029000000
+  Special_cards:
+  - id: 0
+    CardName: 
+    exp: 
+    cost: 0
+    Rank: 0
+    Image: {fileID: 0}
+    BG_Image: {fileID: 0}
+    CardType: 0
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 0
+  - id: 1
+    CardName: "\uC6A9\uC758\uB9C8\uBC95"
+    exp: "\uB7AD\uD06C3 \uC2A4\uD3A05\uC7A5\uC744 \uB371\uC5D0\uB123\uC2B5\uB2C8\uB2E4."
+    cost: 7
+    Rank: 4
+    Image: {fileID: 21300000, guid: a6dbb6a3a38712f4db9d43b0a9ff07c2, type: 3}
+    BG_Image: {fileID: 21300000, guid: a6dbb6a3a38712f4db9d43b0a9ff07c2, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 5
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 5
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 1
+  - id: 2
+    CardName: "\uAE30\uCD08\uB9C8\uBC95\uC11C"
+    exp: "\uB7AD\uD06C1 \uC2A4\uD3A05\uC7A5\uC744 \uB371\uC5D0\uB123\uC2B5\uB2C8\uB2E4."
+    cost: 5
+    Rank: 4
+    Image: {fileID: 21300000, guid: 50538709cc8506d499474204e7fd6195, type: 3}
+    BG_Image: {fileID: 21300000, guid: bedb1d6e21f44c74fa2f6eded75ce7b9, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 5
+    Value_Create_Deck1: 5
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 1
+  - id: 3
+    CardName: "\uB9C8\uB825\uBC30\uD130\uB9AC"
+    exp: "\uCF54\uC2A4\uD2B8\uB97C 2\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+    cost: 0
+    Rank: 4
+    Image: {fileID: 21300000, guid: 81ffdf34c4d792c46a3e3a055687be73, type: 3}
+    BG_Image: {fileID: 21300000, guid: 07cf23cb34d275c4493bef2cc5a83ec9, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 0
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 2
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 0
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 0
+    Turn: 0
+    Special: 1
+  - id: 4
+    CardName: "\uBB34\uD55C\uACF5\uACA9"
+    exp: "1000\uB370\uBBF8\uC9C0(\uC801)(\uC7AC\uC0DD)"
+    cost: 0
+    Rank: 4
+    Image: {fileID: 21300000, guid: 1a847878ad0c6fe43af9500e397838db, type: 3}
+    BG_Image: {fileID: 21300000, guid: 811137f72b652ec4e8f1345cf5422dcf, type: 3}
+    CardType: 3
+    SpellType: 0
+    Effects: {fileID: 0}
+    Value_Enemy_Effect_Num: 0
+    Value_Char_Effect_Num: 0
+    HEAL: 0
+    Value_Enemy_Damage: 1000
+    Value_Enemy_Damage_Effect: 0
+    Value_A: 0
+    Value_D: 0
+    Value_H: 0
+    Value_PA: 0
+    Value_PD: 0
+    Value_PH: 0
+    Value_R: 0
+    Value_AC: 0
+    Value_TY: 0
+    Value_MR: 0
+    Value_CP: 0
+    Value_CD: 0
+    Value_DC: 0
+    Value_Cost: 0
+    Value_MAXCost: 0
+    Value_Char_Damage: 0
+    Value_Drew: 0
+    Value_Hand_Less: 0
+    Value_Create_Deck: 1
+    Value_Create_Deck1: 0
+    Value_Create_Deck2: 0
+    Value_Create_Deck3: 0
+    Value_Create_Deck4: 4
+    Turn: 0
+    Special: 1

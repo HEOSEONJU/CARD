@@ -54,7 +54,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uD69F\uC218+1(\uC601\uAD6C)"
     CardType: 1
     SpellType: 5
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 0c3913c25fa19f445b6e283757dd92bb, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
     exp: "\uBC29\uC5B4\uB8251000(3\uD134)"
     CardType: 1
     SpellType: 2
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: e36bf5ce2c5a06940a5c4af76831f9f6, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     exp: "\uCE58\uBA85\uD0C0\uD655\uB96020(\uC601\uAD6C)"
     CardType: 1
     SpellType: 7
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: bae982eae126c134cb95602fcbd85bba, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
     exp: "\uCE58\uBA85\uD0C0\uB370\uBBF8\uC9C050%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 8
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: d2e5bd5ea438da143a6706a49514c571, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     exp: "\uAC8C\uC784\uC2DC\uC791\uC2DC \uB4DC\uB85C\uC6B01\uC7A5"
     CardType: 3
     SpellType: 9
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 116a53e1909391d459db4d28c9eb125f, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     exp: "\uB9C8\uBC95\uC800\uD56D30%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 10
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 8113924a3f95bfc4d8ea509e8ba13658, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
     exp: "\uB9C8\uBC95\uC800\uD56D50%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 10
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 31bae9a1f1f933a429e81969366545c6, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
     exp: "\uB9C8\uBC95\uC800\uD56D70%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 10
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 4ca9c18c0d4fa644fa2696cdaaf183d5, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     exp: "\uCCB4\uB825300\uD68C\uBCF5(\uC601\uAD6C)"
     CardType: 1
     SpellType: 4
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 206cfae4632e0cb4f847b24c731a9c15, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
     exp: "\uCCB4\uB825500\uD68C\uBCF5(\uC601\uAD6C)"
     CardType: 1
     SpellType: 4
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 1b81de46f941e384ba701c142450cfa3, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
     exp: "\uCCB4\uB8251000\uD68C\uBCF5(\uC601\uAD6C)"
     CardType: 1
     SpellType: 6
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 73921aae54ac5cb4eb3565c9b3e76f30, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uB8251000\uC0C1\uC2B9(3\uD134)"
     CardType: 1
     SpellType: 1
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: ebb458157decc0d4b9a2b7354957d0f8, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
     exp: "\uCD5C\uB300\uCCB4\uB82510000\uC0C1\uC2B9(\uAD11\uC5ED)(5\uD134)"
     CardType: 2
     SpellType: 3
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 6f7c4935499e34447859f2b63f1c96a0, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -509,7 +509,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uB825500\uAC10\uC18C(\uC601\uAD6C)"
     CardType: 0
     SpellType: 3
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 1bfe1b5bde0ec3d4cae1e3ee6f34c9ea, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
     exp: "\uB9C8\uBC95\uB370\uBBF8\uC9C0\uB97C\uC785\uC9C0\uC54A\uC74C"
     CardType: 1
     SpellType: 1
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 30b48cb3f5ad7dd4badc073e0f28ac48, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
     exp: "\uB37110\uB9E4\uCD94\uAC00"
     CardType: 3
     SpellType: 3
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: aae2d57a88da31f49a158d5845ed4dbb, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
     exp: "\uC2DC\uC791\uCF54\uC2A4\uD2B8+1"
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 10cec4021bfa50c46a4515fb3fd3369c, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
     exp: "1\uB7AD\uD06C\uC2A4\uD3A05\uC7A5\uB371\uC5D0\uCD94\uAC00"
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 42e2fcc61c3b1c946ac1fee921db6efc, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
     exp: "\uC6A9\uC758\uB9C8\uBC95\uCE74\uB4DC 3\uC7A5\uC744 \uB371\uC5D0 \uB123\uC2B5\uB2C8\uB2E4"
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 45ec3f8875abc0744a3e2a538b2554fe, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -719,7 +719,7 @@ MonoBehaviour:
     exp: "\uAC8C\uC784\uC2DC\uC791\uC2DC \uB4DC\uB85C\uC6B02\uC7A5"
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 65be44a85f2d8e3458ad02146d5d0b69, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
     exp: "\uCE58\uBA85\uD0C0\uD655\uB96040%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: d5a4d3124b078f641af9759ae3d8d8be, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
     exp: "\uCE58\uBA85\uD0C0\uB370\uBBF8100%(\uC601\uAD6C)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: f6be3caf81bc0aa4a9a7822fe1ca57f9, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -825,7 +825,7 @@ MonoBehaviour:
       \uB123\uC2B5\uB2C8\uB2E4."
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 44a215cee05edd64fac7c9582462a856, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uB82520%\uC99D\uAC00(\uC601\uAD6C)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 5b5f58fa34eb75c4b96cc4238909ad73, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -895,7 +895,7 @@ MonoBehaviour:
     exp: "\uBC29\uC5B4\uB82540%\uC99D\uAC00(\uC601\uAD6C)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 8b04b8be92d739f46a2daf690d888e11, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uD69F\uC2182\uAC10\uC18C(2\uD134)"
     CardType: 0
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 3b06305ca4dc22b4f8041301bf366ac0, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -965,7 +965,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uB825\uBC29\uC5B4\uB825100%\uC99D\uAC00(3\uD134)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 9a1028b9eb6063d4aa362516dda69659, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     exp: "\uACF5\uACA9\uB82540%\uC99D\uAC00 \uBC29\uC5B4\uB82520%\uAC10\uC18C(\uC601\uAD6C)"
     CardType: 1
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: dcf5eba975fb11e4e89865e931197992, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     exp: "500\uD68C\uBCF5(\uAD11\uC5ED)(\uC601\uAD6C)"
     CardType: 2
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: 45fecfb5d1b7a6942936c7ae9b44f6f4, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
       \uB371\uC5D0 \uB123\uC2B5\uB2C8\uB2E4."
     CardType: 3
     SpellType: 0
-    Effects: {fileID: 0}
+    Effects: {fileID: 4433851795683247856, guid: f5194e9f5c4923543a340e23f0c69e49, type: 3}
     HEAL: 0
     Value_Enemy_Damage: 0
     Value_Enemy_Effect_Num: 0

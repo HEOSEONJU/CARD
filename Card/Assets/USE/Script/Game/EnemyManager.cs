@@ -273,7 +273,6 @@ public class EnemyManager : MonoBehaviour
             bool c = false;
             if (SearchAttackTarget())
             {
-
                 for (int j = 0; j < Skill_Damage.Count; j++)
                 {
                     Ran = Random.Range(1, 101);
@@ -300,7 +299,6 @@ public class EnemyManager : MonoBehaviour
                 break;
             }
         }
-
         EndEnemyTurn();//턴넘겨주기
     }
     public void EndEnemyTurn()

@@ -53,7 +53,7 @@ public class CharInfo : MonoBehaviour
         Level.text = "LV :" + CharLevel;
         Name.text = "" + CharData.Monster[CharId].CardName;
         CharImage.sprite = CharData.Monster[CharId].Image;
-        CharImage.material = CharData.Monster[CharId].material;
+        
         Rankimage.sprite = CharData.Monster[CharId].RankImage;
         CharBGImage.sprite = CharData.Monster[CharId].BGImage;
     }

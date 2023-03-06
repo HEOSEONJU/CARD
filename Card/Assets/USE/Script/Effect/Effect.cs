@@ -5,19 +5,14 @@ using UnityEngine;
 
 public abstract  class Effect :MonoBehaviour
 {
-    //public int Spell_Number;
-    
     [SerializeField]
-    protected int Turn;
-
-
-    public bool Require;
-
-    public abstract void RequireMent(Manager Manager);
-    public abstract void Effect_Function(Manager _Manager);
-    public abstract void Effect_Solo_Function(Manager _Manager);
-    public abstract void Effect_Enemy_Function(Manager _Manager);
-    public abstract void Damage_Enemy_Function(EnemyManager Target);
+    protected int Turn;//0이면단발 5000이면영구 그외는 지속턴
+    public bool Require;//발동가능한지 반환
+    public abstract void RequireMent(Manager Manager);//발동조건을 확인하는 함수
+    public abstract void Effect_Function(Manager _Manager);//플레이어에게 발동
+    public abstract void Effect_Solo_Function(Manager _Manager);//단일 캐릭터에게 발동
+    public abstract void Effect_Enemy_Function(Manager _Manager);//적에게 효과를주는 발동
+    public abstract void Damage_Enemy_Function(EnemyManager Target);//적에게 데미지를 주는 효과 발동
 }
 public enum BUFF_TYPE
 {
@@ -34,8 +29,6 @@ public enum BUFF_TYPE
     CP,
     CD,
     DC
-
-
 }
 [System.Serializable]
 public class Effect_Value

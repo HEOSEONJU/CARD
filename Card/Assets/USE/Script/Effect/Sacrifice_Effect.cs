@@ -18,7 +18,7 @@ public class Sacrifice_Effect : Base_Effect
             {
                 if(_Manager.Char_Manager.CombatChar[i].Live) ints.Add(i);
             }
-            //랜덤으로 1명지정
+            //랜덤으로 1명지정 기능만들어야함
             _Manager.Char_Manager.CombatChar[0].Spell_Damaged(Damage_Value);
         }
         else

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
-
 public class RandomScene : MonoBehaviour
 {
 
@@ -51,7 +47,6 @@ public class RandomScene : MonoBehaviour
     }
     IEnumerator FadeScene(float time)
     {
-        
         Color color = FadeImage.color;
         color.a = 0.0f;
         FadeImage.color=color;

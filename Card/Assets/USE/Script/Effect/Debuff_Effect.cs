@@ -38,17 +38,14 @@ public class Debuff_Effect : Base_Effect
     }
     public override void RequireMent(Manager _Manager)
     {
-        foreach (SpellEffect SE in _Manager.Enemy_Manager.Spell_Effects_List)
+
+        if (_Manager.Enemy_Manager.Spell_Effects_List.Find(x => x.ID == _Manager.SelectedCard.CardNumber) != null)
         {
-            if(_Manager.SelectedCard.CardNumber==SE.ID)
-            {
-                _Manager._Result = Card_Result.Duplication;
-                Require = false;
-                return;
-            }
-
-
+            _Manager._Result = Card_Result.Duplication;
+            Require = false;
+            return;
         }
+        
 
 
 

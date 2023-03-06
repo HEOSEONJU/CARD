@@ -103,9 +103,10 @@ public class ManagementMainUI : MonoBehaviour
         UpdateState();
     }
 
-
+    /* 레벨업테스트
     private void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Data.Exp += 200;
@@ -124,7 +125,7 @@ public class ManagementMainUI : MonoBehaviour
             }
         }
     }
-
+    */
 
     void UpdateState()
     {

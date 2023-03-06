@@ -29,7 +29,7 @@ public class CharCardData
     public List<int> Skill_ID;
 
 
-    public Material material;
+    //public Material material;
     public Material Title_material;
 
 

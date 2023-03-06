@@ -23,7 +23,7 @@ public class UIDataUpdate : MonoBehaviour
 
     private void Update()
     {
-        UpdateData();
+        //UpdateData();
     }
 
     public void UpdateData()

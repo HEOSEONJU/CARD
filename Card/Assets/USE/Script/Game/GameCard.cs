@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
-
-
-
-
 public class GameCard : MonoBehaviour
 {
     [Header("게임참조")]
@@ -104,20 +98,12 @@ public class GameCard : MonoBehaviour
     Image HP_BAR;
 
     enum Text_Array { Damaged_T, HEAL_T, ATK_T, DEF_T, ATK_Count_T, DamaedSpell_T, CP_T, CD_T };
-
-
-
     private void Awake()
     {
-
-
-
-
         animator = GetComponent<Animator>();
         OriginiPosi = transform.position;
         Buff_Effect = new List<Transform>();
         Hit_MY_Spell = new List<Transform>();
-
         for (int i= 0; i < Buff_Effect_Parnet.childCount; i++)
         {
             Buff_Effect.Add(Buff_Effect_Parnet.GetChild(i).transform);
@@ -125,49 +111,38 @@ public class GameCard : MonoBehaviour
         for (int i = 0; i < Hit_MY_Spell_Parent.childCount; i++)
         {
             Hit_MY_Spell.Add(Hit_MY_Spell_Parent.GetChild(i).transform);
-        }
-        
+        }   
     }
-
-
     public void InputID(int temp, PlayerInfos Players)
     {
         Spell_Effects = new List<SpellEffect>();
         Skill_Effects = new List<SpellEffect>();
         Skill_ID = new List<int>();
-        
+
         MainImage.color = Color.white;
         ID = temp;
         Live = true;
         Name = CardDataBase.Monster[ID].CardName;
-
         for (int i = 0; i < Players.MonsterCards.Count; i++)
         {
             if (Players.MonsterCards[i].ID == ID)
             {
                 Level = Players.MonsterCards[i].Level;
             }
-
         }
-
         Atk = CardDataBase.Monster[ID].ATK;
         UPAtk = CardDataBase.Monster[ID].UpAtk;
         Def = CardDataBase.Monster[ID].DEF;
         UPDef = CardDataBase.Monster[ID].UpDef;
         Hp = CardDataBase.Monster[ID].HP;
         UPHp = CardDataBase.Monster[ID].UpHp;
-
-        //Type = CardDataBase.Monster[ID].Tyep;
         AttackType = CardDataBase.Monster[ID].AttackType;
         AttackEffect = CardDataBase.Monster[ID].AttackEffectNum;
         Based_CriticalPercent = CardDataBase.Monster[ID].CritiaclPercent;
         Based_CriticalDamage = CardDataBase.Monster[ID].CritiaclDamage;
-
         Setting_Skill_Text();
-
         BG.sprite = CardDataBase.Monster[ID].BGImage;
         MainImage.sprite = CardDataBase.Monster[ID].Image;
-
         switch (CardDataBase.Monster[ID].Rank)
         {
             case 3:
@@ -181,28 +156,14 @@ public class GameCard : MonoBehaviour
                 break;
             default:
                 break;
-
-
         }
-
-
-
-
-
         Effect_ATK = 0;
         Effect_DEF = 0;
         Effect_HP = 0;
-
-        //Init_Skill();
-        //ResetAttackCount();
         CalculatorStatus();
         Current_HP = Current_MAXHP;
         num = 0;
-
-        
         CalculatorStatus();
-        
-
     }
     public void CalculatorStatus()
     {
@@ -246,61 +207,42 @@ public class GameCard : MonoBehaviour
                         break;
                     default:
                         break;
-
                 }
-
-            }
-            
+            }   
         }
-
         Current_ATK = (int)(Mathf.Floor((Atk + (UPAtk * Level)) * ((100f + Percent_ATK) / 100))) + Effect_ATK;
         Current_DEF = (int)(Mathf.Floor((Def + (UPDef * Level)) * ((100f + Percent_DEF) / 100)))+ Effect_DEF;
         Current_MAXHP = (int)(Mathf.Floor((Hp + (UPHp * Level)) * ((100f + Percent_MAXHP) / 100))) + Effect_HP;
-
-
         Current_CriticalDamage = Based_CriticalDamage + Effect_CD;
         Current_CriticalPercent = Based_CriticalPercent + Effect_CP;
-
         if (Current_HP > Current_MAXHP)
         {
             Current_HP = Current_MAXHP;
         }
-
     }
 
     private void Update_Bar()
     {
         HP_BAR.fillAmount = Current_HP*1.0f / Current_MAXHP;
-
-
     }
     
     void Setting_Skill_Text()
     {
         for(int i=0;i< CardDataBase.Monster[ID].Skill_ID.Count;i++)
         {
-            Skill_ID.Add(CardDataBase.Monster[ID].Skill_ID[i]);
-            
+            Skill_ID.Add(CardDataBase.Monster[ID].Skill_ID[i]);   
         }
-        
-
     }
 
 
     public void Melee_Damaged(int Enemy_Attack)
     {
-
-        Debug.Log("들어올피해량" + Enemy_Attack);
-        Debug.Log("현재방어력" + Current_DEF);
+        //Debug.Log("들어올피해량" + Enemy_Attack);
+        //Debug.Log("현재방어력" + Current_DEF);
         if (Current_DEF > 0)
             Enemy_Attack -= Current_DEF;
         animator.SetTrigger("HIT");
-
-
-        Debug.Log("들어올피해량"+Enemy_Attack);
-
-
-
+        //Debug.Log("들어올피해량"+Enemy_Attack);
         if (Enemy_Attack > 0)
         {
             //Debug.Log(Enemy_Attack+"만큼데미지입음");
@@ -312,45 +254,24 @@ public class GameCard : MonoBehaviour
         {
             Use_Text(Text_Array.Damaged_T, 0);
         }
-
     }
     public void Spell_Damaged(int Enemy_Attack,int TYPE=50)//캐릭터가 스펠데미지를입음
     {
-
-
         animator.SetTrigger("HIT");
-
         if(TYPE!=50)
         {
             Hit_MY_Spell[TYPE].gameObject.SetActive(true);
             StartCoroutine(TurnOff_GameObject(Hit_MY_Spell[TYPE].gameObject,2.0f));
         }
 
-
-        //Debug.Log("받는피해량" + Enemy_Attack);
-
         if (Effect_Magic_Regi > 0)
         {
-
-            
-
-
             Enemy_Attack = Enemy_Attack*(100 - Effect_Magic_Regi) / 100;
-            
-            //Debug.Log("마저가적용된피해량" + Enemy_Attack);
-
         }
-        
         Use_Text(Text_Array.DamaedSpell_T, Enemy_Attack);
-        
-
-        //Debug.Log(Enemy_Attack);
         if (Enemy_Attack > 0)
         {
-            //Debug.Log(Enemy_Attack+"만큼데미지입음");
-
             Current_HP -= Enemy_Attack;
-
         }
         else
         {
@@ -358,7 +279,6 @@ public class GameCard : MonoBehaviour
         }
         Update_Bar();
     }
-
     public void DieCheck()
     {
         //Debug.Log("죽음체크");
@@ -370,7 +290,6 @@ public class GameCard : MonoBehaviour
             Update_Bar();
             MainImage.color = Color.gray;
             MainImage.material = null;
-
             int L = 0;
             for(int i=0;i<Char_manager.CombatChar.Count;i++)
             {
@@ -381,35 +300,22 @@ public class GameCard : MonoBehaviour
             {
                 Enemy_Manager.User_Manager.GameEnd(false);
             }
-
-
         }
-
-
     }
-
 
     public void Heal(int Heal_Value)
     {
         if (Current_MAXHP <= (Current_HP + Heal_Value))//최대치를넘는경우 넘지않는한에대해서 회복
         {
-            
             Current_HP = Current_MAXHP;
-
         }
         else
         {
             Current_HP += Heal_Value;
         }
-
-
-
         Update_Bar();//체력바갱신함수 회복이나 최대체력오를때 사용
         Active_Effect(10);
-        
-
     }
-    
     public void Active_Effect(int INDEX)
     {
         Debug.Log(Buff_Effect[INDEX].name);
@@ -417,23 +323,19 @@ public class GameCard : MonoBehaviour
         StartCoroutine(TurnOff_GameObject(Buff_Effect[INDEX].gameObject, 3.0f));
     }
     
-
     void Attack()//어택애니메이션작동시 작동
     {
         AttackCount -= 1;
-        int num = Random.Range(0, AttackEffect.Count);
-
+        //int num = Random.Range(0, AttackEffect.Count);
         if (AttackType >= 1)
             Enemy_Manager.Melee_Attack(Current_ATK, Current_CriticalPercent, Current_CriticalDamage, Attack_Effect_Type.Fire);
         else
             Enemy_Manager.Magic_Attack(Current_ATK, Attack_Effect_Type.Fire);
-
     }
 
 
     public void ResetAttackCount()
     {
-
         int MAX = 1;
         int MIN = 0;
         foreach (SpellEffect SE in Spell_Effects)
@@ -451,9 +353,7 @@ public class GameCard : MonoBehaviour
                     {
                         MIN = EV.Value;
                     }
-
                 }
-
             }
         }
         foreach (SpellEffect SE in Skill_Effects)
@@ -476,10 +376,6 @@ public class GameCard : MonoBehaviour
 
             }
         }
-
-
-
-        
         AttackCount = 1;
         if (MAX>1)
             AttackCount = MAX;
@@ -487,19 +383,10 @@ public class GameCard : MonoBehaviour
         {
             AttackCount -= MIN;
         }
-        //Debug.Log(name + "의공격횟수는=" + AttackCount);
+        
     }
-
-
-
-
     public void TURNUSE()
     {
-        
-        
-
-
-
         for (int i= Spell_Effects.Count-1;i>=0;i--)
         {
 
@@ -516,16 +403,12 @@ public class GameCard : MonoBehaviour
                 Skill_Effects.Remove(Skill_Effects[i]);
             }
         }
-
-        //ResetAttackCount();
         CalculatorStatus();
-
     }
 
     public int MAX_DREW_Count()
     {
         int count = 0;
-
         foreach (SpellEffect SE in Spell_Effects)
         {
             foreach (Effect_Value EV in SE.Effect_Type_Value)
@@ -534,12 +417,9 @@ public class GameCard : MonoBehaviour
                 {
                     if (count < EV.Value)
                     {
-
                         count = EV.Value;
                     }
-
                 }
-
             }
         }
         foreach (SpellEffect SE in Skill_Effects)
@@ -550,21 +430,11 @@ public class GameCard : MonoBehaviour
                 {
                     if (count < EV.Value)
                     {
-
                         count = EV.Value;
                     }
-
                 }
-
             }
         }
-
-
-
-
-
-
-
         return count;
     }
 
@@ -574,7 +444,6 @@ public class GameCard : MonoBehaviour
         if (Live)
         {
             int REGEN = 0;
-
             foreach (SpellEffect SE in Spell_Effects)
             {
                 foreach (Effect_Value EV in SE.Effect_Type_Value)
@@ -583,7 +452,6 @@ public class GameCard : MonoBehaviour
                     {
                         REGEN += EV.Value;
                     }
-
                 }
             }
             foreach (SpellEffect SE in Skill_Effects)
@@ -594,10 +462,8 @@ public class GameCard : MonoBehaviour
                     {
                         REGEN += EV.Value;
                     }
-
                 }
             }
-
             if (REGEN > 0)
             {
                 Buff_Effect[Buff_Effect.Count - 1].gameObject.SetActive(true);
@@ -614,21 +480,11 @@ public class GameCard : MonoBehaviour
             CalculatorStatus();
         }
     }
-
-    
-
-
-
     IEnumerator TurnOff_GameObject(GameObject OFF, float time)
     {
         yield return new WaitForSeconds(time);
         OFF.SetActive(false);
     }
-
-
-
-
-
     void Use_Text(Text_Array Case, int Value)
     {
         Text_animator[num].SetTrigger("Damage");
@@ -696,18 +552,14 @@ public class GameCard : MonoBehaviour
         {
             num = 0;
         }
-
     }
     void Use_Text(Text_Array Case_1, Text_Array Case_2, int Value, int Value_1)
     {
         StartCoroutine(Double_TextCorountine(Case_1, Case_2, Value, Value_1));
-
     }
     IEnumerator Double_TextCorountine(Text_Array Case_1, Text_Array Case_2, int value, int value_1)
     {
         Use_Text(Case_1, value);
-
-
         yield return new WaitForSeconds(0.3f);
         Use_Text(Case_2, value_1);
     }
@@ -715,18 +567,13 @@ public class GameCard : MonoBehaviour
 
     private void OnDisable()
     {
-        
         CalculatorStatus();
         transform.position = OriginiPosi;
     }
     private void OnMouseOver()
     {
-
-
         Char_manager.CardMouseOver(this);
         CalculatorStatus();
-
-
     }
     private void OnMouseExit()
     {
@@ -736,22 +583,10 @@ public class GameCard : MonoBehaviour
     }
     private void OnMouseDown()
     {
-
-        //manager.CardMouseDown();
-
     }
     private void OnMouseUp()
     {
-
-        //manager.CardMouseUp();
-
     }
-
-
-
-
-
-
 }
 
 /*

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 public class CardGetUI : MonoBehaviour
 {
 
@@ -24,10 +26,9 @@ public class CardGetUI : MonoBehaviour
     Vector3 a;
     Vector3 b;
     bool check;
-    public int PackCount;
+    
     //public TMP_InputField CostValue;
-    [Header("얻은카드")]
-    public List<int> GetCardNum;
+    
     [Header("스펠카드등급별 나누기")]
     public List<int> CardGet1;
     public List<int> CardGet2;
@@ -43,7 +44,8 @@ public class CardGetUI : MonoBehaviour
     {
         Data = GetComponent<UIDataUpdate>().Data;
 
-
+        
+        Data.GetPack = new List<int>();
 
         check = true;
 
@@ -55,48 +57,43 @@ public class CardGetUI : MonoBehaviour
         CharGet2 = new List<int>();
         CharGet3 = new List<int>();
 
-        for (int i = 1; i < CardDataBase.cards.Count; i++)
+        foreach(SpellCardData SCD in CardData.instance.CardDataFile.cards)
         {
-
-
-            switch (CardDataBase.cards[i].Rank)
+            switch(SCD.Rank) 
             {
                 case 1:
-                    CardGet1.Add(CardDataBase.cards[i].id);
+                    CardGet1.Add(SCD.id);
                     break;
                 case 2:
-                    CardGet2.Add(CardDataBase.cards[i].id);
+                    CardGet2.Add(SCD.id);
                     break;
                 case 3:
-                    CardGet3.Add(CardDataBase.cards[i].id);
+                    CardGet3.Add(SCD.id);
                     break;
                 default:
                     break;
-            }
 
+            }
         }
 
-        for (int i = 1; i < CharDataBase.Monster.Count; i++)
+        foreach (CharCardData CCD in CardData.instance.CharDataFile.Monster)
         {
-
-
-            switch (CharDataBase.Monster[i].Rank)
+            switch (CCD.Rank)
             {
                 case 1:
-                    CharGet1.Add(CharDataBase.Monster[i].id);
+                    CharGet1.Add(CCD.id);
                     break;
                 case 2:
-                    CharGet2.Add(CharDataBase.Monster[i].id);
+                    CharGet2.Add(CCD.id);
                     break;
                 case 3:
-                    CharGet3.Add(CharDataBase.Monster[i].id);
+                    CharGet3.Add(CCD.id);
                     break;
                 default:
                     break;
+
             }
-
         }
-
 
         a = new Vector3(-0.8888889f, -4.481482f, 90);
         b = new Vector3(-0.05740738f, -4.481482f, 90);
@@ -106,8 +103,6 @@ public class CardGetUI : MonoBehaviour
 
     private void OnEnable()
     {
-
-        PackCount = Data.SpellCardPack;
         PackText.text = "" + Data.SpellCardPack;
     }
     public void ResetPackText()
@@ -117,156 +112,66 @@ public class CardGetUI : MonoBehaviour
 
 
 
-
-
-
-    public void UseCardPack(int n)
+    public void UseCardPack_Char(int n)//n은 뽑은횟수
     {
-        if (check == true)//캐릭터뽑기
+        if (Data.SpellCardPack < n)
         {
-            if (Data.SpellCardPack >= n)
-            {
-
-                GetCardNum = new List<int>();
-                Data.GetPack.Clear();
-                for (int i = 0; i < n; i++)
-                {
-                    int Gold = 0;
-                    int num = Random.Range(1, 100);
-                    if (num >= 90)
-                    {
-                        Gold = 10000;
-                        num = CharGet3[Random.Range(0, CharGet3.Count)];
-                    }
-                    else if (num >= 50)
-                    {
-                        Gold = 200;
-                        num = CharGet2[Random.Range(0, CharGet2.Count)];
-                    }
-                    else
-                    {
-                        Gold = 100;
-                        num = CharGet1[Random.Range(0, CharGet1.Count)];
-                    }
-
-
-                    //중복체크후 없다면
-                    bool ck = true;
-                    for (int j = 0; j < Data.MonsterCards.Count; j++)
-                    {
-                        if (num == Data.MonsterCards[j].ID)
-                        {
-                            //중복탐지했음
-
-                            if (Data.MonsterCards[j].BreaK_Lim <= 4)
-                            {
-                                Data.MonsterCards[j].BreaK_Lim++;
-
-                            }
-                            else//한계돌파가끝났을경우
-                            {
-                                GetComponent<UIDataUpdate>().Data.Gold += Gold;
-                            }
-
-                            ck = false;
-                            break;
-                        }
-
-
-                    }
-
-                    if (ck == true)//중복이없으므로 새로얻은카드
-                    {
-                        MonsterInfo temp = new MonsterInfo();
-                        temp.Init_Monset(num);
-                        Data.MonsterCards.Add(temp);
-
-                    }
-                    Data.GetPack.Add(num);
-                    GetCardNum.Add(num);
-                }
-
-                PackCount -= n;
-                PackText.text = "" + PackCount;
-                Data.SpellCardPack = PackCount;
-                Data.UsePack = n;
-                StartCoroutine(FadeScene(0.5f));
-                Data.Saved_Data();
-            }
-            else
-            {
-                POPUP_1.View_Text("티켓이 모자랍니다");
-            }
+            POPUP_1.View_Text("티켓이 모자랍니다");
+            return;
         }
-        else//카드뽑기
+        int Gold;
+        Data.GetPack.Clear();
+        for (int i = 0; i < n; i++)
         {
-            if (Data.SpellCardPack >= n)
+            int num = Random_Result(UnityEngine.Random.Range(1, 100), true, out Gold);//뽑기결과를 인덱스와Gold 출력
+            
+            MonsterInfo T = Data.MonsterCards.Find(x => x.ID == num);//보유하고있는지 찾기
+            if (T != null)//null이 아니라는것은 보유중
             {
-                int Gold = 0;
-                GetCardNum = new List<int>();
-                Data.GetPack = new List<int>();
-                for (int i = 0; i < n; i++)
-                {
-                    int num = Random.Range(1, 100);
-                    if (num >= 90)
-                    {
-                        Gold = 1000;
-                        num = CardGet3[Random.Range(0, CardGet3.Count)];
-                    }
-                    else if (num >= 50)
-                    {
-                        Gold = 100;
-                        num = CardGet2[Random.Range(0, CardGet2.Count)];
-                    }
-                    else
-                    {
-                        Gold = 10;
-                        num = CardGet1[Random.Range(0, CardGet1.Count)];
-                    }
-
-                    int c = 0;
-                    for (int j = 0; j<Data.DeckCards.Count; j++)
-                    {
-                        if(num==Data.DeckCards[j])
-                        {
-                            c++;
-                        }
-                    }
-                    for (int j = 0; j < Data.HaveCard.Count ; j++)
-                    {
-                        if (num == Data.HaveCard[j])
-                        {
-                            c++;
-                        }
-                    }
-
-                    if (c < 3) //3장미만일경우
-                    {
-                        Data.HaveCard.Add(num);
-                        
-                        
-                    }
-                    else//3장이상인경우
-                    {
-                        Data.Gold += Gold;
-                    }
-                    
-                    Data.GetPack.Add(num);
-                }
-
-                PackCount -= n;
-                PackText.text = "" + PackCount;
-                Data.SpellCardPack = PackCount;
-                Data.UsePack = n;
-                StartCoroutine(FadeScene(0.5f));
-                Data.Saved_Data();
+                Check_Char_Limit(T, Gold);//중복으로 한계돌파 한계돌파이상이면 랭크에 따른 골드증가
             }
-            else
+            else//새로운 캐릭터 획득 보유리스트에 추가
             {
-                POPUP_1.View_Text("티켓이 모자랍니다");
+                MonsterInfo temp = new MonsterInfo();
+                temp.Init_Monset(num);
+                Data.MonsterCards.Add(temp);
             }
+            Data.GetPack.Add(num);//뽑은기록 저장
+            Data.SpellCardPack -= 1;//뽑기티켓소모
         }
+        ResetPackText();//뽑기티켓갯수갱신
+        Data.UsePack = n;//사용한뽑기횟수
+        Data.Saved_Data();//결과를저장
+        StartCoroutine(FadeScene(0.5f));//뽑기화면으로이동
+    }
+    public void UseCardPack_Spell(int n)//n은 뽑은횟수
+    {
+        if (Data.SpellCardPack < n)
+        {
+            POPUP_1.View_Text("티켓이 모자랍니다");
+            return;
+        }
+        int Gold;
+        Data.GetPack.Clear();
+        for (int i = 0; i < n; i++)
+        {
+            int num=Random_Result(UnityEngine.Random.Range(1, 100), false, out Gold);//뽑기결과를 인덱스와Gold 출력
 
+            if (Check_Spell_Count(num)) //중복카드보유가 3장미만이라면 보유카드에 추가
+            {
+                Data.HaveCard.Add(num);
+            }
+            else//3장이상인경우 골드로 치환해서 추가
+            {
+                Data.Gold += Gold;
+            }
+            Data.GetPack.Add(num);//뽑은기록 저장
+            Data.SpellCardPack -= 1;//뽑기티켓 소모
+        }
+        ResetPackText();//뽑기티켓갯수갱신
+        Data.UsePack = n;//사용한뽑기횟수
+        Data.Saved_Data();//결과를저장
+        StartCoroutine(FadeScene(0.5f));//뽑기화면으로이동   
     }
 
     IEnumerator FadeScene(float time)
@@ -284,8 +189,7 @@ public class CardGetUI : MonoBehaviour
 
 
         Maincam.gameObject.SetActive(false);
-        //Maincam.enabled = false;
-        //Maincam.transform.GetComponent<AudioListener>().enabled = false;
+        
         if (check == true)
         {
             SubcamChar.gameObject.SetActive(true);
@@ -296,8 +200,7 @@ public class CardGetUI : MonoBehaviour
             Subcam.gameObject.SetActive(true);
             RanFade.OnEnableScene();
         }
-        //Subcam.enabled = true;
-        //Subcam.transform.GetComponent<AudioListener>().enabled = true;
+        
 
     }
     public void BackScene()
@@ -319,7 +222,7 @@ public class CardGetUI : MonoBehaviour
 
 
     }
-    public void SwapGetItem()
+    public void SwapGetItem()//뽑기화면 전환 캐릭터<=>스펠
     {
         check = !check;
         if (check)
@@ -335,5 +238,75 @@ public class CardGetUI : MonoBehaviour
             LightPosi.position = b;
         }
 
+    }
+
+
+
+    public bool Check_Char_Limit(MonsterInfo T,int Gold)
+    {
+        if (T.BreaK_Lim <= 4)
+        {
+            T.BreaK_Lim++;
+            return true;
+        }
+        else
+        {
+            Data.Gold += Gold;
+            return false;
+        }
+    }
+
+    public bool Check_Spell_Count(int INDEX)
+    {
+        int c = 0;
+        foreach (int Data_INDEX in Data.DeckCards)
+        {
+            if (Data_INDEX == INDEX) c++;
+        }
+        foreach (int Data_INDEX in Data.HaveCard)
+        {
+            if (Data_INDEX == INDEX) c++;
+        }
+        if(c>0) return true;
+        return false;
+    }
+    public int Random_Result(int NUM,bool Char,out int Gold)//True면 캐릭터 false면 스펠
+    {
+        switch(Char)
+        {
+            case true:
+                if (NUM >= 90)
+                {
+                    Gold = 1000;
+                    return  CharGet3[UnityEngine.Random.Range(0, CharGet3.Count)];
+                }
+                else if (NUM >= 50)
+                {
+                    Gold = 100;
+                    return CharGet2[UnityEngine.Random.Range(0, CharGet2.Count)];
+                }
+                else
+                {
+                    Gold = 10;
+                    return CharGet1[UnityEngine.Random.Range(0, CharGet1.Count)];
+                }
+                
+            case false:
+                if (NUM >= 90)
+                {
+                    Gold = 1000;
+                    return  CardGet3[UnityEngine.Random.Range(0, CardGet3.Count)];
+                }
+                else if (NUM >= 50)
+                {
+                    Gold = 100;
+                    return  CardGet2[UnityEngine.Random.Range(0, CardGet2.Count)];
+                }
+                else
+                {
+                    Gold = 10;
+                    return CardGet1[UnityEngine.Random.Range(0, CardGet1.Count)];
+                }
+        }
     }
 }

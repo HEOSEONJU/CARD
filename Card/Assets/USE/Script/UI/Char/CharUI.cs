@@ -198,7 +198,7 @@ public class CharUI : MonoBehaviour
         MYNUM = num;
         Name.text = "" + CharData.Monster[CharId].CardName;
         CharImage.sprite = CharData.Monster[CharId].Image;
-        CharImage.material = CharData.Monster[CharId].material;
+        
         Rankimage.sprite = CharData.Monster[CharId].RankImage;
         CharBGImage.sprite = CharData.Monster[CharId].BGImage;
         TextReset();
@@ -315,7 +315,7 @@ public class CharUI : MonoBehaviour
             
             Name.text = "" + CharData.Monster[Select_Num].CardName;
             CharImage.sprite = CharData.Monster[Select_Num].Image;
-            CharImage.material = CharData.Monster[Select_Num].material;
+            
             Rankimage.sprite = CharData.Monster[Select_Num].RankImage;
             CharBGImage.sprite = CharData.Monster[Select_Num].BGImage;
             TextReset();

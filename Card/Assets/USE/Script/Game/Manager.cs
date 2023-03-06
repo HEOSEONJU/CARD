@@ -54,8 +54,14 @@ public class Manager : MonoBehaviour
     CardState state;
 
 
-
+    [Header("확대참조")]
     public GameObject EnLargeObject;
+    public Image Large_Main;
+    public TextMeshProUGUI Large_Cost;
+    public TextMeshProUGUI Large_Name;
+    public TextMeshProUGUI Large_Exp;
+
+
     public FailWinodw POPUP_1;
 
     [SerializeField]
@@ -81,8 +87,7 @@ public class Manager : MonoBehaviour
 
     public float LoadingTimer = 0;
 
-    [SerializeField]
-    List<Material> materials;
+    
 
 
     [Header("스펠카드 사용시 참조")]
@@ -93,17 +98,13 @@ public class Manager : MonoBehaviour
     enum CardState { Not, Over, Drag }
     private void Awake()
     {
-        Char_Manager = GetComponent<CharManager>();
         Char_Manager.CharAwke();
         OriginPos = POPUP_END.transform.position;
-
     }
 
     void OnEnable()
     {
-
         POPUP_END.SetActive(false);
-
         My_Cost = My_MAXCost = 1;
         DrewCount = 1;
         Loading = true;
@@ -194,7 +195,6 @@ public class Manager : MonoBehaviour
     }
     IEnumerator SwapCorountine()//턴넘겨주기 진행코루틴
     {
-
         Turn = !Turn;
         if (Turn)//내턴시작
         {
@@ -204,14 +204,10 @@ public class Manager : MonoBehaviour
             { My_MAXCost += 1; }
             My_Cost = My_MAXCost;//코스트회복
             ViewCost();//코스트갱신
-
-
-
             Char_Manager.TurnEnd();// 턴종료시 적용되있는 효과들 턴1씩소모
             Enemy_Manager.TurnEnd();
             DrewCount = Char_Manager.MAX_Drew_Count();
-
-            LoadingTimer += DrewCount * 0.5f + 0.1f;
+            LoadingTimer += DrewCount * 0.5f + 0.1f;//드로우매수만큼 딜레이
             for (int i = 0; i < DrewCount; i++)//드로우정리
             {
                 if (MYDeck.Drew())//드로우가능하면 드로우하고패정리
@@ -219,15 +215,9 @@ public class Manager : MonoBehaviour
                     CardAlignment();
                 }
             }
-
-
-
-
-
         }
         else//내턴 종료 공격시작 
-        {
-            //Debug.Log("작동");
+        {   
             LoadingTimer = 100;
             Char_Manager.Renge_HP_Effect();//체력재생버프작동
 
@@ -238,8 +228,6 @@ public class Manager : MonoBehaviour
                     Char_Manager.CombatChar[i].ResetAttackCount();
                 }
             }
-
-
             yield return new WaitForSeconds(1f);
             AttackOrder.text = "공격중";
             GameCard temp;
@@ -248,34 +236,22 @@ public class Manager : MonoBehaviour
                 temp = Char_Manager.MonsterCard.transform.GetChild(i).GetComponent<GameCard>();
                 if (Enemy_Manager.Live == true)
                 {
-                    while (temp.AttackCount >= 1 & temp.Current_HP > 0)//공격횟수가 다소모할때까지 공격
+                    while (temp.AttackCount >= 1 && temp.Live)//공격횟수가 다소모할때까지 공격
                     {
                         if (Enemy_Manager.Live == false)//연속공격중사망시
                         {
                             break;
                         }
-
                         //Debug.Log(temp.name + "가 공격중 /" + (temp.AttackCount - 1) + "번 남음");
-
                         temp.animator.SetTrigger("Attack");
-
-
                         yield return new WaitForSeconds(1.5f);
                     }
-
                 }
-                else//공격중인캐릭터가 마지막공격후 다음캐릭터공격전에 죽어있다면
+                else//공격 도중 적이 사망하면 코루틴종료
                 {
-                    break;
+                    yield break;
                 }
-
             }
-            if (Enemy_Manager.Live == false)//캐릭터들이  공격하고나서 죽어있다면 코루틴종료
-            {
-
-                yield break;
-            }
-
             AttackOrder.text = "상대턴";
             Enemy_Manager.StartEnemyTurn();
         }
@@ -353,7 +329,6 @@ public class Manager : MonoBehaviour
 
     public void CardAlignment()//손패 카드정리
     {
-
         List<PRS> orginCardRPSs = new List<PRS>();
         orginCardRPSs = RoundAlignment(Hand.myCardLeft, Hand.myCardRight, Hand.CurrentHand, Height, Vector3.one * Size);//카드크기조절
         for (int i = 0; i < Hand.CurrentHand; i++)
@@ -403,17 +378,14 @@ public class Manager : MonoBehaviour
     }
     IEnumerator FirstDrew()//게임시작시 5장드로우하는함수
     {
-
         for (int i = 0; i < StartDrew; i++)
         {
-
             yield return new WaitForSeconds(Delaytime5);
             if (MYDeck.Drew())
             {
                 CardAlignment();
             }
         }
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -426,7 +398,6 @@ public class Manager : MonoBehaviour
     {
         if (!onMyCardArea)
         {
-            //SpellCard a;
             Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             MousePos.z = -10f;
             SelectedCard.MoveTransForm(new PRS(MousePos, Quaternion.identity, SelectedCard.originPosi.scale), false);
@@ -444,40 +415,30 @@ public class Manager : MonoBehaviour
 
     void EnlargeCard(bool Enlarge, SpellCard Card)//카드갖다대면 확대하는함수
     {
-
         if (Enlarge)
         {
             this.Enlarge(true);
-            SpellCard Large = EnLargeObject.GetComponent<SpellCard>();
             int Temp_ID = Card.CardNumber;
-
             if (Card.Special)
             {
-                Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = MYDeck.CardDataBase.Special_cards[Temp_ID].Image;
-                Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().material = null;
-
-                Large.transform.GetChild(1).GetChild(4).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].cost + "";
-                Large.transform.GetChild(1).GetChild(5).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].CardName + "";
-                Large.transform.GetChild(1).GetChild(6).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.Special_cards[Temp_ID].exp + "";
+                Large_Main.sprite = MYDeck.CardDataBase.Special_cards[Temp_ID].Image;
+                Large_Main.material = null;
+                Large_Cost.text = MYDeck.CardDataBase.Special_cards[Temp_ID].cost + "";
+                Large_Name.text = MYDeck.CardDataBase.Special_cards[Temp_ID].CardName + "";
+                Large_Exp.text = MYDeck.CardDataBase.Special_cards[Temp_ID].exp + "";
             }
             else
             {
-                Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite = MYDeck.CardDataBase.cards[Temp_ID].Image;
-                Large.transform.GetChild(1).GetChild(1).GetComponent<Image>().material = materials[MYDeck.CardDataBase.cards[Temp_ID].Rank - 1];
-
-                Large.transform.GetChild(1).GetChild(4).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].cost + "";
-                Large.transform.GetChild(1).GetChild(5).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].CardName + "";
-                Large.transform.GetChild(1).GetChild(6).GetComponent<TextMeshProUGUI>().text = MYDeck.CardDataBase.cards[Temp_ID].exp + "";
+                Large_Main.sprite = MYDeck.CardDataBase.cards[Temp_ID].Image;
+                Large_Main.material = null;
+                Large_Cost.text = MYDeck.CardDataBase.cards[Temp_ID].cost + "";
+                Large_Name.text = MYDeck.CardDataBase.cards[Temp_ID].CardName + "";
+                Large_Exp.text = MYDeck.CardDataBase.cards[Temp_ID].exp + "";
             }
-            //Large.transform.GetChild(1).GetChild(7).GetComponent<Image>().sprite = MYDeck.CardDataBase.cards[Temp_ID].RankImage;
-            //Vector3 enlargePos = new Vector3(Card.originPosi.pos.x, Card.originPosi.pos.y + 1.5f, -10f);
-            //Card.MoveTransForm(new PRS(enlargePos, Quaternion.identity, Vector3.one * 0.2f), false);
-
         }
         else
         {
             EnLargeObject.SetActive(false);
-
         }
     }
 
@@ -543,6 +504,8 @@ public class Manager : MonoBehaviour
         Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         MousePos.z = -10f;
         DelayUseSpell = 0.3f;
+
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(MousePos, Vector3.forward);
         int layer;
         _Result = Card_Result.Reset;
@@ -576,8 +539,6 @@ public class Manager : MonoBehaviour
                 layer = 0;
                 break;
 
-
-
         }
         Check = Array.Exists(hits, x => x.collider.gameObject.layer == layer);
         //Debug.Log("콜라이더적중=" + Check);
@@ -601,9 +562,6 @@ public class Manager : MonoBehaviour
             }
             LoadingTimer += 0.5f;
         }
-
-
-
         if (My_Cost < SelectedCard.Cost)
         {
             _Result = Card_Result.Cost_lack;
@@ -626,12 +584,10 @@ public class Manager : MonoBehaviour
             switch (SelectedCard.CardType)
             {
                 case 1:   //내캐릭터에게적용
-
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Solo_Function(this);
                     }
-
                     break;
                 case 0://적에게
                     for (int i = 0; i < hits.Length; i++)
@@ -652,14 +608,12 @@ public class Manager : MonoBehaviour
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Solo_Function(this);
-
                     }
                     break;
                 case 3: //플레이어에게 적용
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Function(this);
-
                     }
                     break;
                 case 4: //플레이어에게 적용 단일 캐릭터희생적용
@@ -667,19 +621,13 @@ public class Manager : MonoBehaviour
 
                     foreach (Effect effect in e)
                     {
-
                         effect.Effect_Solo_Function(this);
-
                     }
                     break;
                 case 5:
-
-
                     foreach (Effect effect in e)
                     {
                         effect.Effect_Function(this);
-
-
                     }
                     break;
             }
@@ -696,23 +644,18 @@ public class Manager : MonoBehaviour
                 Enlarge(false);
                 CardAlignment();
                 yield return new WaitForSeconds(DelayUseSpell);//스펠카드를쓰고나면 카드효과를진행하는0.3초동안 드래그방지를해 코드꼬임을 방지
-
                 break;
             case Card_Result.Duplication:
                 POPUP_1.View_Text("이미 적용된 효과입니다");
-
                 break;
             case Card_Result.Wrong_Target:
                 POPUP_1.View_Text("잘못된 적용대상입니다");
-
                 break;
             case Card_Result.Char_Die:
                 POPUP_1.View_Text("이미 사망한 적용대상입니다");
-
                 break;
             case Card_Result.Cost_lack:
                 POPUP_1.View_Text("코스트가 부족합니다.");
-
                 break;
             case Card_Result.CantCharge_Cost:
                 POPUP_1.View_Text("이미 사용할 수 있는 코스트가  최대입니다");
@@ -723,24 +666,11 @@ public class Manager : MonoBehaviour
             case Card_Result.RequireMent:
                 POPUP_1.View_Text("발동 조건이 만족 하지 않습니다.");
                 break;
-
-
-
-
         }
         state = CardState.Drag;
-
-
-
         ViewCost();
-
-
-
-
-
-
     }
-    public void Reustl_Failed()
+    public void Reustl_Failed()//실패결과스위치문
     {
         switch (_Result)
         {
@@ -781,9 +711,7 @@ public class Manager : MonoBehaviour
 
         ViewCost();
     }
-
-
-    public void InitCard_NUM(CardScriptable DataBox, int Rank, List<int> Init_List, int Special_num = 0)
+    public void InitCard_NUM(CardScriptable DataBox, int Rank, List<int> Init_List, int Special_num = 0)//카드 생성기능
     {
         int Ran = 1;
 
@@ -791,7 +719,6 @@ public class Manager : MonoBehaviour
         {
             while (true)
             {
-
                 Ran = Random.Range(1, DataBox.cards.Count);
                 for (int i = 0; i < DataBox.Ban_List.Count; i++)
                 {
@@ -811,22 +738,13 @@ public class Manager : MonoBehaviour
             Init_List.Add(Special_num);
         }
     }
-
-
-
-
-
-
-    public void CostUse(int UsingCost)
+    public void CostUse(int UsingCost)//코스트소모되는 위치 확인용
     {
-
         My_Cost -= UsingCost;
         ViewCost();
 
 
     }
-
-
     public void StopManager()
     {
         state = CardState.Not;
@@ -989,20 +907,8 @@ public class Manager : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
-
     [Header("초기화용")]
     public Image FadeImage;
-
-
-
-
     private void OnDisable()
     {
         POPUP_END.transform.position = OriginPos;
@@ -1010,36 +916,15 @@ public class Manager : MonoBehaviour
         Color color = FadeImage.color;
         color.a = 0;
         FadeImage.color = color;
-        //color = Victory_Image.color;
-        color.a = 0;
-        //Victory_Image.color = color;
-        //color = GameOver_Image.color;
-        color.a = 0;
-        //GameOver_Image.color = color;
-
-        //Reward_Object.transform.position = new Vector3(960, 1310, 0);
     }
-
-
     [Header("씬이동용")]
     public Camera MainCamera;
     public GameObject GameScene;
-
-
-
-
-
     public void MoveMainScene()
     {
-
-
         MainCamera.enabled = true;
-        //Stage_UI.ResetStageStatus();
         GameObject.Find("Main Camera").GetComponent<ManagementMainUI>().UpdateDate();
         GameScene.SetActive(false);
-
-
-
 
     }
 }

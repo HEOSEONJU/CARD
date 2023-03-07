@@ -18,7 +18,7 @@ public class Deck : MonoBehaviour
     public GameObject DeckCardObject;
     public List<GameObject> DeckCards;
 
-    public PlayerInfos Data;
+    //public PlayerInfos Data;
 
     public CardScriptable CardDataBase;
     int StartNumber;
@@ -53,10 +53,10 @@ public class Deck : MonoBehaviour
     public void InitDeck()
     {
 
-        for (int i = 0; i < Data.DeckCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count; i++)
         {
             
-            int TempID = Data.DeckCards[i];
+            int TempID = FireBaseDB.instacne.Player_Data_instacne.DeckCards[i];
 
             var temp = Instantiate(DeckCardObject, canvas.transform.position, Quaternion.identity, canvas.transform);
             temp.name = StartNumber + "카드";
@@ -77,7 +77,7 @@ public class Deck : MonoBehaviour
 
         }
 
-        for (int i = 0; i < Data.DeckCards.Count; i++)//카드이미지입력
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count; i++)//카드이미지입력
         {
 
             int TempID = DeckCards[i].GetComponent<SpellCard>().CardNumber;

@@ -17,13 +17,13 @@ public class CharGetAnimation : GetAnimation
     protected override IEnumerator CardDrew()//°¡Ã­°ÙÆÑ °ª¿¡ÀÇÇÑ Ä«µåÁ¤º¸ÀÔ·Â
     {
         Action = true;
-        for (int i = 0; i < Data.GetPack.Count; i++)//Ä«µåÀÌ¹ÌÁöÀÔ·Â
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.GetPack.Count; i++)//Ä«µåÀÌ¹ÌÁöÀÔ·Â
         {
-            Bg[i].sprite = CardData.instance.CharDataFile.Monster[Data.GetPack[i]].BGImage;
-            Main[i].sprite = CardData.instance.CharDataFile.Monster[Data.GetPack[i]].Image;
-            OutLine[i].material = CardData.instance.CharDataFile.Monster[Data.GetPack[i]].Title_material;
+            Bg[i].sprite = CardData.instance.CharDataFile.Monster[FireBaseDB.instacne.Player_Data_instacne.GetPack[i]].BGImage;
+            Main[i].sprite = CardData.instance.CharDataFile.Monster[FireBaseDB.instacne.Player_Data_instacne.GetPack[i]].Image;
+            OutLine[i].material = CardData.instance.CharDataFile.Monster[FireBaseDB.instacne.Player_Data_instacne.GetPack[i]].Title_material;
             #region Ä«µå·©Å©º° ÀÌÆåÆ®
-            switch (CardData.instance.CharDataFile.Monster[Data.GetPack[i]].Rank)
+            switch (CardData.instance.CharDataFile.Monster[FireBaseDB.instacne.Player_Data_instacne.GetPack[i]].Rank)
             {
                 case 3:
                     CardObject[i].Reset_Particle();
@@ -41,14 +41,14 @@ public class CharGetAnimation : GetAnimation
             #endregion
         }
         #region Ä«µå 1»Ì 10»ÌÀÎÁö ±¸ºÐÈÄ ¿¬Ãâ
-        switch (Data.UsePack) //Ä«µå 1»Ì 10»Ì ±¸ºÐÇØ¼­ ¿¬Ãâ
+        switch (FireBaseDB.instacne.Player_Data_instacne.UsePack) //Ä«µå 1»Ì 10»Ì ±¸ºÐÇØ¼­ ¿¬Ãâ
         {
             case 1:
                 StartCoroutine(CardNextToMove());
                 yield return new WaitForSeconds(CardDelay);
                 break;
             default:
-                for (int i = 0; i < Data.UsePack; i++)//Ä«µåÂ÷°îÂ÷°î¿ÞÂÊÀ¸·Î ¹èÄ¡
+                for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)//Ä«µåÂ÷°îÂ÷°î¿ÞÂÊÀ¸·Î ¹èÄ¡
                 {
                     CardAlignment(i);
                     yield return new WaitForSeconds(CardDelay);
@@ -66,9 +66,9 @@ public class CharGetAnimation : GetAnimation
     {
         if (CheckButton == false)
         {
-            if (Data.SpellCardPack >= Data.UsePack)
+            if (FireBaseDB.instacne.Player_Data_instacne.SpellCardPack >= FireBaseDB.instacne.Player_Data_instacne.UsePack)
             {
-                if (Data.UsePack != 1)
+                if (FireBaseDB.instacne.Player_Data_instacne.UsePack != 1)
                 {
                     OK_Button.SetActive(true);
                 }
@@ -78,14 +78,14 @@ public class CharGetAnimation : GetAnimation
                 Card_Positin_Reset();
 
 
-                Data.GetPack.Clear();
-                for (int i = 0; i < Data.UsePack; i++)
+                FireBaseDB.instacne.Player_Data_instacne.GetPack.Clear();
+                for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)
                 {
                     int Gold = 0;
 
                     int num = cardGetUI.Random_Result(Random.Range(1, 100), true, out Gold);
                     
-                    MonsterInfo T = Data.MonsterCards.Find(x => x.ID == num);
+                    MonsterInfo T = FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Find(x => x.ID == num);
                     if (T != null)
                     {
                         if (T != null)
@@ -97,17 +97,19 @@ public class CharGetAnimation : GetAnimation
                     {
                         MonsterInfo temp = new MonsterInfo();
                         temp.Init_Monset(num);
-                        Data.MonsterCards.Add(temp);
+                        FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Add(temp);
                     }
-                    Data.GetPack.Add(num);
-                    Data.SpellCardPack -= 1;
+                    FireBaseDB.instacne.Player_Data_instacne.GetPack.Add(num);
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack -= 1;
                 }
                 
-                CurrentCount = Data.UsePack;
+                CurrentCount = FireBaseDB.instacne.Player_Data_instacne.UsePack;
                 cardGetUI.ResetPackText();
                 StartCoroutine(CardDrew());//´Ù½Ã»Ì±â
                 CheckButton = true;
-                Data.Saved_Data();
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.CHAR);
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
             }
             else
             {

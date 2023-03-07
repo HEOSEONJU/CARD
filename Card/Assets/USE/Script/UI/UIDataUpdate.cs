@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 public class UIDataUpdate : MonoBehaviour
 {
-    public PlayerInfos Data;
+    //public PlayerInfos Data;
     [Header("TextUI")]
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI LevelText;
@@ -30,32 +30,32 @@ public class UIDataUpdate : MonoBehaviour
     {
         if (NameText != null)
         {
-            NameText.text = Data.Name;
+            NameText.text = FireBaseDB.instacne.Player_Data_instacne.Name;
 
         }
         if (LevelText != null)
         {
-            LevelText.text = "" + Data.Level;
+            LevelText.text = "" + FireBaseDB.instacne.Player_Data_instacne.Level;
 
         }
         if (ExpText != null)
         {
-            ExpText.text = "" + Data.Exp;
+            ExpText.text = "" + FireBaseDB.instacne.Player_Data_instacne.Exp;
 
         }
         if (StaminaText != null)
         {
-            StaminaText.text = "" + Data.Stamina;
+            StaminaText.text = "" + FireBaseDB.instacne.Player_Data_instacne.Stamina;
 
         }
         if (GemText != null)
         {
-            GemText.text = "" + Data.Gem;
+            GemText.text = "" + FireBaseDB.instacne.Player_Data_instacne.Gem;
 
         }
         if (GoldText != null)
         {
-            GoldText.text = "" + Data.Gold;
+            GoldText.text = "" + FireBaseDB.instacne.Player_Data_instacne.Gold;
 
         }
     }

@@ -7,7 +7,7 @@ public class StageUI : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    PlayerInfos StageInfo;
+    
 
 
     public List<Sprite> Stage_Ready_Image;
@@ -32,7 +32,7 @@ public class StageUI : MonoBehaviour
     private void Awake()
     {
         StaminaUse = 1;
-        StageInfo = GetComponent<UIDataUpdate>().Data;
+        
         StageCount = new List<int>();
         for (int i=0;i<StageButton.transform.childCount;i++)
         {
@@ -60,7 +60,7 @@ public class StageUI : MonoBehaviour
         for (int i = 0; i < StageImage.Count; i++)
         {
             int temp = StageCount[i];
-            switch (StageInfo.StageClear[i])
+            switch (FireBaseDB.instacne.Player_Data_instacne.StageClear[i])
             {
                 case 0:
                     StageImage[i].sprite = Stage_Ready_Image[2];
@@ -95,9 +95,10 @@ public class StageUI : MonoBehaviour
     {
         if (Stamin_Use_Fuction())
         {
-            if (StageInfo.StageClear[a - 1] != 0)
+            if (FireBaseDB.instacne.Player_Data_instacne.StageClear[a - 1] != 0)
             {
-                StageInfo.Saved_Data();
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.STAMINA);
+                
                 Mian.transform.GetComponent<ManagementMainUI>().Enemy_Manager.ID = a;
 
                 Mian.enabled = false;
@@ -110,9 +111,9 @@ public class StageUI : MonoBehaviour
     }
     bool Stamin_Use_Fuction()
     {
-        if(StageInfo.Stamina >= StaminaUse)
+        if(FireBaseDB.instacne.Player_Data_instacne.Stamina >= StaminaUse)
         {
-            StageInfo.Stamina -= StaminaUse;
+            FireBaseDB.instacne.Player_Data_instacne.Stamina -= StaminaUse;
             return true;
         }
         else

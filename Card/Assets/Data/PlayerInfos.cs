@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 [System.Serializable]
 public class PlayerData
 {
@@ -26,72 +28,20 @@ public class PlayerData
 
     public List<int> StageClear;//0잠금,1오픈/2클리어
 
-    public int LGold = 10000;
-    public int LGem = 1000;
-    public int LCardPack = 10;
+    //public int LGold = 10000;
+    //public int LGem = 1000;
+    //public int LCardPack = 10;
+    
     public DateTime CurrentTime;
+    
     public DateTime LastTime;
 
-
-    public void Init_SuperAccount()
-    {
-        CurrentTime = DateTime.Now;
-        ID = "super";
-        Password = "123456";
-        Name = "SUPER ACCOUNT";
-
-        Level = 1;
-        Exp = 0;
-        Stamina = 60;
-        Gem = 100000;
-        Gold = 1000000;
-        SpellCardPack = 1000;
-        UsePack = 0;
-
-        HaveCard = new List<int>();
-
-        DeckCards = new List<int>();
+    
 
 
-        for(int i=1;i<51;i++)
-        {
-            HaveCard.Add(i);
-            HaveCard.Add(i);
-            HaveCard.Add(i);
-        }
-
-
-
-
-        MonsterCards = new List<MonsterInfo>();
-        UseMonsterCards = new List<int>();
-
-        MonsterInfo temp;
-
-        for(int i=1;i<43;i++)
-        {
-
-            temp = new MonsterInfo();
-            temp.Init_Monset(i);
-            MonsterCards.Add(temp);
-            if(i<=4)
-            {
-                UseMonsterCards.Add(temp.ID);
-            }
-        }
-        
-        StageClear = new List<int>();
-        for (int i = 0; i < 18; i++)
-        {
-            StageClear.Add(0);
-        }
-        StageClear[0] = 1;
-        CurrentTime = LastTime = DateTime.Now;
-
-    }
     public void Init_Account(string id, string password, string Input_name)
     {
-        CurrentTime = DateTime.Now;
+        
         ID = id;
         Password = password;
         Name = Input_name;
@@ -161,15 +111,7 @@ public class PlayerData
 
 
 
-    public bool Try_Log(string id, string password)
-    {
-        if (ID == id && Password == password)
-        {
-            return true;
-        }
-
-        return false;
-    }
+    
 
 }
 
@@ -195,29 +137,10 @@ public class MonsterInfo
 
 public class PlayerInfos : MonoBehaviour
 {
-    [SerializeField]
-    PlayerInfoData PlayerDataBox;
-    public string ID;
-    string Password;
-    public string Name;
-    public int Level;
-    public int Exp;
-    public int Stamina;
-    public int Gem;
-    public int Gold;
-    public int SpellCardPack;
-    public int UsePack;
-    public List<int> GetPack;
-    public List<int> HaveCard;
-
-    public List<int> DeckCards;
-    public List<MonsterInfo> MonsterCards;
-    public List<int> UseMonsterCards;
+    
 
 
-    public List<int> StageClear;//0잠금,1오픈/2클리어
-
-    public int LGold=10000;
+    public int LGold = 10000;
     public int LGem = 1000;
     public int LCardPack = 10;
 
@@ -238,11 +161,27 @@ public class PlayerInfos : MonoBehaviour
 
     private void Awake()
     {
-        ID = PlayerPrefs.GetString("Sucess_ID");
-        Load_Data(ID);
+        
+        
         Camera.SetActive(true);
         Camera.GetComponent<ManagementMainUI>().Init();
         Canvas.SetActive(true);
+        FireBaseDB.instacne.Player_Data_instacne.CurrentTime = DateTime.Now;
+        
+        TimeSpan T =FireBaseDB.instacne.Player_Data_instacne.CurrentTime - FireBaseDB.instacne.Player_Data_instacne.LastTime;
+        FireBaseDB.instacne.Player_Data_instacne.LastTime = DateTime.Now;
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.TIME);
+        int M = T.Hours*60+T.Minutes;
+        if(M>=RegenTimer)
+        {
+            FireBaseDB.instacne.Player_Data_instacne.Stamina += M / RegenTimer;
+            if(FireBaseDB.instacne.Player_Data_instacne.Stamina>60)
+            {
+                FireBaseDB.instacne.Player_Data_instacne.Stamina = 60;
+            }
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.STAMINA);
+        }
+
     }
 
 
@@ -250,51 +189,6 @@ public class PlayerInfos : MonoBehaviour
     {
         CurrentTime=DateTime.Now;
         StamainaAdd();
-    }
-    public void Load_Data(string MYID)
-    {
-        for(int i=0;i<PlayerDataBox.Player.Count;i++)
-        {
-            if(PlayerDataBox.Player[i].ID == MYID)
-            {
-                Name = PlayerDataBox.Player[i].Name;
-                Level = PlayerDataBox.Player[i].Level;
-                Stamina = PlayerDataBox.Player[i].Stamina;
-                Gem = PlayerDataBox.Player[i].Gem;
-                Gold = PlayerDataBox.Player[i].Gold;
-                SpellCardPack = PlayerDataBox.Player[i].SpellCardPack;
-                
-                GetPack = PlayerDataBox.Player[i].GetPack;
-                HaveCard = PlayerDataBox.Player[i].HaveCard;
-                DeckCards = PlayerDataBox.Player[i].DeckCards;
-                MonsterCards = PlayerDataBox.Player[i].MonsterCards;
-                UseMonsterCards = PlayerDataBox.Player[i].UseMonsterCards;
-                StageClear = PlayerDataBox.Player[i].StageClear;
-
-                CurrentTime =DateTime.Now;
-
-
-
-
-
-                StamainaAdd();
-
-
-
-
-
-
-
-                Saved_Data();
-                return;
-
-
-            }
-
-
-        }
-
-        
     }
 
     void StamainaAdd()
@@ -306,52 +200,29 @@ public class PlayerInfos : MonoBehaviour
         {
             InfiniteLoopDetector.Run();
             LastTime.AddMinutes(RegenTimer);
-            if (Stamina < Max_Stamina)
+            if (FireBaseDB.instacne.Player_Data_instacne.Stamina < Max_Stamina)
             {
-                Stamina += 1;
+                FireBaseDB.instacne.Player_Data_instacne.Stamina += 1;
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.STAMINA);
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.TIME);
             }
         }
-        Saved_Data();
+        
+        
     }
 
-    public void Saved_Data()
-    {
-        for (int i = 0; i < PlayerDataBox.Player.Count; i++)
-        {
-            if (PlayerDataBox.Player[i].ID == ID)
-            {
-                
-                PlayerDataBox.Player[i].Level=Level;
-                PlayerDataBox.Player[i].Stamina= Stamina;
-                PlayerDataBox.Player[i].Gem=Gem;
-                PlayerDataBox.Player[i].Gold=Gold;
-                PlayerDataBox.Player[i].SpellCardPack= SpellCardPack;
-                
-                PlayerDataBox.Player[i].GetPack=GetPack;
-                PlayerDataBox.Player[i].HaveCard= HaveCard;
-                PlayerDataBox.Player[i].DeckCards= DeckCards;
-                PlayerDataBox.Player[i].MonsterCards= MonsterCards;
-                PlayerDataBox.Player[i].UseMonsterCards= UseMonsterCards;
-                PlayerDataBox.Player[i].StageClear=StageClear;
-                LastTime= DateTime.Now;
-                return;
-
-
-            }
-
-
-        }
-    }
 
 
     public void StageClear_Function(int i)
     {
-        StageClear[i] = 2;
-        if(i<StageClear.Count-1)
+
+        FireBaseDB.instacne.Player_Data_instacne.StageClear[i] = 2;
+        if(i< FireBaseDB.instacne.Player_Data_instacne.StageClear.Count-1)
         {
-            if (StageClear[i + 1] == 0)
+            if (FireBaseDB.instacne.Player_Data_instacne.StageClear[i + 1] == 0)
             {
-                StageClear[i + 1] = 1;
+                FireBaseDB.instacne.Player_Data_instacne.StageClear[i + 1] = 1;
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.STAGE);
             }
         }
 
@@ -359,15 +230,19 @@ public class PlayerInfos : MonoBehaviour
 
     public bool LevelUp()
     {
-        if(Exp>=200)
+        if(FireBaseDB.instacne.Player_Data_instacne.Exp >= 200)
         {
-            Level += 1;
-            Exp -= 200;
+            FireBaseDB.instacne.Player_Data_instacne.Level += 1;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.LEVEL);
+            FireBaseDB.instacne.Player_Data_instacne.Exp -= 200;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.EXP);
 
-
-            Gold += LGold;
-            Gem += LGem;
-            SpellCardPack += LCardPack;
+            FireBaseDB.instacne.Player_Data_instacne.Gold += LGold;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
+            FireBaseDB.instacne.Player_Data_instacne.Gem += LGem;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GEM);
+            FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += LCardPack;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
             return true;
         }
         else

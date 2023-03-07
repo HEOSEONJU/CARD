@@ -113,7 +113,7 @@ public class GameCard : MonoBehaviour
             Hit_MY_Spell.Add(Hit_MY_Spell_Parent.GetChild(i).transform);
         }   
     }
-    public void InputID(int temp, PlayerInfos Players)
+    public void InputID(int temp)
     {
         Spell_Effects = new List<SpellEffect>();
         Skill_Effects = new List<SpellEffect>();
@@ -123,11 +123,11 @@ public class GameCard : MonoBehaviour
         ID = temp;
         Live = true;
         Name = CardDataBase.Monster[ID].CardName;
-        for (int i = 0; i < Players.MonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count; i++)
         {
-            if (Players.MonsterCards[i].ID == ID)
+            if (FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID == ID)
             {
-                Level = Players.MonsterCards[i].Level;
+                Level = FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].Level;
             }
         }
         Atk = CardDataBase.Monster[ID].ATK;

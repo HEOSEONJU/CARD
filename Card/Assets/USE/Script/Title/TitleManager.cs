@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField]
-    PlayerInfoData Player_Data;
+    
     // Start is called before the first frame update
 
 
@@ -35,7 +34,7 @@ public class TitleManager : MonoBehaviour
     string LogIn_Password;
 
 
-    string Sucess_ID;
+    
 
     [Header("오브젝트")]
     [SerializeField]
@@ -64,83 +63,28 @@ public class TitleManager : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Init_Accoutnt()
     {
-        INPUT_ID = _INPUT_ID.text;
-        INPUT_PASSWORD = _INPUT_PASSWORD.text;
-        INPUT_GAME_NAME = _INPUT_GAME_NAME.text;
-        LogIn_ID = _INPUT_LOGINID.text;
-        LogIn_Password = _INPUT_LOGINPASSWORD.text;
-
-
-        if(Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            Init_Super_Account();
-        }
-    }
-
-    public void Init_Super_Account()
-    {
-        if (Player_Data.Player.Count >= 1)
-        {
-            for (int i = 0; i < Player_Data.Player.Count; i++)
-            {
-                if (Player_Data.Player[i].ID == "super")
-                {
-                    //POPUP_1.View_Text("이미 있는 아이디입니다");
-                    return;
-                }
-            }
-
-
-        }
-        PlayerData temp = new PlayerData();
-        temp.Init_SuperAccount();
-        Player_Data.Player.Add(temp);
-    }
-
-
-
-    public void Init_Account()
-    {
-
-        if (INPUT_ID != "" & INPUT_PASSWORD != "")
-        {
-            if (Player_Data.Player.Count >= 1)
-            {
-                for (int i = 0; i < Player_Data.Player.Count; i++)
-                {
-                    if (Player_Data.Player[i].ID == INPUT_ID)
-                    {
-                        POPUP_1.View_Text("이미 있는 아이디입니다");
-                        return;
-                    }
-                }
-                
-                
-            }
-            else
-            {
-                //POPUP_1.View_Text("이미 있는 아이디입니다");
-            }
-        }
-        else
-        {
-            POPUP_1.View_Text("아이디 혹은 비밀번호가 공백입니다.");
-            return;
-        }
-
+        FireBaseDB.instacne.Create_ID(_INPUT_ID.text, _INPUT_PASSWORD.text, _INPUT_GAME_NAME.text);
         
-
-            PlayerData temp = new PlayerData();
-            temp.Init_Account(INPUT_ID, INPUT_PASSWORD, INPUT_GAME_NAME);
-            Player_Data.Player.Add(temp);
-            Create_ID_POPUP.SetActive(false);
-            POPUP_1.View_Text("아이디 생성에 성공하였습니다.");
-
     }
 
 
+    public void Duplication_Text()
+    {
+        POPUP_1.View_Text("이미 있는 아이디입니다");
+    }
+    public void Empty_Text()
+    {
+        POPUP_1.View_Text("아이디 혹은 비밀번호가 공백입니다.");
+    }
+    public void Init_Text()
+    {
+        POPUP_1.View_Text("아이디 생성에 성공하였습니다.");
+        Create_ID_POPUP.SetActive(false);
+        FireBaseDB.instacne.Player_Data_instacne.Init_Account(_INPUT_ID.text, _INPUT_PASSWORD.text, _INPUT_GAME_NAME.text);
+
+    }
 
 
 
@@ -148,27 +92,24 @@ public class TitleManager : MonoBehaviour
 
     public void Try_LogiN()
     {
-        if(Player_Data.Player.Count>=1)
-        {
-            for(int i=0;i<Player_Data.Player.Count;i++)
-            {
-                if(Player_Data.Player[i].Try_Log(LogIn_ID, LogIn_Password))
-                {
-                    Sucess_ID = LogIn_ID;
-                    LogIn_POPUP.SetActive(false);
-                    Compelete.SetActive(true);
-                    POPUP_1.View_Text("로그인에 성공 하였습니다.");
-                    return;
-                }
-            }
-            POPUP_1.View_Text("아이디 혹은 비밀번호가 틀렷습니다.");
-            return;
+        LogIn_ID = _INPUT_LOGINID.text;
+        LogIn_Password = _INPUT_LOGINPASSWORD.text;
 
-        }
+        FireBaseDB.instacne.Login(LogIn_ID, LogIn_Password);
+
 
 
     }
-
+    public void Sucess_Login()
+    {
+        LogIn_POPUP.SetActive(false);
+        Compelete.SetActive(true);
+        POPUP_1.View_Text("로그인에 성공 하였습니다.");
+    }
+    public void Faile_Text()
+    {
+        POPUP_1.View_Text("아이디 혹은 비밀번호가 틀렷습니다.");
+    }
 
     public void OpenCreate()
     {
@@ -210,7 +151,7 @@ public class TitleManager : MonoBehaviour
     {
         POPUP.SetActive(false);
         Loading.SetActive(true);
-        PlayerPrefs.SetString("Sucess_ID", Sucess_ID);
+        
         StartCoroutine(SceneLoading());
         //SceneManager.LoadScene("MainScene");
     }

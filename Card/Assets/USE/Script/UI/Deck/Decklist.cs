@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using System.Linq;
+
 public class Decklist : MonoBehaviour
 {
     
-    public CardScriptable CardDataFile;
-    public HaveScriptTable HaveData;
-    public DeckScriptTable DeckData;
+    //public CardScriptable CardDataFile;
+    
     public int MaxCount = 40;
     //public SelectCard CardNum;
     public SpellCard Main;
@@ -32,16 +33,13 @@ public class Decklist : MonoBehaviour
     Transform CreateParent;
     private void Awake()
     {
-        //CardHaveNumber = new List<int>();
-        CardDataFile = GameObject.Find("CardData").GetComponent<CardData>().CardDataFile;
-        DeckData = GameObject.Find("CardData").GetComponent<CardData>().DeckDataFile;
-        HaveData = GameObject.Find("CardData").GetComponent<CardData>().HaveDataFile;
-        //DeckData.cards.Clear();
-        //HaveData.cards.Clear();
+
+        
+        
 
 
 
-        for(int i=0;i<CardDataFile.cards.Count-1;i++)
+        for(int i=0;i< CardData.instance.CardDataFile.cards.Count-1;i++)
         {
             
                 var e = Instantiate(Prefab_Object, CreateParent);
@@ -54,10 +52,10 @@ public class Decklist : MonoBehaviour
 
 
 
-        for(int i=0; i<DeckData.cards.Count; i++)
+        for(int i=0; i<FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count; i++)
         {
 
-            CardCreate(DeckData.cards[i]);
+            CardCreate(FireBaseDB.instacne.Player_Data_instacne.DeckCards[i]);
 
 
         }
@@ -70,32 +68,17 @@ public class Decklist : MonoBehaviour
     
     public void AddCard()
     {
-        int CardOverlapCount=0;
-        for(int i = 0; i < DeckData.cards.Count; i++)//덱에 같은 카드 몇장있는지탐지
-        {
-            if(DeckData.cards[i]== Main.CardNumber)
-                CardOverlapCount++;
-
-        }
+        int CardOverlapCount = FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count(Element => Element == Main.CardNumber);
+        int check = FireBaseDB.instacne.Player_Data_instacne.HaveCard.Count(Element => Element == Main.CardNumber);
         int num=0;
 
-        int check=0;
-        for (int i = 0; i < HaveData.cards.Count; i++)//가진카드가남았는지확인
-        {
-            if (HaveData.cards[i] == Main.CardNumber)
-            {
-                check += 1;
-                
-            }
-
-        }
         
 
-        if (MaxCount > DeckData.cards.Count & CardOverlapCount <= 2 & check>=1)
+        if (MaxCount > FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count & CardOverlapCount <= 2 & check>=1)
         {
-            for (int i = 0; i < CardDataFile.cards.Count; i++)
+            for (int i = 0; i < CardData.instance.CardDataFile.cards.Count; i++)
             {
-                if (CardDataFile.cards[i].id == Main.CardNumber)
+                if (CardData.instance.CardDataFile.cards[i].id == Main.CardNumber)
                 {
                     num = i;
                     break;
@@ -104,20 +87,13 @@ public class Decklist : MonoBehaviour
             }
             CardCreate(num);
 
-            DeckData.cards.Add(Main.CardNumber);
-            HaveData.cards.Remove(Main.CardNumber);
-            
+            FireBaseDB.instacne.Player_Data_instacne.DeckCards.Add(Main.CardNumber);
+            FireBaseDB.instacne.Player_Data_instacne.HaveCard.Remove(Main.CardNumber);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.HAVE);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.DECK);
             ReloadCount(Main.CardNumber);
             SortingDeckCard();  
 
-            //CardHaveNumber.Add(Main.CardNumber);
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().Num = Main;
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().MainImage = Main.Front.transform.GetChild(1).GetComponent<Image>();
-
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().CostText = Main.Front.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().NameText = Main.Front.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().EffectText = Main.Front.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-            //e.transform.GetChild(0).GetComponent<DeckEdit>().RankImage = Main.Front.transform.GetChild(7).GetComponent<Image>();
 
         }
         else if(CardOverlapCount>=3)
@@ -137,15 +113,15 @@ public class Decklist : MonoBehaviour
     public void SubCard()
     {
         bool Active = true;
-        if (0 < DeckData.cards.Count)
+        if (0 < FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count)
         {
-            for (int i = 0; i < DeckData.cards.Count; i++)
+            for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count; i++)
             {
                 if(DeckCardObject.transform.GetChild(i).GetChild(1).GetComponent<DeckEdit>().CardNumber== Main.CardNumber)
                 {
 
-                    DeckData.cards.Remove(Main.CardNumber);
-                    HaveData.cards.Add(Main.CardNumber);
+                    FireBaseDB.instacne.Player_Data_instacne.DeckCards.Remove(Main.CardNumber);
+                    FireBaseDB.instacne.Player_Data_instacne.HaveCard.Add(Main.CardNumber);
                     Destroy(DeckCardObject.transform.GetChild(i).gameObject);
                     ReloadCount(Main.CardNumber);
                     Active = false;
@@ -189,24 +165,7 @@ public class Decklist : MonoBehaviour
     }
     public void ReloadCount(int num)
     {
-        int count = 0;
-        for (int i = 0; i < HaveData.cards.Count; i++)
-        {
-            if (HaveData.cards[i] == num)
-            {
-
-                count++;
-            }
-        }
-        for (int i = 0; i < DeckData.cards.Count; i++)
-        {
-            if (DeckData.cards[i] == num)
-            {
-
-                count++;
-            }
-        }
-        CountText.text = "" + count;
+        CountText.text = "" + FireBaseDB.instacne.Player_Data_instacne.HaveCard.Count(Element => Element == num) + FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count(Element => Element == num);
     }
 
     public void SortingDeckCard()
@@ -234,7 +193,7 @@ public class Decklist : MonoBehaviour
 
     public void ExitDeckEdit()
     {
-        if(DeckData.cards.Count>=10)
+        if(FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count>=10)
         {
             GameObject.Find("Main Camera").GetComponent<ManagementMainUI>().CloseDeckUI();
             

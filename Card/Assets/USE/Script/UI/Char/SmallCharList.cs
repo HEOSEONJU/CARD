@@ -11,7 +11,7 @@ public class SmallCharList : MonoBehaviour
     
     public void Setting()
     {
-        Monster = transform.parent.GetComponent<Charlist>().PlayerMonster.MonsterCards;
+        Monster = FireBaseDB.instacne.Player_Data_instacne.MonsterCards;
     }
     public void ResetState()
     {

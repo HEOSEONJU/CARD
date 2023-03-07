@@ -32,19 +32,19 @@ public class CharManager : MonoBehaviour
         //CanAttack = true;
 
         CombatChar = new List<GameCard>();
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
-            int temp = _Manager.MYDeck.Data.UseMonsterCards[i];
+            int temp = FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards[i];
             CombatChar.Add(MonsterCard.transform.GetChild(i).GetComponent<GameCard>());
         }
     }
 
     public void CharInit()
     {
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
             
-            MonsterCard.transform.GetChild(i).GetComponent<GameCard>().InputID(_Manager.MYDeck.Data.UseMonsterCards[i], _Manager.MYDeck.Data);
+            MonsterCard.transform.GetChild(i).GetComponent<GameCard>().InputID(FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards[i]);
             
         }
     }
@@ -53,7 +53,7 @@ public class CharManager : MonoBehaviour
     {
         yield return new WaitForSeconds(DelayTime);
         
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
 
 
@@ -106,7 +106,7 @@ public class CharManager : MonoBehaviour
 
     public void TurnEnd()
     {
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
 
 
@@ -119,7 +119,7 @@ public class CharManager : MonoBehaviour
     public int MAX_Drew_Count()
     {
         int Count = 1;
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
 
 
@@ -133,7 +133,7 @@ public class CharManager : MonoBehaviour
 
     public void Renge_HP_Effect()
     {
-        for (int i = 0; i < _Manager.MYDeck.Data.UseMonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards.Count; i++)
         {
 
 

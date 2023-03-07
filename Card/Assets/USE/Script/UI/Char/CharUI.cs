@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class CharUI : MonoBehaviour
 {
-    public PlayerInfos Data;
+    
     public CharCardScriptTable CharData;
     public Char_Skill_ScriptTable SkillData;
     public int MYNUM;//자기몇번째인지
@@ -128,13 +128,13 @@ public class CharUI : MonoBehaviour
     {
         
         int Level = 1;
-        for (int i = 0; i < Data.MonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count; i++)
         {
-            if (Data.MonsterCards[i].ID == CharId)
+            if (FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID == CharId)
             {
-                Break_Lim= Data.MonsterCards[i].BreaK_Lim;
+                Break_Lim= FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].BreaK_Lim;
                 CurrentLevel_INDEX = i;
-                Level = Data.MonsterCards[i].Level;
+                Level = FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].Level;
                 if (Level >= 80)
                 {
                     need = 500 * Level;
@@ -210,28 +210,29 @@ public class CharUI : MonoBehaviour
     public void LevelUpChar()
     {
 
-        if (need <= Data.Gold & Data.MonsterCards[CurrentLevel_INDEX].Level < Break_Lim * 20)
+        if (need <= FireBaseDB.instacne.Player_Data_instacne.Gold & FireBaseDB.instacne.Player_Data_instacne.MonsterCards[CurrentLevel_INDEX].Level < Break_Lim * 20)
         {
 
 
-            
-                Data.Gold -= need;
-                Data.MonsterCards[CurrentLevel_INDEX].Level++;
-                Data.Saved_Data();
+
+            FireBaseDB.instacne.Player_Data_instacne.Gold -= need;
+            FireBaseDB.instacne.Player_Data_instacne.MonsterCards[CurrentLevel_INDEX].Level++;
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.CHAR);
 
 
             MYUI.UpdateData();
             TextReset();
             ResetText_Need_Gold();
         }
-        else if(need>=Data.Gold)
+        else if(need>= FireBaseDB.instacne.Player_Data_instacne.Gold)
         {
             PopUp_1.View_Text("돈이 모자랍니다.");
             //PopUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "돈이 모자랍니다.";
             //Debug.Log("돈이모자랍니다");
             //돈이모자랍니다
         }
-        else if(Data.MonsterCards[CurrentLevel_INDEX].Level >= Break_Lim * 20)
+        else if(FireBaseDB.instacne.Player_Data_instacne.MonsterCards[CurrentLevel_INDEX].Level >= Break_Lim * 20)
         {
             PopUp_1.View_Text("현재 가능한 최대레벨에 도달햇습니다.");
             //PopUp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "현재 가능한 최대레벨에 도달햇습니다";
@@ -250,12 +251,12 @@ public class CharUI : MonoBehaviour
 
         
         int LevelTemp =0;
-        for (int i = 0; i < Data.MonsterCards.Count; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count; i++)
         {
-            if (Data.MonsterCards[i].ID == CharId)
+            if (FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID == CharId)
             {
-                LevelTemp = Data.MonsterCards[i].Level;
-                TextObject.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "한계돌파 :" + Data.MonsterCards[i].BreaK_Lim;
+                LevelTemp = FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].Level;
+                TextObject.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = "한계돌파 :" + FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].BreaK_Lim;
             }
         }
         TextObject.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Level:" + LevelTemp;//레벨
@@ -291,9 +292,9 @@ public class CharUI : MonoBehaviour
 
         bool ck = false;
 
-        for(int i=0;i<Data.MonsterCards.Count;i++)
+        for(int i=0;i< FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count;i++)
         {
-            if(Data.MonsterCards[i].ID == Select_Num)
+            if(FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID == Select_Num)
                 ck = true;
 
         }
@@ -303,11 +304,11 @@ public class CharUI : MonoBehaviour
         {
             CharId = CharData.Monster[Select_Num].id;
 
-            for(int i=0;i<Data.MonsterCards.Count;i++)
+            for(int i=0;i< FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count;i++)
             {
-                if(Data.MonsterCards[i].ID==CharId)
+                if(FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID==CharId)
                 {
-                    CharLevel = Data.MonsterCards[i].Level;
+                    CharLevel = FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].Level;
                 }
             }
 
@@ -329,24 +330,24 @@ public class CharUI : MonoBehaviour
             bool ck = false;
             for(int i=0;i<4;i++)
             {
-                if(Data.UseMonsterCards[i]== CharData.Monster[Select_Num].id)
+                if(FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards[i]== CharData.Monster[Select_Num].id)
                     ck = true;
             }
             if (ck==false)
             {
-                
-                Data.UseMonsterCards[MYNUM] = CharData.Monster[Select_Num].id;
+
+                FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards[MYNUM] = CharData.Monster[Select_Num].id;
                 
 
-                for (int i = 0; i < Data.MonsterCards.Count; i++)
+                for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count; i++)
                 {
-                    if (Data.MonsterCards[i].ID == CharId)
+                    if (FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID == CharId)
                     {
                         //Data.UseMonsterCards[MYNUM].Level = Data.MonsterCards[i].Level;
                     }
                 }
                 CharPosi[MYNUM].GetComponent<CharInfo>().Reset();
-                Data.Saved_Data();
+                FireBaseDB.instacne.Upload_Data(StoreTYPE.CHAR);
             }
             else
             {

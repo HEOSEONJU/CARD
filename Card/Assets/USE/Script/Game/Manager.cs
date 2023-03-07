@@ -807,7 +807,7 @@ public class Manager : MonoBehaviour
 
 
             PlayerData.StageClear_Function(Enemy_Manager.ID - 1);
-            PlayerData.Saved_Data();
+            
 
         }
         else
@@ -822,11 +822,11 @@ public class Manager : MonoBehaviour
 
         }
         LoadingTimer += 100000;
-        Level_Text.text = "" + Player_Reward.Level;
-        EXP_Text.text = "" + Player_Reward.Exp + "/" + 200;
-        EXP_Text.transform.parent.GetChild(0).GetComponent<Slider>().value = (Player_Reward.Exp * 1f) / 200;
-
-        PlayerData.Saved_Data();
+        
+        Level_Text.text = "" + FireBaseDB.instacne.Player_Data_instacne.Level;
+        EXP_Text.text = "" + FireBaseDB.instacne.Player_Data_instacne + "/" + 200;
+        EXP_Text.transform.parent.GetChild(0).GetComponent<Slider>().value = (FireBaseDB.instacne.Player_Data_instacne.Exp * 1f) / 200;
+        
 
     }
 
@@ -836,7 +836,7 @@ public class Manager : MonoBehaviour
         int Reward_Ticket;
         int Reward_Gem;
         //if초회승리일경우
-        if (PlayerData.StageClear[Enemy_Manager.ID - 1] == 1)
+        if (FireBaseDB.instacne.Player_Data_instacne.StageClear[Enemy_Manager.ID - 1] == 1)
         {
             Reward_Gold = 10000;
             Reward_Ticket = 10;
@@ -892,14 +892,17 @@ public class Manager : MonoBehaviour
         Reward_Text[1].text = "" + Reward_Ticket;
         Reward_Text[2].text = "" + Reward_Gem;
 
-        Player_Reward.Gold += Reward_Gold;
-        Player_Reward.SpellCardPack += Reward_Ticket;
-        Player_Reward.Gem += Reward_Gem;
+        FireBaseDB.instacne.Player_Data_instacne.Gold += Reward_Gold;
+        FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += Reward_Ticket;
+        FireBaseDB.instacne.Player_Data_instacne.Gem += Reward_Gem;
 
-        Player_Reward.Exp += (10 + Enemy_Manager.ID);
+        FireBaseDB.instacne.Player_Data_instacne.Exp += (10 + Enemy_Manager.ID);
+        FireBaseDB.instacne.Download_Data(StoreTYPE.GOLD);
 
+        FireBaseDB.instacne.Download_Data(StoreTYPE.PACK);
 
-
+        FireBaseDB.instacne.Download_Data(StoreTYPE.GEM);
+        FireBaseDB.instacne.Download_Data(StoreTYPE.EXP);
 
 
 

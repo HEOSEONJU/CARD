@@ -5,6 +5,6 @@ using UnityEngine;
 public class Charlist : MonoBehaviour
 {
     
-    public PlayerInfos PlayerMonster;
+    //public PlayerInfos PlayerMonster;
 
 }

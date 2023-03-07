@@ -6,7 +6,7 @@ using TMPro;
 public class CardPack : MonoBehaviour
 {
     // Start is called before the first frame update
-    PlayerInfos Data;
+    
     UIDataUpdate UIData;
     FailWinodw POPUP_1;
 
@@ -30,7 +30,7 @@ public class CardPack : MonoBehaviour
     {
         POPUP_1 = GetComponent<FailWinodw>();
         UIData = GetComponent<UIDataUpdate>();
-        Data = UIData.Data;
+        
 
         CloseWindow();
     }
@@ -132,32 +132,33 @@ public class CardPack : MonoBehaviour
     public void CardPackGetGemUse()
     {
 
+        
 
-
-        if(Data.Gem>=cost)
+        if(FireBaseDB.instacne.Player_Data_instacne.Gem>=cost)
         {
-            Data.Gem -= cost;
+            FireBaseDB.instacne.Player_Data_instacne.Gem -= cost;
             switch(cost)
             {
                 case 100:
-                    Data.SpellCardPack += 1;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 1;
                     break;
                 case 500:
-                    Data.SpellCardPack += 6;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 6;
                     break;
                 case 1000:
-                    Data.SpellCardPack += 13;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 13;
                     break;
                 case 2000:
-                    Data.SpellCardPack += 27;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 27;
                     break;
                 case 4000:
-                    Data.SpellCardPack += 55;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 55;
                     break;
                     
             }
             UIData.UpdateData();
-            Data.Saved_Data();
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GEM);
         }
         else
         {
@@ -212,25 +213,25 @@ public class CardPack : MonoBehaviour
     public void CardPackGetGoldUse( )
     {
 
-        if (Data.Gold >= cost)
+        if (FireBaseDB.instacne.Player_Data_instacne.Gold >= cost)
         {
-            Data.Gold -= cost;
+            FireBaseDB.instacne.Player_Data_instacne.Gold -= cost;
             switch (cost)
             {
                 case 1000:
-                    Data.SpellCardPack += 1;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 1;
                     break;
                 case 5000:
-                    Data.SpellCardPack += 6;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 6;
                     break;
                 case 10000:
-                    Data.SpellCardPack += 13;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 13;
                     break;
                 case 20000:
-                    Data.SpellCardPack += 27;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 27;
                     break;
                 case 40000:
-                    Data.SpellCardPack += 55;
+                    FireBaseDB.instacne.Player_Data_instacne.SpellCardPack += 55;
                     break;
                 default:
                     break;
@@ -238,7 +239,8 @@ public class CardPack : MonoBehaviour
             }
 
             UIData.UpdateData();
-            Data.Saved_Data();
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
         }
         else
         {

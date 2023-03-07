@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 
 public class CardGetUI : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class CardGetUI : MonoBehaviour
     public RandomScene RanFade;
     public RandomScene CharanFade;
     public FailWinodw POPUP_1;
-    PlayerInfos Data;
+    
     Vector3 a;
     Vector3 b;
     bool check;
@@ -42,10 +43,10 @@ public class CardGetUI : MonoBehaviour
 
     private void Awake()
     {
-        Data = GetComponent<UIDataUpdate>().Data;
+        
 
         
-        Data.GetPack = new List<int>();
+        FireBaseDB.instacne.Player_Data_instacne.GetPack = new List<int>();
 
         check = true;
 
@@ -103,29 +104,29 @@ public class CardGetUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PackText.text = "" + Data.SpellCardPack;
+        PackText.text = "" + FireBaseDB.instacne.Player_Data_instacne.SpellCardPack;
     }
     public void ResetPackText()
     {
-        PackText.text = "" + Data.SpellCardPack;
+        PackText.text = "" + FireBaseDB.instacne.Player_Data_instacne.SpellCardPack;
     }
 
 
 
     public void UseCardPack_Char(int n)//n은 뽑은횟수
     {
-        if (Data.SpellCardPack < n)
+        if (FireBaseDB.instacne.Player_Data_instacne.SpellCardPack < n)
         {
             POPUP_1.View_Text("티켓이 모자랍니다");
             return;
         }
         int Gold;
-        Data.GetPack.Clear();
+        FireBaseDB.instacne.Player_Data_instacne.GetPack.Clear();
         for (int i = 0; i < n; i++)
         {
             int num = Random_Result(UnityEngine.Random.Range(1, 100), true, out Gold);//뽑기결과를 인덱스와Gold 출력
             
-            MonsterInfo T = Data.MonsterCards.Find(x => x.ID == num);//보유하고있는지 찾기
+            MonsterInfo T = FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Find(x => x.ID == num);//보유하고있는지 찾기
             if (T != null)//null이 아니라는것은 보유중
             {
                 Check_Char_Limit(T, Gold);//중복으로 한계돌파 한계돌파이상이면 랭크에 따른 골드증가
@@ -134,43 +135,49 @@ public class CardGetUI : MonoBehaviour
             {
                 MonsterInfo temp = new MonsterInfo();
                 temp.Init_Monset(num);
-                Data.MonsterCards.Add(temp);
+                FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Add(temp);
             }
-            Data.GetPack.Add(num);//뽑은기록 저장
-            Data.SpellCardPack -= 1;//뽑기티켓소모
+            FireBaseDB.instacne.Player_Data_instacne.GetPack.Add(num);//뽑은기록 저장
+            FireBaseDB.instacne.Player_Data_instacne.SpellCardPack -= 1;//뽑기티켓소모
         }
         ResetPackText();//뽑기티켓갯수갱신
-        Data.UsePack = n;//사용한뽑기횟수
-        Data.Saved_Data();//결과를저장
+        FireBaseDB.instacne.Player_Data_instacne.UsePack = n;//사용한뽑기횟수
+
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.CHAR);
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
+        //Data.Saved_Data();//결과를저장
         StartCoroutine(FadeScene(0.5f));//뽑기화면으로이동
     }
     public void UseCardPack_Spell(int n)//n은 뽑은횟수
     {
-        if (Data.SpellCardPack < n)
+        if (FireBaseDB.instacne.Player_Data_instacne.SpellCardPack < n)
         {
             POPUP_1.View_Text("티켓이 모자랍니다");
             return;
         }
         int Gold;
-        Data.GetPack.Clear();
+        FireBaseDB.instacne.Player_Data_instacne.GetPack.Clear();
         for (int i = 0; i < n; i++)
         {
             int num=Random_Result(UnityEngine.Random.Range(1, 100), false, out Gold);//뽑기결과를 인덱스와Gold 출력
 
-            if (Check_Spell_Count(num)) //중복카드보유가 3장미만이라면 보유카드에 추가
+            if ((FireBaseDB.instacne.Player_Data_instacne.DeckCards.Count(Element => Element == num) + FireBaseDB.instacne.Player_Data_instacne.HaveCard.Count(Element => Element == num))<3) //중복카드보유가 3장미만이라면 보유카드에 추가
             {
-                Data.HaveCard.Add(num);
+                FireBaseDB.instacne.Player_Data_instacne.HaveCard.Add(num);
             }
             else//3장이상인경우 골드로 치환해서 추가
             {
-                Data.Gold += Gold;
+                FireBaseDB.instacne.Player_Data_instacne.Gold += Gold;
             }
-            Data.GetPack.Add(num);//뽑은기록 저장
-            Data.SpellCardPack -= 1;//뽑기티켓 소모
+            FireBaseDB.instacne.Player_Data_instacne.GetPack.Add(num);//뽑은기록 저장
+            FireBaseDB.instacne.Player_Data_instacne.SpellCardPack -= 1;//뽑기티켓 소모
         }
         ResetPackText();//뽑기티켓갯수갱신
-        Data.UsePack = n;//사용한뽑기횟수
-        Data.Saved_Data();//결과를저장
+        FireBaseDB.instacne.Player_Data_instacne.UsePack = n;//사용한뽑기횟수
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.PACK);
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.HAVE);
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
         StartCoroutine(FadeScene(0.5f));//뽑기화면으로이동   
     }
 
@@ -251,25 +258,12 @@ public class CardGetUI : MonoBehaviour
         }
         else
         {
-            Data.Gold += Gold;
+            FireBaseDB.instacne.Player_Data_instacne.Gold += Gold;
             return false;
         }
     }
 
-    public bool Check_Spell_Count(int INDEX)
-    {
-        int c = 0;
-        foreach (int Data_INDEX in Data.DeckCards)
-        {
-            if (Data_INDEX == INDEX) c++;
-        }
-        foreach (int Data_INDEX in Data.HaveCard)
-        {
-            if (Data_INDEX == INDEX) c++;
-        }
-        if(c>0) return true;
-        return false;
-    }
+
     public int Random_Result(int NUM,bool Char,out int Gold)//True면 캐릭터 false면 스펠
     {
         switch(Char)

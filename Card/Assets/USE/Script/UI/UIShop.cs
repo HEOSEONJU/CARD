@@ -34,7 +34,8 @@ public class UIShop : MonoBehaviour
 
     public void AddGem(int num)
     {
-        Data.Gem += num;
+        FireBaseDB.instacne.Player_Data_instacne.Gem += num;
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.GEM);//현금구매미구현이라 코스트없음
         my.UpdateData();
     }
 
@@ -111,14 +112,15 @@ public class UIShop : MonoBehaviour
 
     public void AddGold()
     {
-        if (Data.Gem >= cost)
+        if (FireBaseDB.instacne.Player_Data_instacne.Gem >= cost)
         {
 
-            Data.Gem -= cost;
-            Data.Gold += gold;
+            FireBaseDB.instacne.Player_Data_instacne.Gem -= cost;
+            FireBaseDB.instacne.Player_Data_instacne.Gold += gold;
 
             my.UpdateData();
-            Data.Saved_Data();
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GOLD);
+            FireBaseDB.instacne.Upload_Data(StoreTYPE.GEM);
             ClosePopup();
         }
         else
@@ -130,7 +132,8 @@ public class UIShop : MonoBehaviour
     }
     public void AddStamina(int num)
     {
-        Data.Stamina += num;
+        FireBaseDB.instacne.Player_Data_instacne.Stamina += num;
+        FireBaseDB.instacne.Upload_Data(StoreTYPE.STAMINA);//현금구매미구현이라 코스트없음
         my.UpdateData();
     }
 

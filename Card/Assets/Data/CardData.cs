@@ -7,8 +7,8 @@ public class CardData : MonoBehaviour
     public static CardData instance;
 
     public CardScriptable CardDataFile;
-    public DeckScriptTable DeckDataFile;
-    public HaveScriptTable HaveDataFile;
+    //public DeckScriptTable DeckDataFile;
+    //public HaveScriptTable HaveDataFile;
     public CharCardScriptTable CharDataFile;
     public GameObject PlayerInfoFile;
     public EnemyScriptTable EnemyDataFile;
@@ -31,9 +31,9 @@ public class CardData : MonoBehaviour
     public void Start()
     {
 
-        HaveDataFile.cards = PlayerInfoFile.GetComponent<PlayerInfos>().HaveCard;
-        DeckDataFile.cards = PlayerInfoFile.GetComponent<PlayerInfos>().DeckCards;
+        //HaveDataFile.cards = FireBaseDB.instacne.D.HaveCard;
+        //DeckDataFile.cards = FireBaseDB.instacne.D.DeckCards;
 
-        Debug.Log(PlayerInfoFile.GetComponent<PlayerInfos>().CurrentTime);
+        //Debug.Log(PlayerInfoFile.GetComponent<PlayerInfos>().CurrentTime);
     }
 }

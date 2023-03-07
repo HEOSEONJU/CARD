@@ -91,15 +91,15 @@ public class ManagementMainUI : MonoBehaviour
         if(Data.LevelUp())
         {
             RewardObject.SetActive(true);
-            Level_Text.text = "" + Data.Level;
+            Level_Text.text = "" + FireBaseDB.instacne.Player_Data_instacne.Level;
             StartCoroutine(LevelUpReward());
         }
-        Name=Data.Name;
-        Level=Data.Level;
-        Exp=Data.Exp;
-        Stamina=Data.Stamina;
-        Gem=Data.Gem;
-        Gold = Data.Gold;
+        Name= FireBaseDB.instacne.Player_Data_instacne.Name;
+        Level= FireBaseDB.instacne.Player_Data_instacne.Level;
+        Exp= FireBaseDB.instacne.Player_Data_instacne.Exp;
+        Stamina= FireBaseDB.instacne.Player_Data_instacne.Stamina;
+        Gem= FireBaseDB.instacne.Player_Data_instacne.Gem;
+        Gold = FireBaseDB.instacne.Player_Data_instacne.Gold;
         UpdateState();
     }
 
@@ -190,7 +190,7 @@ public class ManagementMainUI : MonoBehaviour
 
     public void OpenSettingUI()
     {
-        Setting.SetActive(true);
+        //Setting.SetActive(true); 옵션기능구현안함
     }
     public void CloseSettingUI()
     {

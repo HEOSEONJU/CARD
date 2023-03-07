@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class CharInfo : MonoBehaviour
 {
-    public PlayerInfos Data;
+    //public PlayerInfos Data;
     public CharCardScriptTable CharData;
     public int MYNUM;//자기몇번째인지
     public int CharId;
@@ -38,13 +38,13 @@ public class CharInfo : MonoBehaviour
     }
     public void Reset()
     {
-        CharId = Data.UseMonsterCards[MYNUM];
+        CharId = FireBaseDB.instacne.Player_Data_instacne.UseMonsterCards[MYNUM];
 
-        for(int i=0;i<Data.MonsterCards.Count;i++)
+        for(int i=0;i< FireBaseDB.instacne.Player_Data_instacne.MonsterCards.Count;i++)
         {
-            if (CharId == Data.MonsterCards[i].ID)
+            if (CharId == FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].ID)
             {
-                CharLevel = Data.MonsterCards[i].Level;
+                CharLevel = FireBaseDB.instacne.Player_Data_instacne.MonsterCards[i].Level;
                 break;
             }
         }

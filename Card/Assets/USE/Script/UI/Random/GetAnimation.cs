@@ -7,7 +7,7 @@ public class GetAnimation : MonoBehaviour
 {
     [Header("Information")]
 
-    public PlayerInfos Data;
+    
     [SerializeField]
     protected CardGetUI cardGetUI;
 
@@ -41,7 +41,7 @@ public class GetAnimation : MonoBehaviour
     {
         CheckButton = true;
         Action = false;
-        CurrentCount = Data.UsePack;
+        CurrentCount = FireBaseDB.instacne.Player_Data_instacne.UsePack;
 
         #region 카드위치 크기 초기화
         
@@ -55,14 +55,14 @@ public class GetAnimation : MonoBehaviour
         }
         #endregion
         #region 뽑은회수만큼 카드갯수 활성화
-        for (int i = 0; i < Data.UsePack; i++)//뽑은카드갯수만큼 카드활성화
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)//뽑은카드갯수만큼 카드활성화
         {
             CardObject[i].gameObject.SetActive(true);
         }
         #endregion
 
         END_Button.SetActive(false);
-        switch(Data.UsePack)
+        switch(FireBaseDB.instacne.Player_Data_instacne.UsePack)
         {
             case 1:
                 OK_Button.SetActive(false);
@@ -93,7 +93,7 @@ public class GetAnimation : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
 
-        for (int i = 0; i < Data.UsePack; i++)//씬넘어가기전에 카드 제위치로가고 뒤집어놓기
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)//씬넘어가기전에 카드 제위치로가고 뒤집어놓기
         {
             CardObject[i].transform.position = CenterPosi.position;
             CardObject[i].StartFlip();
@@ -105,7 +105,7 @@ public class GetAnimation : MonoBehaviour
     {
 
         Action = true;
-        if (CurrentCount < 10 & (Data.UsePack != 1))
+        if (CurrentCount < 10 & (FireBaseDB.instacne.Player_Data_instacne.UsePack != 1))
         {
             var target = CardObject[CurrentCount];
             PRS Posi = new PRS(CardOutPosi.position, Quaternion.Euler(0, -180, 0), Vector3.one * 45f);
@@ -134,7 +134,7 @@ public class GetAnimation : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
             CardObject[CurrentCount].StartFlip();
             Action = false;
-            if (Data.UsePack == 1)//1팩까는거라면 전체펴지기하지않음
+            if (FireBaseDB.instacne.Player_Data_instacne.UsePack == 1)//1팩까는거라면 전체펴지기하지않음
             {
                 CheckButton = false;       
                 END_Button.SetActive(true);
@@ -143,7 +143,7 @@ public class GetAnimation : MonoBehaviour
         else
         {
             PRS Posi;
-            for (int i = 0; i < Data.UsePack; i++)
+            for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)
             {
                 Posi = new PRS(Card_Posi[i], Quaternion.Euler(0, -180, 0), Vector3.one * 15f);
                 var target = CardObject[i];
@@ -161,7 +161,7 @@ public class GetAnimation : MonoBehaviour
         if (CheckButton & (!Action))
         {
             PRS Posi;
-            for (int i = 0; i < Data.UsePack; i++)
+            for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)
             {
                 if (CurrentCount <= i)
                 {
@@ -212,7 +212,7 @@ public class GetAnimation : MonoBehaviour
 
     protected void Card_Positin_Reset()
     {
-        for (int i = 0; i < Data.UsePack; i++)
+        for (int i = 0; i < FireBaseDB.instacne.Player_Data_instacne.UsePack; i++)
         {
             CardObject[i].transform.position = CenterPosi.position;
             CardObject[i].transform.localScale = Vector3.zero;
